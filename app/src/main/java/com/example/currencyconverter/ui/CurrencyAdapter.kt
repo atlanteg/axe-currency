@@ -22,6 +22,7 @@ class CurrencyAdapter(
     private var items: MutableList<CurrencyItem> = mutableListOf()
     private var activeCurrency: String = ""
     private var isDragging = false
+    private var renderedDecimalPlaces: Int = 0
 
     init { setHasStableIds(true) }
 
@@ -36,9 +37,14 @@ class CurrencyAdapter(
             override fun areContentsTheSame(o: Int, n: Int) = items[o] == newItems[n]
         })
         val prevActive = activeCurrency
+        val decimalsChanged = renderedDecimalPlaces != decimalPlaces
         activeCurrency = newActive
+        renderedDecimalPlaces = decimalPlaces
         items = newItems.toMutableList()
-        if (prevActive != newActive) notifyDataSetChanged() else diff.dispatchUpdatesTo(this)
+        // Смена точности не меняет amount → DiffUtil не видит разницы.
+        // Форсируем полный ребинд, чтобы все строки переформатировались.
+        if (prevActive != newActive || decimalsChanged) notifyDataSetChanged()
+        else diff.dispatchUpdatesTo(this)
     }
 
     fun onItemMove(from: Int, to: Int) {
@@ -103,7 +109,10 @@ class CurrencyAdapter(
             b.card.strokeWidth = if (isActive) 3 else 0
             b.card.strokeColor = if (isActive) 0xFF1565C0.toInt() else 0x00000000
 
-            if (!isActive) setAmountSilently(fmtAmount(item.amount))
+            // Не перезаписываем только поле, которое СЕЙЧАС в фокусе (живой ввод).
+            // Активную валюту без фокуса тоже переформатируем — иначе при смене
+            // точности её строка не обновляется.
+            if (!b.etAmount.hasFocus()) setAmountSilently(fmtAmount(item.amount))
 
             textWatcher?.let { b.etAmount.removeTextChangedListener(it) }
             textWatcher = object : TextWatcher {
