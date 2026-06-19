@@ -64,12 +64,15 @@ class CurrencyAdapter(
     inner class ViewHolder(private val b: ItemCurrencyBinding) : RecyclerView.ViewHolder(b.root) {
 
         private var currentCode = ""
+        private var currentAmount = 0.0
         private var textWatcher: TextWatcher? = null
 
         init {
             b.etAmount.setOnFocusChangeListener { _, hasFocus ->
                 if (hasFocus && currentCode.isNotEmpty()) {
-                    onAmountChanged(currentCode, b.etAmount.text.toString().parseAmount())
+                    // Используем точное значение из модели, а не отображаемый текст
+                    // (ceil-округление отображения иначе накапливает ошибку при смене поля)
+                    onAmountChanged(currentCode, currentAmount)
                 }
             }
 
@@ -89,6 +92,7 @@ class CurrencyAdapter(
 
         fun bind(item: CurrencyItem, isActive: Boolean) {
             currentCode = item.code
+            currentAmount = item.amount
 
             b.tvFlag.text   = item.flag
             b.tvCode.text   = item.code
