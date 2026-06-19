@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 
             AlertDialog.Builder(this@MainActivity)
                 .setTitle("Доступно обновление")
-                .setMessage("Версия ${release.tagName} готова к установке. Скачать и установить?")
+                .setMessage("Доступна версия ${UpdateChecker.displayVersion(release)}. Скачать и установить?")
                 .setPositiveButton("Обновить") { _, _ ->
                     lifecycleScope.launch {
                         var progressDialog: AlertDialog? = AlertDialog.Builder(this@MainActivity)

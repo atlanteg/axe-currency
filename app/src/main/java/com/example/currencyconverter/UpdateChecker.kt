@@ -13,6 +13,7 @@ import java.io.File
 
 data class GithubRelease(
     @SerializedName("tag_name") val tagName: String,
+    @SerializedName("body") val body: String?,
     @SerializedName("assets") val assets: List<GithubAsset>
 )
 
@@ -40,6 +41,14 @@ object UpdateChecker {
 
     fun versionCodeFromTag(tag: String): Int =
         tag.trimStart('v').toIntOrNull() ?: 0
+
+    fun displayVersion(release: GithubRelease): String {
+        release.body?.lines()?.forEach { line ->
+            if (line.startsWith("versionName="))
+                return line.removePrefix("versionName=").trim()
+        }
+        return release.tagName.trimStart('v')
+    }
 
     suspend fun downloadAndInstall(
         context: Context,
