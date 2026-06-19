@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="3dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
+    app:strokeWidth="0dp"
+    app:strokeColor="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Строка 1: ✕ | флаг | код | (пробел) | символ+сумма -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="11dp"
+            android:paddingBottom="2dp">
+
+            <!-- Удалить — СЛЕВА, подальше от суммы -->
+            <TextView
+                android:id="@+id/btnDelete"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="✕"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="#C8C8C8"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+            <!-- Флаг -->
+            <TextView
+                android:id="@+id/tvFlag"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                android:textSize="22sp" />
+
+            <!-- Код валюты -->
+            <TextView
+                android:id="@+id/tvCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A1A"
+                android:letterSpacing="0.02" />
+
+            <!-- растяжка -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- символ + поле суммы -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvSymbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#888888"
+                    android:layout_marginEnd="3dp" />
+
+                <EditText
+                    android:id="@+id/etAmount"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A"
+                    android:gravity="end"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:hint="0"
+                    android:textColorHint="#CCCCCC"
+                    android:paddingVertical="0dp" />
+            </LinearLayout>
+
+            <!-- Ручка для drag -->
+            <TextView
+                android:id="@+id/ivDragHandle"
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:text="⠿"
+                android:textSize="18sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Строка 2: отступ = 6+36+4+36+8 = 90dp -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="90dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#AAAAAA"
+                android:gravity="end" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
