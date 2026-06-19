@@ -25,6 +25,8 @@ import com.example.currencyconverter.ui.CurrencyInfo
 import com.example.currencyconverter.ui.CurrencyViewModel
 import com.example.currencyconverter.ui.CurrencyViewModel.Companion.currencyFlag
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -93,11 +95,45 @@ class MainActivity : AppCompatActivity() {
         binding.btnClear.setOnClickListener { vm.clearAll() }
         binding.btnAddCurrency.setOnClickListener { showAddDialog() }
         binding.btnSettings.setOnClickListener { showSettingsDialog() }
+
+        checkForUpdate()
     }
 
     override fun onResume() {
         super.onResume()
         vm.refresh()
+    }
+
+    private fun checkForUpdate() {
+        lifecycleScope.launch {
+            val release = UpdateChecker.getLatestRelease() ?: return@launch
+            val latestCode = UpdateChecker.versionCodeFromTag(release.tagName)
+            if (latestCode <= BuildConfig.VERSION_CODE) return@launch
+            val apkAsset = release.assets.firstOrNull { it.name.endsWith(".apk") } ?: return@launch
+
+            AlertDialog.Builder(this@MainActivity)
+                .setTitle("Доступно обновление")
+                .setMessage("Версия ${release.tagName} готова к установке. Скачать и установить?")
+                .setPositiveButton("Обновить") { _, _ ->
+                    lifecycleScope.launch {
+                        var progressDialog: AlertDialog? = AlertDialog.Builder(this@MainActivity)
+                            .setTitle("Загрузка…")
+                            .setMessage("0%")
+                            .setCancelable(false)
+                            .show()
+                        UpdateChecker.downloadAndInstall(
+                            this@MainActivity,
+                            apkAsset.downloadUrl
+                        ) { pct ->
+                            runOnUiThread { progressDialog?.setMessage("$pct%") }
+                        }
+                        progressDialog?.dismiss()
+                        progressDialog = null
+                    }
+                }
+                .setNegativeButton("Потом", null)
+                .show()
+        }
     }
 
     private fun showSettingsDialog() {
