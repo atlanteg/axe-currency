@@ -94,7 +94,11 @@ class MainActivity : AppCompatActivity() {
         binding.tvVersion.text = "v${BuildConfig.VERSION_NAME}"
 
         binding.btnRefresh.setOnClickListener { vm.refresh() }
-        binding.btnClear.setOnClickListener { vm.clearAll() }
+        binding.btnClear.setOnClickListener {
+            // Снимаем фокус, иначе поле с курсором пропускается при ребинде и не обнуляется
+            currentFocus?.clearFocus()
+            vm.clearAll()
+        }
         binding.btnAddCurrency.setOnClickListener { showAddDialog() }
         binding.btnSettings.setOnClickListener { showSettingsDialog() }
 
