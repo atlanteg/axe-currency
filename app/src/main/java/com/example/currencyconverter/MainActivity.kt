@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                     s.lastUpdated.isEmpty() -> "Loading…"
                     else                    -> "Last updated: ${s.lastUpdated}"
                 }
+                adapter.decimalPlaces = s.decimalPlaces
                 adapter.submitList(s.currencyItems, s.activeCurrency)
             }
         }
@@ -91,11 +92,28 @@ class MainActivity : AppCompatActivity() {
         binding.btnRefresh.setOnClickListener { vm.refresh() }
         binding.btnClear.setOnClickListener { vm.clearAll() }
         binding.btnAddCurrency.setOnClickListener { showAddDialog() }
+        binding.btnSettings.setOnClickListener { showSettingsDialog() }
     }
 
     override fun onResume() {
         super.onResume()
         vm.refresh()
+    }
+
+    private fun showSettingsDialog() {
+        val options = arrayOf("0 — целые числа", "1 знак", "2 знака", "4 знака")
+        val values  = intArrayOf(0, 1, 2, 4)
+        val current = vm.getDecimalPlaces()
+        val checked = values.indexOfFirst { it == current }.coerceAtLeast(0)
+
+        AlertDialog.Builder(this)
+            .setTitle("Точность отображения")
+            .setSingleChoiceItems(options, checked) { dialog, which ->
+                vm.setDecimalPlaces(values[which])
+                dialog.dismiss()
+            }
+            .setNegativeButton("Закрыть", null)
+            .show()
     }
 
     private fun showAddDialog() {

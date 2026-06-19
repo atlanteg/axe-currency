@@ -21,7 +21,8 @@ data class UiState(
     val isLoading: Boolean = true,
     val lastUpdated: String = "",
     val totalCurrencies: Int = 0,
-    val error: String? = null
+    val error: String? = null,
+    val decimalPlaces: Int = 0
 )
 
 class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
@@ -48,7 +49,15 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
         prefs.edit().putString("currencies", displayCurrencies.joinToString(",")).apply()
     }
 
+    fun getDecimalPlaces(): Int = prefs.getInt("decimal_places", 0)
+
+    fun setDecimalPlaces(n: Int) {
+        prefs.edit().putInt("decimal_places", n).apply()
+        _state.value = _state.value.copy(decimalPlaces = n)
+    }
+
     init {
+        _state.value = _state.value.copy(decimalPlaces = getDecimalPlaces())
         refresh()
         startAutoRefresh()
     }

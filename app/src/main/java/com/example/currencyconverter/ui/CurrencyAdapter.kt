@@ -17,6 +17,7 @@ class CurrencyAdapter(
 
     var startDragListener: ((ViewHolder) -> Unit)? = null
     var onOrderChanged: ((List<String>) -> Unit)? = null
+    var decimalPlaces: Int = 0
 
     private var items: MutableList<CurrencyItem> = mutableListOf()
     private var activeCurrency: String = ""
@@ -119,7 +120,13 @@ class CurrencyAdapter(
             textWatcher?.let { b.etAmount.addTextChangedListener(it) }
         }
 
-        private fun fmtAmount(v: Double): String = "%.0f".format(v)
+        private fun fmtAmount(v: Double): String {
+            val n = decimalPlaces
+            if (n == 0) return Math.ceil(v).toLong().toString()
+            val factor = Math.pow(10.0, n.toDouble())
+            val ceiled = Math.ceil(v * factor) / factor
+            return "%.${n}f".format(ceiled)
+        }
 
         private fun String.parseAmount(): Double =
             this.replace(",", ".").toDoubleOrNull() ?: 0.0
