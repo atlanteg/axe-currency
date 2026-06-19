@@ -116,6 +116,32 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 On first install: `EUR · USD · RSD · GEL · ILS · TJS · CHF`  
 Add or remove any of the 60+ supported currencies via the **+ Add currency** button.
 
+## Releasing (IMPORTANT — always use the script)
+
+The app auto-updates by comparing its own `versionCode` against the latest GitHub
+release tag (`versionCodeFromTag("v8") → 8`). If the APK's `versionCode` does **not**
+equal the tag number, the app prompts to "update" forever in a loop.
+
+**Therefore: never run `gh release create` by hand.** Always release with the script,
+which derives `versionCode`, `versionName`, the git tag, and the release body from a
+single number `N` — making drift impossible:
+
+```bash
+./release.sh        # auto-increment (current versionCode + 1)
+./release.sh 8      # release version 8 explicitly
+./release.sh 8 "Fixed X"   # with custom release note
+```
+
+The script guarantees `versionCode == versionName minor == tag` (e.g. `8 / 1.8 / v8`).
+After release, verify with:
+
+```bash
+$ANDROID_HOME/build-tools/*/aapt2 dump badging app/build/outputs/apk/debug/app-debug.apk | grep versionCode
+```
+
+The first line of every release body is `versionName=1.N`, which the in-app updater
+reads to show a human-friendly "Доступна версия 1.N" instead of the raw tag.
+
 ## Rate source
 
 [ExchangeRate-API](https://open.er-api.com/) — free tier, updates daily, no authentication required.  
