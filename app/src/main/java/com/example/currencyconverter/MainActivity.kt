@@ -91,6 +91,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.tvVersion.text = "v${BuildConfig.VERSION_NAME}"
+
         binding.btnRefresh.setOnClickListener { vm.refresh() }
         binding.btnClear.setOnClickListener { vm.clearAll() }
         binding.btnAddCurrency.setOnClickListener { showAddDialog() }

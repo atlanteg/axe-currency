@@ -145,14 +145,30 @@
                 android:textColor="#9E9E9E" />
         </LinearLayout>
 
-        <!-- Копирайт -->
-        <TextView
+        <!-- Копирайт + версия -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="28dp"
-            android:gravity="center"
-            android:text="© Atlanteg"
-            android:textSize="11sp"
-            android:textColor="#BBBBBB" />
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="© Atlanteg"
+                android:textSize="11sp"
+                android:textColor="#BBBBBB" />
+
+            <TextView
+                android:id="@+id/tvVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#BBBBBB" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
