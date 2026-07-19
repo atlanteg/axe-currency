@@ -25,7 +25,7 @@ class CurrencyRepository {
 
     private data class Source(
         val name: String,
-        val url: String,
+        val urls: List<String>,       // несколько зеркал: пробуем по очереди
         val parse: (String) -> Map<String, Double>
     )
 
@@ -33,7 +33,7 @@ class CurrencyRepository {
     private val sources = listOf(
         Source(
             "ExchangeRate-API",
-            "https://open.er-api.com/v6/latest/EUR"
+            listOf("https://open.er-api.com/v6/latest/EUR")
         ) { body ->
             val o = gson.fromJson(body, JsonObject::class.java)
             check(o.get("result")?.asString == "success") { "er-api: result != success" }
@@ -41,7 +41,11 @@ class CurrencyRepository {
         },
         Source(
             "Fawaz Ahmed",
-            "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json"
+            // Рекомендация автора API: jsDelivr основной, pages.dev — зеркало
+            listOf(
+                "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json",
+                "https://latest.currency-api.pages.dev/v1/currencies/eur.json"
+            )
         ) { body ->
             val o = gson.fromJson(body, JsonObject::class.java)
             // Коды в нижнем регистре → приводим к верхнему как у остальных источников
@@ -49,7 +53,7 @@ class CurrencyRepository {
         },
         Source(
             "Frankfurter (ECB)",
-            "https://api.frankfurter.dev/v1/latest?base=EUR"
+            listOf("https://api.frankfurter.dev/v1/latest?base=EUR")
         ) { body ->
             val o = gson.fromJson(body, JsonObject::class.java)
             // Frankfurter не включает саму базу EUR — добавляем EUR=1
@@ -70,17 +74,19 @@ class CurrencyRepository {
 
         var lastError: Throwable? = null
         for (src in ordered) {
-            try {
-                val req = Request.Builder().url(src.url).build()
-                client.newCall(req).execute().use { resp ->
-                    check(resp.isSuccessful) { "HTTP ${resp.code}" }
-                    val body = resp.body?.string() ?: error("пустой ответ")
-                    val rates = src.parse(body)
-                    check(rates.size >= 2) { "слишком мало курсов" }
-                    return@withContext Result.success(RatesSnapshot(rates, src.name))
+            for (url in src.urls) {
+                try {
+                    val req = Request.Builder().url(url).build()
+                    client.newCall(req).execute().use { resp ->
+                        check(resp.isSuccessful) { "HTTP ${resp.code}" }
+                        val body = resp.body?.string() ?: error("пустой ответ")
+                        val rates = src.parse(body)
+                        check(rates.size >= 2) { "слишком мало курсов" }
+                        return@withContext Result.success(RatesSnapshot(rates, src.name))
+                    }
+                } catch (e: Exception) {
+                    lastError = e   // пробуем следующее зеркало / источник
                 }
-            } catch (e: Exception) {
-                lastError = e
             }
         }
         Result.failure(lastError ?: Exception("Нет доступных источников"))
