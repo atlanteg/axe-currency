@@ -148,12 +148,23 @@ class CurrencyAdapter(
             textWatcher?.let { b.etAmount.addTextChangedListener(it) }
         }
 
+        // Умное округление вверх: выбранная точность — минимум, но если она
+        // искажает абсолютное значение больше чем на TOL (2%), добавляем знаки,
+        // чтобы у мелких валют не терялся финансовый смысл (0.0067 не станет «1»).
         private fun fmtAmount(v: Double): String {
             val n = decimalPlaces
-            if (n == 0) return Math.ceil(v).toLong().toString()
-            val factor = Math.pow(10.0, n.toDouble())
-            val ceiled = Math.ceil(v * factor) / factor
-            return "%.${n}f".format(ceiled)
+            if (v <= 0.0) return if (n == 0) "0" else "%.${n}f".format(0.0)
+            val tol = 0.02
+            var d = n
+            while (d < 8) {
+                val f = Math.pow(10.0, d.toDouble())
+                val ceiled = Math.ceil(v * f - 1e-9) / f
+                if (ceiled - v <= tol * v) break
+                d++
+            }
+            val f = Math.pow(10.0, d.toDouble())
+            val ceiled = Math.ceil(v * f - 1e-9) / f
+            return if (d == 0) ceiled.toLong().toString() else "%.${d}f".format(ceiled)
         }
 
         private fun String.parseAmount(): Double =

@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.24';
+const APP_VERSION = '1.25';
 
 /* ---------- Persistence ---------- */
 const store = {
@@ -56,11 +56,23 @@ function fmtRate(r){
   if (r >= 1)     return r.toFixed(4);
   return r.toFixed(6);
 }
+// Умное округление вверх: выбранная точность — минимум, но если она искажает
+// абсолютное значение больше чем на TOL (2%), добавляем знаки (мелкие валюты
+// не превращаются в «1»).
 function fmtAmount(v){
   const n = decimalPlaces;
-  if (n === 0) return String(Math.ceil(v - 1e-9));
-  const f = Math.pow(10, n);
-  return (Math.ceil(v * f - 1e-9) / f).toFixed(n);
+  if (v <= 0) return n===0 ? '0' : (0).toFixed(n);
+  const TOL = 0.02;
+  let d = n;
+  while (d < 8){
+    const f = Math.pow(10, d);
+    const ceiled = Math.ceil(v*f - 1e-9)/f;
+    if (ceiled - v <= TOL*v) break;
+    d++;
+  }
+  const f = Math.pow(10, d);
+  const ceiled = Math.ceil(v*f - 1e-9)/f;
+  return d===0 ? String(Math.round(ceiled)) : ceiled.toFixed(d);
 }
 function parseAmount(s){
   const v = parseFloat(String(s).replace(',', '.'));
