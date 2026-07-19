@@ -57,6 +57,14 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
         _state.value = _state.value.copy(decimalPlaces = n)
     }
 
+    // 0 = Авто (цепочка с резервом), 1..3 = принудительно конкретный источник
+    fun getSourceMode(): Int = prefs.getInt("rate_source", 0)
+
+    fun setSourceMode(mode: Int) {
+        prefs.edit().putInt("rate_source", mode).apply()
+        refresh()  // сразу перезапрашиваем с новым источником
+    }
+
     init {
         _state.value = _state.value.copy(decimalPlaces = getDecimalPlaces())
         refresh()
@@ -66,7 +74,7 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
     fun refresh() {
         viewModelScope.launch {
             _state.value = _state.value.copy(isLoading = true, error = null)
-            repository.getRates().fold(
+            repository.getRates(getSourceMode()).fold(
                 onSuccess = { snap ->
                     allRates = snap.rates
                     // Показываем ВРЕМЯ НАШЕГО запроса — чтобы refresh был виден

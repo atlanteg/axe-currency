@@ -57,10 +57,19 @@ class CurrencyRepository {
         }
     )
 
-    /** Пробует источники по очереди, возвращает первый успешный. */
-    suspend fun getRates(): Result<RatesSnapshot> = withContext(Dispatchers.IO) {
+    /**
+     * Пробует источники по очереди, возвращает первый успешный.
+     * @param preferred 0 = авто (обычный порядок); 1..N = поставить этот источник первым,
+     *   остальные остаются резервом (чтобы приложение не осталось без данных).
+     */
+    suspend fun getRates(preferred: Int = 0): Result<RatesSnapshot> = withContext(Dispatchers.IO) {
+        val ordered = if (preferred in 1..sources.size) {
+            val idx = preferred - 1
+            listOf(sources[idx]) + sources.filterIndexed { i, _ -> i != idx }
+        } else sources
+
         var lastError: Throwable? = null
-        for (src in sources) {
+        for (src in ordered) {
             try {
                 val req = Request.Builder().url(src.url).build()
                 client.newCall(req).execute().use { resp ->

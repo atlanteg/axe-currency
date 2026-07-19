@@ -135,6 +135,8 @@ class MainActivity : AppCompatActivity() {
                 "Если основной источник не отвечает при автообновлении или по кнопке ↻, " +
                 "приложение автоматически берёт данные из следующего. Текущий источник " +
                 "показан вверху рядом с временем обновления.\n\n" +
+                "В настройках (⚙) можно принудительно выбрать конкретный источник — " +
+                "остальные всё равно останутся резервом.\n\n" +
                 "Обновление: раз в сутки. Расхождение с XE обычно менее 0.5% — " +
                 "это справочные курсы, а не котировки реального времени."
             )
@@ -174,11 +176,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val sourceOptions = arrayOf(
+        "Авто (с резервом)", "ExchangeRate-API", "Fawaz Ahmed", "Frankfurter (ЕЦБ)"
+    )
+
     private fun showSettingsDialog() {
+        val decimals = vm.getDecimalPlaces()
+        val decimalLabel = if (decimals == 0) "целые" else "$decimals зн."
+        val srcName = sourceOptions[vm.getSourceMode().coerceIn(0, sourceOptions.size - 1)]
+
+        val items = arrayOf(
+            "Точность отображения:  $decimalLabel",
+            "Источник курсов:  $srcName"
+        )
+
+        AlertDialog.Builder(this)
+            .setTitle("Настройки")
+            .setItems(items) { _, which ->
+                when (which) {
+                    0 -> showDecimalDialog()
+                    1 -> showSourceDialog()
+                }
+            }
+            .setNegativeButton("Закрыть", null)
+            .show()
+    }
+
+    private fun showDecimalDialog() {
         val options = arrayOf("0 — целые числа", "1 знак", "2 знака", "4 знака")
         val values  = intArrayOf(0, 1, 2, 4)
-        val current = vm.getDecimalPlaces()
-        val checked = values.indexOfFirst { it == current }.coerceAtLeast(0)
+        val checked = values.indexOfFirst { it == vm.getDecimalPlaces() }.coerceAtLeast(0)
 
         AlertDialog.Builder(this)
             .setTitle("Точность отображения")
@@ -186,7 +213,20 @@ class MainActivity : AppCompatActivity() {
                 vm.setDecimalPlaces(values[which])
                 dialog.dismiss()
             }
-            .setNegativeButton("Закрыть", null)
+            .setNegativeButton("Назад", null)
+            .show()
+    }
+
+    private fun showSourceDialog() {
+        val checked = vm.getSourceMode().coerceIn(0, sourceOptions.size - 1)
+
+        AlertDialog.Builder(this)
+            .setTitle("Источник курсов")
+            .setSingleChoiceItems(sourceOptions, checked) { dialog, which ->
+                vm.setSourceMode(which)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Назад", null)
             .show()
     }
 
