@@ -3,6 +3,7 @@ package com.example.currencyconverter.ui
 import android.annotation.SuppressLint
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -80,6 +81,20 @@ class CurrencyAdapter(
                     // (ceil-округление отображения иначе накапливает ошибку при смене поля)
                     onAmountChanged(currentCode, currentAmount)
                 }
+            }
+
+            // Двойной клик по сумме → выделить ВСЁ число (в т.ч. дробную часть),
+            // а не «слово». post{} — чтобы перебить стандартное выделение EditText.
+            val doubleTap = GestureDetector(b.etAmount.context,
+                object : GestureDetector.SimpleOnGestureListener() {
+                    override fun onDoubleTap(e: MotionEvent): Boolean {
+                        b.etAmount.post { b.etAmount.selectAll() }
+                        return false
+                    }
+                })
+            b.etAmount.setOnTouchListener { _, event ->
+                doubleTap.onTouchEvent(event)
+                false  // обычные тапы/курсор/вставка работают как прежде
             }
 
             b.ivDragHandle.setOnTouchListener { _, event ->
