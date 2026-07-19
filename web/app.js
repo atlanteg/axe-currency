@@ -8,7 +8,12 @@ const store = {
 };
 
 /* ---------- State ---------- */
-let displayCurrencies = [...new Set(store.get('currencies', DEFAULT_CURRENCIES.slice()))];
+let displayCurrencies = (()=>{
+  const raw = store.get('currencies', DEFAULT_CURRENCIES.slice());
+  const uniq = [...new Set(raw)];
+  if (uniq.length !== raw.length) store.set('currencies', uniq); // чистим сохранённые дубли
+  return uniq;
+})();
 let decimalPlaces = store.get('decimals', 0);
 let sourceMode = store.get('source', 0);          // 0=auto, 1..3 forced
 let lang = store.get('lang', null);               // null = system
