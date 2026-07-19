@@ -8,7 +8,7 @@ const store = {
 };
 
 /* ---------- State ---------- */
-let displayCurrencies = store.get('currencies', DEFAULT_CURRENCIES.slice());
+let displayCurrencies = [...new Set(store.get('currencies', DEFAULT_CURRENCIES.slice()))];
 let decimalPlaces = store.get('decimals', 0);
 let sourceMode = store.get('source', 0);          // 0=auto, 1..3 forced
 let lang = store.get('lang', null);               // null = system
@@ -119,6 +119,9 @@ function setStatus(txt){ $('#status').textContent = txt; }
 
 function render(){
   applyDir();
+  // Защита от дублей: чистим список и сохраняем, если что-то повторилось
+  const uniq = [...new Set(displayCurrencies)];
+  if (uniq.length !== displayCurrencies.length){ displayCurrencies = uniq; store.set('currencies', displayCurrencies); }
   // static labels
   $('#btnClear').textContent = t('clear');
   $('#btnAdd').textContent = t('add_currency');
@@ -276,7 +279,9 @@ function showAdd(){
     const f = avail.filter(c=> c.toLowerCase().includes(q) || cName(c).toLowerCase().includes(q));
     picks.innerHTML = f.map(c=>`<div class="pick-row" data-code="${c}"><span class="pf">${cFlag(c)}</span><span class="pc">${c}</span><span class="pn">${cName(c)}</span></div>`).join('');
     picks.querySelectorAll('.pick-row').forEach(row=> row.onclick=()=>{
-      displayCurrencies.push(row.dataset.code); store.set('currencies', displayCurrencies); closeModal(); render();
+      const c = row.dataset.code;
+      if (!displayCurrencies.includes(c)) displayCurrencies.push(c);
+      store.set('currencies', displayCurrencies); closeModal(); render();
     });
   };
   draw('');
