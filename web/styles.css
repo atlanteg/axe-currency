@@ -18,16 +18,15 @@ body{
 /* Header */
 .header{
   display:flex; align-items:center; gap:8px;
-  background:var(--card); height:48px; padding:0 6px 0 14px;
+  background:var(--card); min-height:48px; padding:6px 6px 6px 14px;
   box-shadow:0 1px 3px rgba(0,0,0,.08);
-  padding-top:env(safe-area-inset-top);
-  height:calc(48px + env(safe-area-inset-top));
+  padding-top:calc(6px + env(safe-area-inset-top));
 }
 .badge{
   background:#E8EEF9; color:var(--blue); font-weight:700; font-size:12px;
   padding:3px 8px; border-radius:6px; white-space:nowrap;
 }
-.status{flex:1; font-size:12px; color:#666; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.status{flex:1; font-size:12px; color:#666; white-space:normal; line-height:1.25; word-break:break-word}
 .icon-btn{
   border:0; background:transparent; color:var(--blue);
   font-size:22px; width:40px; height:40px; border-radius:50%;
