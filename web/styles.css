@@ -3,15 +3,17 @@
   --gray:#888; --gray2:#9E9E9E; --line:#EEE;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%}
+html,body{margin:0;height:100%;overflow:hidden}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:var(--bg); color:var(--ink);
   overscroll-behavior:none;
+  position:fixed; inset:0;   /* блокируем прокрутку страницы целиком */
 }
+/* Контейнер жёстко = видимый вьюпорт (не зависит от dvh/vh, надёжно в standalone) */
 #app{
+  position:fixed; top:0; bottom:0; left:0; right:0;
   display:flex; flex-direction:column;
-  height:100vh; height:100dvh;
   max-width:640px; margin:0 auto; background:var(--bg);
   overflow:hidden;
 }
