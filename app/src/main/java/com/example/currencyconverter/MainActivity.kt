@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             vm.state.collect { s ->
                 binding.progressBar.visibility = if (s.isLoading) View.VISIBLE else View.GONE
-                if (s.totalCurrencies > 0) binding.tvCount.text = s.totalCurrencies.toString()
+                binding.tvCount.text = "Selected: ${s.currencyItems.size}"
                 binding.tvStatus.text = when {
                     s.error != null         -> "⚠ ${s.error}"
                     s.lastUpdated.isEmpty() -> "Loading…"
