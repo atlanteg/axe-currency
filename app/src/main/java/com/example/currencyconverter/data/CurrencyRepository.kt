@@ -40,7 +40,7 @@ class CurrencyRepository {
             parseRates(o.getAsJsonObject("rates"))
         },
         Source(
-            "Fawaz Ahmed",
+            "F.A.",
             // Рекомендация автора API: jsDelivr основной, pages.dev — зеркало
             listOf(
                 "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json",

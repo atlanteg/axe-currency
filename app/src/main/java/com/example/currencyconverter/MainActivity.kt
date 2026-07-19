@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                 "Базовая валюта: EUR, остальные пары считаются через евро.\n\n" +
                 "Источники (с автоматическим резервированием):\n" +
                 "1. ExchangeRate-API — основной\n" +
-                "2. Fawaz Ahmed — если основной недоступен\n" +
+                "2. F.A. — если основной недоступен\n" +
                 "3. Frankfurter (ЕЦБ) — второй резерв\n\n" +
                 "Если основной источник не отвечает при автообновлении или по кнопке ↻, " +
                 "приложение автоматически берёт данные из следующего. Текущий источник " +
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                 "Лицензии и атрибуция:\n" +
                 "• ExchangeRate-API — требует ссылку «Rates By Exchange Rate API» " +
                 "(она в подвале, кликабельна).\n" +
-                "• Fawaz Ahmed — CC0 (public domain), атрибуция не нужна.\n" +
+                "• F.A. — CC0 (public domain), атрибуция не нужна.\n" +
                 "• Frankfurter — MIT, данные Европейского центрального банка (ЕЦБ)."
             )
             .setNeutralButton("exchangerate-api.com") { _, _ ->
@@ -194,7 +194,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val sourceOptions = arrayOf(
-        "Авто (с резервом)", "ExchangeRate-API", "Fawaz Ahmed", "Frankfurter (ЕЦБ)"
+        "Авто (с резервом)", "ExchangeRate-API", "F.A.", "Frankfurter (ЕЦБ)"
     )
 
     private fun showSettingsDialog() {

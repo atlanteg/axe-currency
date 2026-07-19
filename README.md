@@ -149,7 +149,7 @@ Multi-source fallback chain (all normalized to EUR base), tried in order:
 1. **ExchangeRate-API** (`open.er-api.com`) — primary. Open Access tier **requires
    attribution**: a visible "Rates By Exchange Rate API" link back to
    [exchangerate-api.com](https://www.exchangerate-api.com) (shown in the app footer).
-2. **Fawaz Ahmed currency-api** (jsDelivr + `currency-api.pages.dev` mirror) — CC0
+2. **F.A. currency-api** (jsDelivr + `currency-api.pages.dev` mirror) — CC0
    public domain, no attribution required. 300+ currencies incl. crypto.
 3. **Frankfurter** (`api.frankfurter.dev`) — MIT-licensed API, data from the European
    Central Bank (ECB). No hard attribution requirement.
