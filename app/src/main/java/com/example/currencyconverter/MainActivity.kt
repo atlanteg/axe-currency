@@ -1,5 +1,7 @@
 package com.example.currencyconverter
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -93,6 +95,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvVersion.text = "ver. ${BuildConfig.VERSION_NAME}"
         binding.btnSourceInfo.setOnClickListener { showSourceInfoDialog() }
+        binding.btnAttribution.setOnClickListener { openUrl("https://www.exchangerate-api.com") }
 
         binding.btnRefresh.setOnClickListener { vm.refresh() }
         binding.btnClear.setOnClickListener {
@@ -121,6 +124,12 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    private fun openUrl(url: String) {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+        } catch (_: Exception) { /* нет браузера — игнорируем */ }
+    }
+
     private fun showSourceInfoDialog() {
         AlertDialog.Builder(this)
             .setTitle("Источник курсов")
@@ -138,8 +147,16 @@ class MainActivity : AppCompatActivity() {
                 "В настройках (⚙) можно принудительно выбрать конкретный источник — " +
                 "остальные всё равно останутся резервом.\n\n" +
                 "Обновление: раз в сутки. Расхождение с XE обычно менее 0.5% — " +
-                "это справочные курсы, а не котировки реального времени."
+                "это справочные курсы, а не котировки реального времени.\n\n" +
+                "Лицензии и атрибуция:\n" +
+                "• ExchangeRate-API — требует ссылку «Rates By Exchange Rate API» " +
+                "(она в подвале, кликабельна).\n" +
+                "• Fawaz Ahmed — CC0 (public domain), атрибуция не нужна.\n" +
+                "• Frankfurter — MIT, данные Европейского центрального банка (ЕЦБ)."
             )
+            .setNeutralButton("exchangerate-api.com") { _, _ ->
+                openUrl("https://www.exchangerate-api.com")
+            }
             .setPositiveButton("Понятно", null)
             .show()
     }
