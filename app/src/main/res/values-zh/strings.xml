@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FiXE</string>
+    <string name="app_name" translatable="false">FIXXE</string>
     <string name="ok">知道了</string>
     <string name="cancel">取消</string>
     <string name="back">返回</string>

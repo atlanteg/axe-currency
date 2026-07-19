@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FiXE</string>
+    <string name="app_name" translatable="false">FIXXE</string>
     <string name="ok">Selvä</string>
     <string name="cancel">Peruuta</string>
     <string name="back">Takaisin</string>

@@ -1,7 +1,7 @@
 // Автогенерировано из Android strings.xml — не редактировать вручную
 const I18N = {
 "en": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Got it",
 "cancel": "Cancel",
 "back": "Back",
@@ -51,7 +51,7 @@ const I18N = {
 "source_info_message": "Mid-market rate — the midpoint between buy and sell on the global market, the same reference XE shows.\n\nBase currency: EUR, other pairs are computed through the euro.\n\nSources (automatic fallback):\n1. ExchangeRate-API — primary\n2. F.A. — if the primary is down\n3. Frankfurter (ECB) — second fallback\n\nIf the primary source does not respond during auto-update or on ↻, the app automatically takes data from the next one. The current source is shown at the top next to the update time.\n\nIn Settings (⚙) you can force a specific source — the others still remain as fallback.\n\nUpdates once a day. The difference from XE is usually under 0.5% — these are reference rates, not real-time quotes.\n\nLicenses and attribution:\n• ExchangeRate-API — requires the “Rates By Exchange Rate API” link (in the footer, clickable).\n• F.A. — CC0 (public domain), no attribution required.\n• Frankfurter — MIT, data from the European Central Bank (ECB)."
 },
 "ar": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "حسناً",
 "cancel": "إلغاء",
 "back": "رجوع",
@@ -101,7 +101,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "he": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "הבנתי",
 "cancel": "ביטול",
 "back": "חזרה",
@@ -151,7 +151,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "id": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Mengerti",
 "cancel": "Batal",
 "back": "Kembali",
@@ -201,7 +201,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "bg": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Разбрах",
 "cancel": "Отказ",
 "back": "Назад",
@@ -251,7 +251,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "bs": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "U redu",
 "cancel": "Otkaži",
 "back": "Nazad",
@@ -301,7 +301,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "cs": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Rozumím",
 "cancel": "Zrušit",
 "back": "Zpět",
@@ -351,7 +351,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "da": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Forstået",
 "cancel": "Annuller",
 "back": "Tilbage",
@@ -401,7 +401,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "de": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Verstanden",
 "cancel": "Abbrechen",
 "back": "Zurück",
@@ -451,7 +451,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "el": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Το κατάλαβα",
 "cancel": "Άκυρο",
 "back": "Πίσω",
@@ -501,7 +501,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "es": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Entendido",
 "cancel": "Cancelar",
 "back": "Atrás",
@@ -551,7 +551,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "et": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Selge",
 "cancel": "Tühista",
 "back": "Tagasi",
@@ -601,7 +601,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "fa": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "متوجه شدم",
 "cancel": "لغو",
 "back": "بازگشت",
@@ -651,7 +651,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "fi": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Selvä",
 "cancel": "Peruuta",
 "back": "Takaisin",
@@ -701,7 +701,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "fr": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Compris",
 "cancel": "Annuler",
 "back": "Retour",
@@ -751,7 +751,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "hi": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "समझ गए",
 "cancel": "रद्द करें",
 "back": "वापस",
@@ -801,7 +801,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "hr": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "U redu",
 "cancel": "Odustani",
 "back": "Natrag",
@@ -851,7 +851,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "hu": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Értem",
 "cancel": "Mégse",
 "back": "Vissza",
@@ -901,7 +901,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "it": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Capito",
 "cancel": "Annulla",
 "back": "Indietro",
@@ -951,7 +951,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "ja": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "OK",
 "cancel": "キャンセル",
 "back": "戻る",
@@ -1001,7 +1001,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "ka": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "გასაგებია",
 "cancel": "გაუქმება",
 "back": "უკან",
@@ -1051,7 +1051,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "ko": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "확인",
 "cancel": "취소",
 "back": "뒤로",
@@ -1101,7 +1101,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "lt": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Supratau",
 "cancel": "Atšaukti",
 "back": "Atgal",
@@ -1151,7 +1151,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "lv": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Sapratu",
 "cancel": "Atcelt",
 "back": "Atpakaļ",
@@ -1201,7 +1201,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "mk": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Во ред",
 "cancel": "Откажи",
 "back": "Назад",
@@ -1251,7 +1251,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "nb": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Skjønner",
 "cancel": "Avbryt",
 "back": "Tilbake",
@@ -1301,7 +1301,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "nl": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Begrepen",
 "cancel": "Annuleren",
 "back": "Terug",
@@ -1351,7 +1351,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "pl": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Rozumiem",
 "cancel": "Anuluj",
 "back": "Wstecz",
@@ -1401,7 +1401,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "pt": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Entendi",
 "cancel": "Cancelar",
 "back": "Voltar",
@@ -1451,7 +1451,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "ro": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Am înțeles",
 "cancel": "Anulează",
 "back": "Înapoi",
@@ -1501,7 +1501,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "ru": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Понятно",
 "cancel": "Отмена",
 "back": "Назад",
@@ -1551,7 +1551,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "sk": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Rozumiem",
 "cancel": "Zrušiť",
 "back": "Späť",
@@ -1601,7 +1601,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "sl": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Razumem",
 "cancel": "Prekliči",
 "back": "Nazaj",
@@ -1651,7 +1651,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "sq": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Në rregull",
 "cancel": "Anulo",
 "back": "Mbrapa",
@@ -1701,7 +1701,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "sr": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "У реду",
 "cancel": "Откажи",
 "back": "Назад",
@@ -1751,7 +1751,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "sv": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Uppfattat",
 "cancel": "Avbryt",
 "back": "Tillbaka",
@@ -1801,7 +1801,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "th": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "รับทราบ",
 "cancel": "ยกเลิก",
 "back": "ย้อนกลับ",
@@ -1851,7 +1851,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "tr": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Anladım",
 "cancel": "İptal",
 "back": "Geri",
@@ -1901,7 +1901,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "vi": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "Đã hiểu",
 "cancel": "Hủy",
 "back": "Quay lại",
@@ -1951,7 +1951,7 @@ const I18N = {
 "switch_and_add": "Switch & add"
 },
 "zh": {
-"app_name": "FiXE",
+"app_name": "FIXXE",
 "ok": "知道了",
 "cancel": "取消",
 "back": "返回",

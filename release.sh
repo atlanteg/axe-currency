@@ -40,8 +40,8 @@ export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
 APK="app/build/outputs/apk/debug/app-debug.apk"
 [ -f "$APK" ] || { echo "✗ APK не собрался"; exit 1; }
 
-# Копируем под осмысленным именем, чтобы ассет в релизе был FiXE-vN.apk
-NAMED_APK="app/build/outputs/apk/debug/FiXE-v$N.apk"
+# Копируем под осмысленным именем, чтобы ассет в релизе был FIXXE-vN.apk
+NAMED_APK="app/build/outputs/apk/debug/FIXXE-v$N.apk"
 cp "$APK" "$NAMED_APK"
 
 # 3. Коммит + пуш
@@ -52,7 +52,7 @@ git push
 # 4. GitHub Release. Тег v$N СОВПАДАЕТ с versionCode=$N — гарантированно.
 #    Первая строка body = versionName=1.$N (приложение читает её для красивого показа).
 gh release create "v$N" "$NAMED_APK" \
-  --title "FiXE v$N" \
+  --title "FIXXE v$N" \
   --notes "versionName=1.$N
 
 $NOTE"
