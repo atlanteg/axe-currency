@@ -154,7 +154,7 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
         return displayCurrencies.mapNotNull { code ->
             val rateInEur = allRates[code] ?: return@mapNotNull null
             val converted = amountInEur * rateInEur
-            val rateText = if (code == "EUR") "Base currency"
+            val rateText = if (code == "EUR") getApplication<android.app.Application>().getString(com.example.currencyconverter.R.string.base_currency)
                           else "1 EUR = ${fmtRate(rateInEur)} $code"
             CurrencyItem(
                 code = code,

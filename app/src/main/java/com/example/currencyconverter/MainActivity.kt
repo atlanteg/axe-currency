@@ -17,6 +17,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -82,18 +83,18 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             vm.state.collect { s ->
                 binding.progressBar.visibility = if (s.isLoading) View.VISIBLE else View.GONE
-                binding.tvCount.text = "Selected: ${s.currencyItems.size}"
+                binding.tvCount.text = getString(R.string.selected, s.currencyItems.size)
                 binding.tvStatus.text = when {
-                    s.error != null         -> "⚠ ${s.error}"
-                    s.lastUpdated.isEmpty() -> "Loading…"
-                    else                    -> "Updated ${s.lastUpdated} · ${s.source}"
+                    s.error != null         -> getString(R.string.error_prefix, s.error)
+                    s.lastUpdated.isEmpty() -> getString(R.string.loading)
+                    else                    -> getString(R.string.updated, s.lastUpdated, s.source)
                 }
                 adapter.decimalPlaces = s.decimalPlaces
                 adapter.submitList(s.currencyItems, s.activeCurrency)
             }
         }
 
-        binding.tvVersion.text = "ver. ${BuildConfig.VERSION_NAME}"
+        binding.tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
         binding.btnSourceInfo.setOnClickListener { showSourceInfoDialog() }
         binding.btnAttribution.setOnClickListener { openUrl("https://www.exchangerate-api.com") }
 
@@ -117,10 +118,10 @@ class MainActivity : AppCompatActivity() {
     private fun confirmDelete(code: String) {
         val name = CurrencyViewModel.currencyName(code)
         AlertDialog.Builder(this)
-            .setTitle("Удалить валюту?")
-            .setMessage("Убрать $code — $name из списка?")
-            .setPositiveButton("Удалить") { _, _ -> vm.removeCurrency(code) }
-            .setNegativeButton("Отмена", null)
+            .setTitle(getString(R.string.delete_currency_title))
+            .setMessage(getString(R.string.delete_currency_msg, code, name))
+            .setPositiveButton(getString(R.string.delete)) { _, _ -> vm.removeCurrency(code) }
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
@@ -132,32 +133,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSourceInfoDialog() {
         AlertDialog.Builder(this)
-            .setTitle("Источник курсов")
-            .setMessage(
-                "Тип курса: mid-market — средний между покупкой и продажей на мировом " +
-                "рынке, тот же ориентир, что показывает XE.\n\n" +
-                "Базовая валюта: EUR, остальные пары считаются через евро.\n\n" +
-                "Источники (с автоматическим резервированием):\n" +
-                "1. ExchangeRate-API — основной\n" +
-                "2. F.A. — если основной недоступен\n" +
-                "3. Frankfurter (ЕЦБ) — второй резерв\n\n" +
-                "Если основной источник не отвечает при автообновлении или по кнопке ↻, " +
-                "приложение автоматически берёт данные из следующего. Текущий источник " +
-                "показан вверху рядом с временем обновления.\n\n" +
-                "В настройках (⚙) можно принудительно выбрать конкретный источник — " +
-                "остальные всё равно останутся резервом.\n\n" +
-                "Обновление: раз в сутки. Расхождение с XE обычно менее 0.5% — " +
-                "это справочные курсы, а не котировки реального времени.\n\n" +
-                "Лицензии и атрибуция:\n" +
-                "• ExchangeRate-API — требует ссылку «Rates By Exchange Rate API» " +
-                "(она в подвале, кликабельна).\n" +
-                "• F.A. — CC0 (public domain), атрибуция не нужна.\n" +
-                "• Frankfurter — MIT, данные Европейского центрального банка (ЕЦБ)."
-            )
+            .setTitle(getString(R.string.source_info_title))
+            .setMessage(getString(R.string.source_info_message))
             .setNeutralButton("exchangerate-api.com") { _, _ ->
                 openUrl("https://www.exchangerate-api.com")
             }
-            .setPositiveButton("Понятно", null)
+            .setPositiveButton(getString(R.string.ok), null)
             .show()
     }
 
@@ -169,12 +150,12 @@ class MainActivity : AppCompatActivity() {
             val apkAsset = release.assets.firstOrNull { it.name.endsWith(".apk") } ?: return@launch
 
             AlertDialog.Builder(this@MainActivity)
-                .setTitle("Доступно обновление")
-                .setMessage("Доступна версия ${UpdateChecker.displayVersion(release)}. Скачать и установить?")
-                .setPositiveButton("Обновить") { _, _ ->
+                .setTitle(getString(R.string.update_title))
+                .setMessage(getString(R.string.update_msg, UpdateChecker.displayVersion(release)))
+                .setPositiveButton(getString(R.string.update_now)) { _, _ ->
                     lifecycleScope.launch {
                         var progressDialog: AlertDialog? = AlertDialog.Builder(this@MainActivity)
-                            .setTitle("Загрузка…")
+                            .setTitle(getString(R.string.downloading))
                             .setMessage("0%")
                             .setCancelable(false)
                             .show()
@@ -188,62 +169,97 @@ class MainActivity : AppCompatActivity() {
                         progressDialog = null
                     }
                 }
-                .setNegativeButton("Потом", null)
+                .setNegativeButton(getString(R.string.update_later), null)
                 .show()
         }
     }
 
-    private val sourceOptions = arrayOf(
-        "Авто (с резервом)", "ExchangeRate-API", "F.A.", "Frankfurter (ЕЦБ)"
+    // Названия источников: индекс 0 = Авто (локализуется), дальше — бренды (не переводятся)
+    private fun sourceOptions() = arrayOf(
+        getString(R.string.source_auto), "ExchangeRate-API", "F.A.", "Frankfurter (ECB)"
     )
 
     private fun showSettingsDialog() {
         val decimals = vm.getDecimalPlaces()
-        val decimalLabel = if (decimals == 0) "целые" else "$decimals зн."
-        val srcName = sourceOptions[vm.getSourceMode().coerceIn(0, sourceOptions.size - 1)]
+        val decimalLabel = if (decimals == 0) getString(R.string.precision_value_int)
+                           else getString(R.string.precision_value_n, decimals)
+        val srcName = sourceOptions()[vm.getSourceMode().coerceIn(0, 3)]
 
         val items = arrayOf(
-            "Точность отображения:  $decimalLabel",
-            "Источник курсов:  $srcName"
+            getString(R.string.setting_precision, decimalLabel),
+            getString(R.string.setting_source, srcName),
+            getString(R.string.setting_language, currentLanguageLabel())
         )
 
         AlertDialog.Builder(this)
-            .setTitle("Настройки")
+            .setTitle(getString(R.string.settings))
             .setItems(items) { _, which ->
                 when (which) {
                     0 -> showDecimalDialog()
                     1 -> showSourceDialog()
+                    2 -> showLanguageDialog()
                 }
             }
-            .setNegativeButton("Закрыть", null)
+            .setNegativeButton(getString(R.string.close), null)
             .show()
     }
 
     private fun showDecimalDialog() {
-        val options = arrayOf("0 — целые числа", "1 знак", "2 знака", "4 знака")
+        val options = arrayOf(
+            getString(R.string.prec_0), getString(R.string.prec_1),
+            getString(R.string.prec_2), getString(R.string.prec_4)
+        )
         val values  = intArrayOf(0, 1, 2, 4)
         val checked = values.indexOfFirst { it == vm.getDecimalPlaces() }.coerceAtLeast(0)
 
         AlertDialog.Builder(this)
-            .setTitle("Точность отображения")
+            .setTitle(getString(R.string.precision_title))
             .setSingleChoiceItems(options, checked) { dialog, which ->
                 vm.setDecimalPlaces(values[which])
                 dialog.dismiss()
             }
-            .setNegativeButton("Назад", null)
+            .setNegativeButton(getString(R.string.back), null)
             .show()
     }
 
     private fun showSourceDialog() {
-        val checked = vm.getSourceMode().coerceIn(0, sourceOptions.size - 1)
+        val checked = vm.getSourceMode().coerceIn(0, 3)
 
         AlertDialog.Builder(this)
-            .setTitle("Источник курсов")
-            .setSingleChoiceItems(sourceOptions, checked) { dialog, which ->
+            .setTitle(getString(R.string.source_title))
+            .setSingleChoiceItems(sourceOptions(), checked) { dialog, which ->
                 vm.setSourceMode(which)
                 dialog.dismiss()
             }
-            .setNegativeButton("Назад", null)
+            .setNegativeButton(getString(R.string.back), null)
+            .show()
+    }
+
+    private fun currentLanguageLabel(): String {
+        val locales = AppCompatDelegate.getApplicationLocales()
+        if (locales.isEmpty) return getString(R.string.language_system)
+        val tag = locales[0]?.language ?: return getString(R.string.language_system)
+        return LANGUAGES.firstOrNull { it.first == tag }?.second ?: tag
+    }
+
+    private fun showLanguageDialog() {
+        // Первый пункт — «системный», далее 40 языков в их родном написании
+        val labels = arrayOf(getString(R.string.language_system)) + LANGUAGES.map { it.second }
+        val current = AppCompatDelegate.getApplicationLocales()
+        val currentTag = if (current.isEmpty) null else current[0]?.language
+        val checked = if (currentTag == null) 0
+                      else (LANGUAGES.indexOfFirst { it.first == currentTag }.let { if (it >= 0) it + 1 else 0 })
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.language_title))
+            .setSingleChoiceItems(labels, checked) { dialog, which ->
+                val tag = if (which == 0) null else LANGUAGES[which - 1].first
+                val locales = if (tag == null) LocaleListCompat.getEmptyLocaleList()
+                              else LocaleListCompat.forLanguageTags(tag)
+                AppCompatDelegate.setApplicationLocales(locales)  // применяется + сохраняется автоматически
+                dialog.dismiss()
+            }
+            .setNegativeButton(getString(R.string.back), null)
             .show()
     }
 
@@ -297,13 +313,59 @@ class MainActivity : AppCompatActivity() {
         })
 
         dialog = AlertDialog.Builder(this)
-            .setTitle("Выберите из ${all.size} доступных валют")
+            .setTitle(getString(R.string.add_currency_title, all.size))
             .setView(dialogView)
-            .setNegativeButton("Отмена", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .create()
 
         dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         dialog.show()
         etSearch.requestFocus()
+    }
+
+    companion object {
+        // 40 языков: тег (совпадает с папкой ресурсов) → родное название
+        val LANGUAGES = listOf(
+            "en" to "English",
+            "sr" to "Srpski",
+            "hr" to "Hrvatski",
+            "bs" to "Bosanski",
+            "mk" to "Македонски",
+            "sq" to "Shqip",
+            "sl" to "Slovenščina",
+            "bg" to "Български",
+            "el" to "Ελληνικά",
+            "ro" to "Română",
+            "de" to "Deutsch",
+            "fr" to "Français",
+            "es" to "Español",
+            "it" to "Italiano",
+            "pt" to "Português",
+            "nl" to "Nederlands",
+            "pl" to "Polski",
+            "cs" to "Čeština",
+            "sk" to "Slovenčina",
+            "hu" to "Magyar",
+            "sv" to "Svenska",
+            "da" to "Dansk",
+            "nb" to "Norsk",
+            "fi" to "Suomi",
+            "lt" to "Lietuvių",
+            "lv" to "Latviešu",
+            "et" to "Eesti",
+            "ru" to "Русский",
+            "ka" to "ქართული",
+            "zh" to "中文",
+            "ja" to "日本語",
+            "ko" to "한국어",
+            "th" to "ไทย",
+            "vi" to "Tiếng Việt",
+            "id" to "Bahasa Indonesia",
+            "hi" to "हिन्दी",
+            "ar" to "العربية",
+            "he" to "עברית",
+            "fa" to "فارسی",
+            "tr" to "Türkçe"
+        )
     }
 }

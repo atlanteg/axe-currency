@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">FiXE</string>
+    <string name="ok">Razumem</string>
+    <string name="cancel">Prekliči</string>
+    <string name="back">Nazaj</string>
+    <string name="close">Zapri</string>
+    <string name="delete">Izbriši</string>
+    <string name="selected">Izbrano: %1$d</string>
+    <string name="loading">Nalaganje…</string>
+    <string name="updated">Posodobljeno %1$s · %2$s</string>
+    <string name="error_prefix">⚠ %1$s</string>
+    <string name="network_error">Napaka omrežja</string>
+    <string name="clear">POČISTI</string>
+    <string name="add_currency">＋ Dodaj valuto</string>
+    <string name="mid_market">Srednji tržni tečaji ⓘ</string>
+    <string name="attribution" translatable="false">Rates By Exchange Rate API</string>
+    <string name="version">razl. %1$s</string>
+    <string name="base_currency">Osnovna valuta</string>
+    <string name="delete_currency_title">Odstranim valuto?</string>
+    <string name="delete_currency_msg">Odstranim %1$s — %2$s s seznama?</string>
+    <string name="add_currency_title">Izberite med %1$d razpoložljivimi valutami</string>
+    <string name="search_hint">Koda ali ime…</string>
+    <string name="update_title">Na voljo je posodobitev</string>
+    <string name="update_msg">Na voljo je različica %1$s. Prenesem in namestim?</string>
+    <string name="update_now">Posodobi</string>
+    <string name="update_later">Pozneje</string>
+    <string name="downloading">Prenašanje…</string>
+    <string name="settings">Nastavitve</string>
+    <string name="setting_precision">Natančnost prikaza:  %1$s</string>
+    <string name="setting_source">Vir tečajev:  %1$s</string>
+    <string name="setting_language">🌐 Jezik:  %1$s</string>
+    <string name="precision_title">Natančnost prikaza</string>
+    <string name="prec_0">0 — cela števila</string>
+    <string name="prec_1">1 decimalka</string>
+    <string name="prec_2">2 decimalki</string>
+    <string name="prec_4">4 decimalke</string>
+    <string name="precision_value_int">cela števila</string>
+    <string name="precision_value_n">%1$d dec.</string>
+    <string name="source_title">Vir tečajev</string>
+    <string name="source_auto">Samodejno (z rezervo)</string>
+    <string name="language_title">Jezik</string>
+    <string name="language_system">Privzeto v sistemu</string>
+    <string name="source_info_title">Vir tečajev</string>
+    <string name="source_info_message">Srednji tržni tečaj — sredina med nakupnim in prodajnim tečajem na svetovnem trgu, ista referenca, kot jo prikazuje XE.\n\nOsnovna valuta: EUR, drugi pari se izračunajo prek evra.\n\nViri (samodejna rezerva):\n1. ExchangeRate-API — primarni\n2. F.A. — če primarni ne deluje\n3. Frankfurter (ECB) — druga rezerva\n\nČe se primarni vir med samodejno posodobitvijo ali ob ↻ ne odzove, aplikacija samodejno prevzame podatke iz naslednjega. Trenutni vir je prikazan na vrhu poleg časa posodobitve.\n\nV nastavitvah (⚙) lahko vsilite določen vir — drugi še vedno ostanejo kot rezerva.\n\nPosodablja se enkrat na dan. Razlika od XE je običajno pod 0.5% — to so referenčni tečaji, ne cene v realnem času.\n\nLicence in navedba virov:\n• ExchangeRate-API — zahteva povezavo “Rates By Exchange Rate API” (v nogi, klikljiva).\n• F.A. — CC0 (javna last), navedba ni potrebna.\n• Frankfurter — MIT, podatki Evropske centralne banke (ECB).</string>
+</resources>

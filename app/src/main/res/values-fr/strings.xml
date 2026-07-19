@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">FiXE</string>
+    <string name="ok">Compris</string>
+    <string name="cancel">Annuler</string>
+    <string name="back">Retour</string>
+    <string name="close">Fermer</string>
+    <string name="delete">Supprimer</string>
+    <string name="selected">Sélectionné : %1$d</string>
+    <string name="loading">Chargement…</string>
+    <string name="updated">Mis à jour %1$s · %2$s</string>
+    <string name="error_prefix">⚠ %1$s</string>
+    <string name="network_error">Erreur réseau</string>
+    <string name="clear">EFFACER</string>
+    <string name="add_currency">＋ Ajouter une devise</string>
+    <string name="mid_market">Taux du marché ⓘ</string>
+    <string name="attribution" translatable="false">Rates By Exchange Rate API</string>
+    <string name="version">ver. %1$s</string>
+    <string name="base_currency">Devise de base</string>
+    <string name="delete_currency_title">Retirer la devise ?</string>
+    <string name="delete_currency_msg">Retirer %1$s — %2$s de la liste ?</string>
+    <string name="add_currency_title">Choisir parmi %1$d devises disponibles</string>
+    <string name="search_hint">Code ou nom…</string>
+    <string name="update_title">Mise à jour disponible</string>
+    <string name="update_msg">La version %1$s est disponible. Télécharger et installer ?</string>
+    <string name="update_now">Mettre à jour</string>
+    <string name="update_later">Plus tard</string>
+    <string name="downloading">Téléchargement…</string>
+    <string name="settings">Paramètres</string>
+    <string name="setting_precision">Précision d\'affichage :  %1$s</string>
+    <string name="setting_source">Source des taux :  %1$s</string>
+    <string name="setting_language">🌐 Langue :  %1$s</string>
+    <string name="precision_title">Précision d\'affichage</string>
+    <string name="prec_0">0 — entiers</string>
+    <string name="prec_1">1 décimale</string>
+    <string name="prec_2">2 décimales</string>
+    <string name="prec_4">4 décimales</string>
+    <string name="precision_value_int">entiers</string>
+    <string name="precision_value_n">%1$d déc.</string>
+    <string name="source_title">Source des taux</string>
+    <string name="source_auto">Auto (avec repli)</string>
+    <string name="language_title">Langue</string>
+    <string name="language_system">Réglage du système</string>
+    <string name="source_info_title">Source des taux</string>
+    <string name="source_info_message">Taux du marché — le point médian entre l\'achat et la vente sur le marché mondial, la même référence qu\'affiche XE.\n\nDevise de base : EUR, les autres paires sont calculées via l\'euro.\n\nSources (repli automatique) :\n1. ExchangeRate-API — principale\n2. F.A. — si la principale est indisponible\n3. Frankfurter (ECB) — second repli\n\nSi la source principale ne répond pas lors de la mise à jour automatique ou sur ↻, l\'application prend automatiquement les données de la suivante. La source actuelle est affichée en haut, à côté de l\'heure de mise à jour.\n\nDans les Paramètres (⚙), vous pouvez forcer une source précise — les autres restent en repli.\n\nMise à jour une fois par jour. L\'écart avec XE est généralement inférieur à 0.5% — ce sont des taux de référence, pas des cotations en temps réel.\n\nLicences et attribution :\n• ExchangeRate-API — nécessite le lien « Rates By Exchange Rate API » (dans le pied de page, cliquable).\n• F.A. — CC0 (domaine public), aucune attribution requise.\n• Frankfurter — MIT, données de la European Central Bank (ECB).</string>
+</resources>
