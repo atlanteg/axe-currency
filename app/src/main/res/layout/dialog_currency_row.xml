@@ -33,4 +33,15 @@
         android:maxLines="1"
         android:ellipsize="end" />
 
+    <TextView
+        android:id="@+id/tvAdded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="✓"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#43A047"
+        android:visibility="gone" />
+
 </LinearLayout>

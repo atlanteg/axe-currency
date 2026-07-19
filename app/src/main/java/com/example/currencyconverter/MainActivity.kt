@@ -264,8 +264,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAddDialog() {
-        val all = vm.getAvailableCurrencies()
+        val all = vm.getAllCurrencies()          // ВСЕ валюты (добавленные тоже)
         if (all.isEmpty()) return
+        val addableCount = vm.getAvailableCurrencies().size
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_currency, null)
         val etSearch = dialogView.findViewById<EditText>(R.id.etSearch)
@@ -278,13 +279,21 @@ class MainActivity : AppCompatActivity() {
             override fun getItem(pos: Int): CurrencyInfo = filtered[pos]
             override fun getItemId(pos: Int) = pos.toLong()
 
+            // Уже добавленные — некликабельны
+            override fun areAllItemsEnabled() = false
+            override fun isEnabled(pos: Int) = !vm.isAdded(filtered[pos].code)
+
             override fun getView(pos: Int, convertView: View?, parent: ViewGroup): View {
                 val view = convertView ?: LayoutInflater.from(parent.context)
                     .inflate(R.layout.dialog_currency_row, parent, false)
                 val item = filtered[pos]
+                val added = vm.isAdded(item.code)
                 view.findViewById<TextView>(R.id.tvFlag).text = currencyFlag(item.code)
                 view.findViewById<TextView>(R.id.tvCode).text = item.code
                 view.findViewById<TextView>(R.id.tvName).text = item.name
+                view.findViewById<TextView>(R.id.tvAdded).visibility =
+                    if (added) View.VISIBLE else View.GONE
+                view.alpha = if (added) 0.4f else 1f
                 return view
             }
         }
@@ -294,7 +303,9 @@ class MainActivity : AppCompatActivity() {
         var dialog: AlertDialog? = null
 
         listView.setOnItemClickListener { _, _, pos, _ ->
-            vm.addCurrency(filtered[pos].code)
+            val code = filtered[pos].code
+            if (vm.isAdded(code)) return@setOnItemClickListener   // страховка
+            vm.addCurrency(code)
             dialog?.dismiss()
         }
 
@@ -313,7 +324,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         dialog = AlertDialog.Builder(this)
-            .setTitle(getString(R.string.add_currency_title, all.size))
+            .setTitle(getString(R.string.add_currency_title, addableCount))
             .setView(dialogView)
             .setNegativeButton(getString(R.string.cancel), null)
             .create()

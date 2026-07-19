@@ -147,6 +147,12 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
             .sorted()
             .map { CurrencyInfo(it, currencyName(it)) }
 
+    // Все валюты (для окна добавления) — уже добавленные показываем серыми
+    fun getAllCurrencies(): List<CurrencyInfo> =
+        allRates.keys.sorted().map { CurrencyInfo(it, currencyName(it)) }
+
+    fun isAdded(code: String): Boolean = displayCurrencies.contains(code)
+
     private fun buildItems(): List<CurrencyItem> {
         if (allRates.isEmpty()) return emptyList()
         val activeRateInEur = allRates[activeCurrency] ?: 1.0
