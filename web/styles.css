@@ -39,8 +39,10 @@ body{
 .icon-btn.gear{color:#888; font-size:20px}
 
 /* Clear */
-.clear-row{background:var(--card); display:flex; align-items:center; justify-content:space-between; padding:2px 14px 2px 16px}
-.brand{color:#2E7D32; font-weight:800; font-size:15px; letter-spacing:.12em}
+.clear-row{background:var(--card); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:2px 14px 2px 16px}
+.brand{color:#2E7D32; font-weight:800; font-size:15px; letter-spacing:.12em; justify-self:start}
+.mini-logo{width:24px; height:24px; justify-self:center; border-radius:50%}
+.clear-btn{justify-self:end}
 .clear-btn{
   border:0; background:transparent; color:var(--blue);
   font-size:12px; letter-spacing:.08em; padding:6px 16px; cursor:pointer; border-radius:6px;

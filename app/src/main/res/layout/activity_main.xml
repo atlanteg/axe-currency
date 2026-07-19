@@ -72,13 +72,11 @@
             android:background="?attr/selectableItemBackgroundBorderless" />
     </LinearLayout>
 
-    <!-- Слева бренд FIXXE, справа CLEAR -->
-    <LinearLayout
+    <!-- Слева FIXXE, по центру мини-лого, справа CLEAR -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
         android:background="#FFFFFF"
-        android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="8dp"
         android:elevation="1dp">
@@ -86,21 +84,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:text="@string/app_name"
             android:textColor="#2E7D32"
             android:textStyle="bold"
             android:textSize="15sp"
             android:letterSpacing="0.12" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_launcher_round"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/btnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:text="@string/clear"
             android:textSize="12sp"
             android:textColor="#1565C0"
@@ -110,7 +114,7 @@
             android:clickable="true"
             android:focusable="true"
             android:background="?attr/selectableItemBackground" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <!-- Список валют -->
     <androidx.recyclerview.widget.RecyclerView

@@ -1,5 +1,5 @@
 // FIXXE service worker — offline app shell + fresh rates
-const CACHE = 'fixe-v33';
+const CACHE = 'fixe-v34';
 const SHELL = [
   './', './index.html', './styles.css', './app.js',
   './i18n.js', './currency-data.js', './manifest.webmanifest',
