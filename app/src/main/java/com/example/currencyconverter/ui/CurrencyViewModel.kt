@@ -20,6 +20,7 @@ data class UiState(
     val activeCurrency: String = "EUR",
     val isLoading: Boolean = true,
     val lastUpdated: String = "",
+    val source: String = "",
     val totalCurrencies: Int = 0,
     val error: String? = null,
     val decimalPlaces: Int = 0
@@ -65,16 +66,17 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
     fun refresh() {
         viewModelScope.launch {
             _state.value = _state.value.copy(isLoading = true, error = null)
-            repository.getRates("EUR").fold(
-                onSuccess = { resp ->
-                    allRates = resp.rates
+            repository.getRates().fold(
+                onSuccess = { snap ->
+                    allRates = snap.rates
                     // Показываем ВРЕМЯ НАШЕГО запроса — чтобы refresh был виден
                     val fetchTime = SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault())
                         .format(Date())
                     _state.value = _state.value.copy(
                         isLoading = false,
                         lastUpdated = fetchTime,
-                        totalCurrencies = resp.rates.size,
+                        source = snap.source,
+                        totalCurrencies = snap.rates.size,
                         currencyItems = buildItems()
                     )
                 },
