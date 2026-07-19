@@ -43,4 +43,9 @@
     <string name="language_system">Sistēmas noklusējums</string>
     <string name="source_info_title">Kursu avots</string>
     <string name="source_info_message">Vidējā tirgus kurss — viduspunkts starp pirkšanas un pārdošanas kursu pasaules tirgū, tā pati atsauce, ko rāda XE.\n\nBāzes valūta: EUR, citi pāri tiek aprēķināti caur eiro.\n\nAvoti (automātiska pārslēgšanās):\n1. ExchangeRate-API — primārais\n2. F.A. — ja primārais nedarbojas\n3. Frankfurter (ECB) — otrais rezerves\n\nJa primārais avots neatbild automātiskās atjaunināšanas laikā vai nospiežot ↻, lietotne automātiski ņem datus no nākamā. Pašreizējais avots ir redzams augšpusē blakus atjaunināšanas laikam.\n\nIestatījumos (⚙) varat piespiedu kārtā izvēlēties konkrētu avotu — pārējie joprojām paliek kā rezerve.\n\nAtjaunina reizi dienā. Atšķirība no XE parasti ir mazāka par 0.5% — tie ir atsauces kursi, nevis reāllaika kotējumi.\n\nLicences un atsauces:\n• ExchangeRate-API — nepieciešama saite “Rates By Exchange Rate API” (kājenē, noklikšķināma).\n• F.A. — CC0 (public domain), atsauce nav nepieciešama.\n• Frankfurter — MIT, dati no European Central Bank (ECB).</string>
+    <string name="filter_all">Visi</string>
+    <string name="switch_source_title">Mainīt avotu?</string>
+    <string name="switch_source_msg">%1$s ir pieejams caur %2$s, nevis pašreizējo avotu. Pārslēgt un pievienot?</string>
+    <string name="switch_and_add">Pārslēgt un pievienot</string>
+    <string name="already_added">Jau sarakstā</string>
 </resources>

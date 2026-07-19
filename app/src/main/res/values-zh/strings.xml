@@ -43,4 +43,9 @@
     <string name="language_system">系统默认</string>
     <string name="source_info_title">汇率来源</string>
     <string name="source_info_message">中间市场汇率 — 全球市场买入与卖出的中点，与 XE 显示的参考值相同。\n\n基准货币：EUR，其他货币对通过欧元换算。\n\n来源（自动备用）：\n1. ExchangeRate-API — 主要\n2. F.A. — 主要来源不可用时\n3. Frankfurter (ECB) — 第二备用\n\n如果在自动更新或点击 ↻ 时主要来源无响应，应用会自动从下一个来源获取数据。当前来源显示在顶部更新时间旁边。\n\n在设置（⚙）中，你可以强制指定某个来源 — 其他来源仍作为备用。\n\n每天更新一次。与 XE 的差异通常小于 0.5% — 这些是参考汇率，而非实时报价。\n\n许可与署名：\n• ExchangeRate-API — 需要“Rates By Exchange Rate API”链接（位于页脚，可点击）。\n• F.A. — CC0（公共领域），无需署名。\n• Frankfurter — MIT，数据来自欧洲中央银行 (ECB)。</string>
+    <string name="filter_all">全部</string>
+    <string name="switch_source_title">切换来源？</string>
+    <string name="switch_source_msg">%1$s 可通过 %2$s 获取，而非当前来源。切换并添加吗？</string>
+    <string name="switch_and_add">切换并添加</string>
+    <string name="already_added">已在列表中</string>
 </resources>

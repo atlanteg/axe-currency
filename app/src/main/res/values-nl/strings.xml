@@ -43,4 +43,9 @@
     <string name="language_system">Systeemstandaard</string>
     <string name="source_info_title">Koersbron</string>
     <string name="source_info_message">Mid-market koers — het middelpunt tussen koop en verkoop op de wereldmarkt, dezelfde referentie die XE toont.\n\nBasisvaluta: EUR, andere paren worden berekend via de euro.\n\nBronnen (automatische fallback):\n1. ExchangeRate-API — primair\n2. F.A. — als de primaire bron niet beschikbaar is\n3. Frankfurter (ECB) — tweede fallback\n\nAls de primaire bron niet reageert tijdens de automatische update of bij ↻, haalt de app automatisch gegevens op van de volgende. De huidige bron wordt bovenaan getoond naast de updatetijd.\n\nIn Instellingen (⚙) kun je een specifieke bron forceren — de andere blijven als fallback beschikbaar.\n\nWordt eenmaal per dag bijgewerkt. Het verschil met XE is meestal minder dan 0.5% — dit zijn referentiekoersen, geen realtime noteringen.\n\nLicenties en attributie:\n• ExchangeRate-API — vereist de “Rates By Exchange Rate API” link (in de voettekst, klikbaar).\n• F.A. — CC0 (publiek domein), geen attributie vereist.\n• Frankfurter — MIT, gegevens van de European Central Bank (ECB).</string>
+    <string name="filter_all">Alle</string>
+    <string name="switch_source_title">Bron wisselen?</string>
+    <string name="switch_source_msg">%1$s is beschikbaar via %2$s, niet via de huidige bron. Wisselen en toevoegen?</string>
+    <string name="switch_and_add">Wisselen en toevoegen</string>
+    <string name="already_added">Al in de lijst</string>
 </resources>

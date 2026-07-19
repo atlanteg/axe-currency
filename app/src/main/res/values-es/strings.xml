@@ -43,4 +43,9 @@
     <string name="language_system">Predeterminado del sistema</string>
     <string name="source_info_title">Fuente de tasas</string>
     <string name="source_info_message">Tasa de mercado medio — el punto medio entre la compra y la venta en el mercado global, la misma referencia que muestra XE.\n\nMoneda base: EUR, los demás pares se calculan a través del euro.\n\nFuentes (respaldo automático):\n1. ExchangeRate-API — principal\n2. F.A. — si la principal no está disponible\n3. Frankfurter (ECB) — segundo respaldo\n\nSi la fuente principal no responde durante la actualización automática o al pulsar ↻, la app toma automáticamente los datos de la siguiente. La fuente actual se muestra arriba, junto a la hora de actualización.\n\nEn Ajustes (⚙) puedes forzar una fuente específica — las demás siguen disponibles como respaldo.\n\nSe actualiza una vez al día. La diferencia con XE suele ser inferior al 0.5% — son tasas de referencia, no cotizaciones en tiempo real.\n\nLicencias y atribución:\n• ExchangeRate-API — requiere el enlace “Rates By Exchange Rate API” (en el pie de página, con enlace).\n• F.A. — CC0 (dominio público), sin atribución requerida.\n• Frankfurter — MIT, datos del European Central Bank (ECB).</string>
+    <string name="filter_all">Todas</string>
+    <string name="switch_source_title">¿Cambiar de fuente?</string>
+    <string name="switch_source_msg">%1$s está disponible a través de %2$s, no de la fuente actual. ¿Cambiar y añadirlo?</string>
+    <string name="switch_and_add">Cambiar y añadir</string>
+    <string name="already_added">Ya está en la lista</string>
 </resources>

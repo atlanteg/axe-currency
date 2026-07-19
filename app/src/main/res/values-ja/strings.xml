@@ -43,4 +43,9 @@
     <string name="language_system">システムのデフォルト</string>
     <string name="source_info_title">レートソース</string>
     <string name="source_info_message">仲値レート — 世界市場での買値と売値の中間値で、XE が表示するのと同じ基準値です。\n\n基準通貨: EUR、その他のペアはユーロを介して計算されます。\n\nソース（自動フォールバック）:\n1. ExchangeRate-API — 主要\n2. F.A. — 主要ソースが停止した場合\n3. Frankfurter (ECB) — 第2フォールバック\n\n自動更新時または ↻ 押下時に主要ソースが応答しない場合、アプリは自動的に次のソースからデータを取得します。現在のソースは更新時刻の隣に上部に表示されます。\n\n設定（⚙）で特定のソースを強制指定できます — 他のソースは引き続きフォールバックとして残ります。\n\n更新は1日1回です。XE との差は通常 0.5% 未満です — これはリアルタイムの相場ではなく参考レートです。\n\nライセンスと表記:\n• ExchangeRate-API —「Rates By Exchange Rate API」リンクが必要です（フッター内、クリック可能）。\n• F.A. — CC0（パブリックドメイン）、表記は不要です。\n• Frankfurter — MIT、データは欧州中央銀行 (ECB) から提供されています。</string>
+    <string name="filter_all">すべて</string>
+    <string name="switch_source_title">ソースを切り替えますか？</string>
+    <string name="switch_source_msg">%1$s は現在のソースではなく %2$s から利用できます。切り替えて追加しますか？</string>
+    <string name="switch_and_add">切り替えて追加</string>
+    <string name="already_added">追加済み</string>
 </resources>

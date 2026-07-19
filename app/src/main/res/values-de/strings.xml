@@ -43,4 +43,9 @@
     <string name="language_system">Systemstandard</string>
     <string name="source_info_title">Kursquelle</string>
     <string name="source_info_message">Mittelkurs — der Mittelwert zwischen An- und Verkauf am globalen Markt, dieselbe Referenz, die XE anzeigt.\n\nBasiswährung: EUR, andere Paare werden über den Euro berechnet.\n\nQuellen (automatischer Fallback):\n1. ExchangeRate-API — primär\n2. F.A. — falls die primäre Quelle ausfällt\n3. Frankfurter (ECB) — zweiter Fallback\n\nWenn die primäre Quelle bei der automatischen Aktualisierung oder bei ↻ nicht antwortet, bezieht die App die Daten automatisch von der nächsten. Die aktuelle Quelle wird oben neben der Aktualisierungszeit angezeigt.\n\nIn den Einstellungen (⚙) kannst du eine bestimmte Quelle erzwingen — die anderen bleiben weiterhin als Fallback.\n\nAktualisiert einmal täglich. Der Unterschied zu XE liegt meist unter 0.5% — dies sind Referenzkurse, keine Echtzeitnotierungen.\n\nLizenzen und Namensnennung:\n• ExchangeRate-API — erfordert den Link „Rates By Exchange Rate API“ (in der Fußzeile, anklickbar).\n• F.A. — CC0 (gemeinfrei), keine Namensnennung erforderlich.\n• Frankfurter — MIT, Daten der European Central Bank (ECB).</string>
+    <string name="filter_all">Alle</string>
+    <string name="switch_source_title">Quelle wechseln?</string>
+    <string name="switch_source_msg">%1$s ist über %2$s verfügbar, nicht über die aktuelle Quelle. Wechseln und hinzufügen?</string>
+    <string name="switch_and_add">Wechseln &amp; hinzufügen</string>
+    <string name="already_added">Bereits in der Liste</string>
 </resources>

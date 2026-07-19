@@ -43,4 +43,9 @@
     <string name="language_system">Parazgjedhja e sistemit</string>
     <string name="source_info_title">Burimi i kursit</string>
     <string name="source_info_message">Kursi mesatar i tregut — pika e mesme midis blerjes dhe shitjes në tregun global, e njëjta referencë që shfaq XE.\n\nMonedha bazë: EUR, çiftet e tjera llogariten përmes euros.\n\nBurimet (rezervë automatike):\n1. ExchangeRate-API — kryesor\n2. F.A. — nëse kryesori nuk punon\n3. Frankfurter (ECB) — rezerva e dytë\n\nNëse burimi kryesor nuk përgjigjet gjatë përditësimit automatik ose në ↻, aplikacioni merr automatikisht të dhënat nga i ardhshmi. Burimi aktual shfaqet në krye pranë kohës së përditësimit.\n\nNë Cilësimet (⚙) mund të impononi një burim të caktuar — të tjerët përsëri mbeten si rezervë.\n\nPërditësohet një herë në ditë. Ndryshimi nga XE zakonisht është nën 0.5% — këto janë kurse referimi, jo kuotime në kohë reale.\n\nLicencat dhe atribuimi:\n• ExchangeRate-API — kërkon lidhjen „Rates By Exchange Rate API“ (në fund, e klikueshme).\n• F.A. — CC0 (domen publik), pa atribuim të detyrueshëm.\n• Frankfurter — MIT, të dhëna nga Banka Qendrore Evropiane (ECB).</string>
+    <string name="filter_all">Të gjitha</string>
+    <string name="switch_source_title">Të ndërrohet burimi?</string>
+    <string name="switch_source_msg">%1$s është i disponueshëm përmes %2$s, jo përmes burimit aktual. Ta ndërroni dhe ta shtoni?</string>
+    <string name="switch_and_add">Ndërro &amp; shto</string>
+    <string name="already_added">Tashmë në listë</string>
 </resources>

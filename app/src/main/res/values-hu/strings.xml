@@ -43,4 +43,9 @@
     <string name="language_system">Rendszer alapértelmezése</string>
     <string name="source_info_title">Árfolyamforrás</string>
     <string name="source_info_message">Középárfolyam — a vételi és eladási ár közötti középpont a globális piacon, ugyanaz a referencia, amit az XE mutat.\n\nAlappénznem: EUR, a többi párt az eurón keresztül számítjuk.\n\nForrások (automatikus tartalék):\n1. ExchangeRate-API — elsődleges\n2. F.A. — ha az elsődleges nem elérhető\n3. Frankfurter (ECB) — második tartalék\n\nHa az elsődleges forrás nem válaszol az automatikus frissítés során vagy a ↻ gombra, az alkalmazás automatikusan a következőből veszi az adatokat. Az aktuális forrás felül látható a frissítés ideje mellett.\n\nA Beállításokban (⚙) kényszeríthet egy adott forrást — a többi továbbra is tartalékként marad.\n\nNaponta egyszer frissül. Az XE-től való eltérés általában 0.5% alatt van — ezek referenciaárfolyamok, nem valós idejű jegyzések.\n\nLicencek és forrásmegjelölés:\n• ExchangeRate-API — megköveteli a “Rates By Exchange Rate API” hivatkozást (a láblécben, kattintható).\n• F.A. — CC0 (közkincs), forrásmegjelölés nem szükséges.\n• Frankfurter — MIT, adatok a European Central Bank (ECB) forrásból.</string>
+    <string name="filter_all">Mind</string>
+    <string name="switch_source_title">Forrás váltása?</string>
+    <string name="switch_source_msg">A(z) %1$s a(z) %2$s forráson keresztül érhető el, nem a jelenlegin. Váltasz és hozzáadod?</string>
+    <string name="switch_and_add">Váltás és hozzáadás</string>
+    <string name="already_added">Már a listán</string>
 </resources>

@@ -43,4 +43,9 @@
     <string name="language_system">Réglage du système</string>
     <string name="source_info_title">Source des taux</string>
     <string name="source_info_message">Taux du marché — le point médian entre l\'achat et la vente sur le marché mondial, la même référence qu\'affiche XE.\n\nDevise de base : EUR, les autres paires sont calculées via l\'euro.\n\nSources (repli automatique) :\n1. ExchangeRate-API — principale\n2. F.A. — si la principale est indisponible\n3. Frankfurter (ECB) — second repli\n\nSi la source principale ne répond pas lors de la mise à jour automatique ou sur ↻, l\'application prend automatiquement les données de la suivante. La source actuelle est affichée en haut, à côté de l\'heure de mise à jour.\n\nDans les Paramètres (⚙), vous pouvez forcer une source précise — les autres restent en repli.\n\nMise à jour une fois par jour. L\'écart avec XE est généralement inférieur à 0.5% — ce sont des taux de référence, pas des cotations en temps réel.\n\nLicences et attribution :\n• ExchangeRate-API — nécessite le lien « Rates By Exchange Rate API » (dans le pied de page, cliquable).\n• F.A. — CC0 (domaine public), aucune attribution requise.\n• Frankfurter — MIT, données de la European Central Bank (ECB).</string>
+    <string name="filter_all">Toutes</string>
+    <string name="switch_source_title">Changer de source ?</string>
+    <string name="switch_source_msg">%1$s est disponible via %2$s, pas via la source actuelle. Changer et l\'ajouter ?</string>
+    <string name="switch_and_add">Changer et ajouter</string>
+    <string name="already_added">Déjà dans la liste</string>
 </resources>

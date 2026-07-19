@@ -1,4 +1,4 @@
-// Автогенерировано из Android strings.xml — не редактировать вручную
+// Автогенерировано из Android strings.xml
 const I18N = {
 "en": {
 "app_name": "FIXXE",
@@ -94,11 +94,11 @@ const I18N = {
 "language_system": "افتراضي النظام",
 "source_info_title": "مصدر السعر",
 "source_info_message": "سعر السوق الوسطي — نقطة المنتصف بين الشراء والبيع في السوق العالمية، وهو المرجع ذاته الذي يعرضه XE.\n\nالعملة الأساسية: EUR، وتُحسب الأزواج الأخرى عبر اليورو.\n\nالمصادر (بديل احتياطي تلقائي):\n1. ExchangeRate-API — الأساسي\n2. F.A. — إذا تعطّل الأساسي\n3. Frankfurter (ECB) — البديل الثاني\n\nإذا لم يستجب المصدر الأساسي أثناء التحديث التلقائي أو عند ↻، يأخذ التطبيق البيانات تلقائياً من المصدر التالي. يظهر المصدر الحالي في الأعلى بجوار وقت التحديث.\n\nفي الإعدادات (⚙) يمكنك فرض مصدر محدد — وتبقى المصادر الأخرى كبديل احتياطي.\n\nيُحدَّث مرة واحدة يومياً. الفرق عن XE عادةً أقل من 0.5% — هذه أسعار مرجعية وليست عروضاً لحظية.\n\nالتراخيص والإسناد:\n• ExchangeRate-API — يتطلب رابط “Rates By Exchange Rate API” (في التذييل، قابل للنقر).\n• F.A. — CC0 (ملكية عامة)، لا يتطلب إسناداً.\n• Frankfurter — MIT، بيانات من البنك المركزي الأوروبي (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "الكل",
+"switch_source_title": "تغيير المصدر؟",
+"switch_source_msg": "%1$s متاح عبر %2$s، وليس المصدر الحالي. هل تريد التغيير والإضافة؟",
+"switch_and_add": "تغيير وإضافة",
+"already_added": "موجود في القائمة"
 },
 "he": {
 "app_name": "FIXXE",
@@ -144,11 +144,11 @@ const I18N = {
 "language_system": "ברירת מחדל של המערכת",
 "source_info_title": "מקור שער",
 "source_info_message": "שער אמצע-שוק — נקודת האמצע בין קנייה למכירה בשוק העולמי, אותו שער ייחוס ש-XE מציג.\n\nמטבע בסיס: EUR, שאר הצמדים מחושבים דרך האירו.\n\nמקורות (גיבוי אוטומטי):\n1. ExchangeRate-API — ראשי\n2. F.A. — אם הראשי אינו זמין\n3. Frankfurter (ECB) — גיבוי שני\n\nאם המקור הראשי אינו מגיב בעת עדכון אוטומטי או בלחיצה על ↻, האפליקציה לוקחת אוטומטית נתונים מהמקור הבא. המקור הנוכחי מוצג למעלה ליד זמן העדכון.\n\nבהגדרות (⚙) אפשר לכפות מקור מסוים — האחרים עדיין נשארים כגיבוי.\n\nמתעדכן פעם ביום. ההפרש מ-XE הוא בדרך כלל מתחת ל-0.5% — אלה שערי ייחוס, לא ציטוטים בזמן אמת.\n\nרישיונות וייחוס:\n• ExchangeRate-API — דורש את הקישור “Rates By Exchange Rate API” (בכותרת התחתונה, ניתן ללחיצה).\n• F.A. — CC0 (נחלת הכלל), אינו דורש ייחוס.\n• Frankfurter — MIT, נתונים מהבנק המרכזי האירופי (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "הכול",
+"switch_source_title": "להחליף מקור?",
+"switch_source_msg": "%1$s זמין דרך %2$s, לא המקור הנוכחי. להחליף ולהוסיף?",
+"switch_and_add": "החלף והוסף",
+"already_added": "כבר ברשימה"
 },
 "id": {
 "app_name": "FIXXE",
@@ -194,11 +194,11 @@ const I18N = {
 "language_system": "Bawaan sistem",
 "source_info_title": "Sumber kurs",
 "source_info_message": "Kurs tengah pasar — titik tengah antara harga beli dan jual di pasar global, referensi yang sama dengan yang ditampilkan XE.\n\nMata uang dasar: EUR, pasangan lain dihitung melalui euro.\n\nSumber (cadangan otomatis):\n1. ExchangeRate-API — utama\n2. F.A. — jika yang utama tidak aktif\n3. Frankfurter (ECB) — cadangan kedua\n\nJika sumber utama tidak merespons saat pembaruan otomatis atau saat menekan ↻, aplikasi otomatis mengambil data dari sumber berikutnya. Sumber saat ini ditampilkan di atas, di samping waktu pembaruan.\n\nDi Pengaturan (⚙) Anda dapat memaksa sumber tertentu — yang lain tetap menjadi cadangan.\n\nDiperbarui sekali sehari. Selisih dari XE biasanya di bawah 0.5% — ini adalah kurs referensi, bukan kutipan waktu nyata.\n\nLisensi dan atribusi:\n• ExchangeRate-API — memerlukan tautan “Rates By Exchange Rate API” (di footer, dapat diklik).\n• F.A. — CC0 (domain publik), tanpa atribusi.\n• Frankfurter — MIT, data dari Bank Sentral Eropa (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Semua",
+"switch_source_title": "Ganti sumber?",
+"switch_source_msg": "%1$s tersedia melalui %2$s, bukan sumber saat ini. Ganti dan tambahkan?",
+"switch_and_add": "Ganti & tambah",
+"already_added": "Sudah ada di daftar"
 },
 "bg": {
 "app_name": "FIXXE",
@@ -244,11 +244,11 @@ const I18N = {
 "language_system": "Системен по подразбиране",
 "source_info_title": "Източник на курсове",
 "source_info_message": "Среден пазарен курс — средата между курса купува и продава на световния пазар, същата референция, която показва XE.\n\nОсновна валута: EUR, останалите двойки се изчисляват през еврото.\n\nИзточници (автоматична резерва):\n1. ExchangeRate-API — основен\n2. F.A. — ако основният не работи\n3. Frankfurter (ECB) — втора резерва\n\nАко основният източник не отговори при автоматично обновяване или при ↻, приложението автоматично взема данни от следващия. Текущият източник е показан горе до времето на обновяване.\n\nВ настройките (⚙) можете да наложите конкретен източник — останалите пак остават като резерва.\n\nОбновява се веднъж на ден. Разликата спрямо XE обикновено е под 0.5% — това са референтни курсове, а не котировки в реално време.\n\nЛицензи и признание:\n• ExchangeRate-API — изисква връзка “Rates By Exchange Rate API” (в долния колонтитул, кликваема).\n• F.A. — CC0 (обществено достояние), не се изисква признание.\n• Frankfurter — MIT, данни от Европейската централна банка (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Всички",
+"switch_source_title": "Смяна на източник?",
+"switch_source_msg": "%1$s е достъпен чрез %2$s, а не чрез текущия източник. Да се смени и добави?",
+"switch_and_add": "Смени и добави",
+"already_added": "Вече в списъка"
 },
 "bs": {
 "app_name": "FIXXE",
@@ -294,11 +294,11 @@ const I18N = {
 "language_system": "Zadano sistemom",
 "source_info_title": "Izvor kursa",
 "source_info_message": "Srednji tržišni kurs — sredina između kupovnog i prodajnog na globalnom tržištu, ista referenca koju prikazuje XE.\n\nOsnovna valuta: EUR, ostali parovi se računaju preko eura.\n\nIzvori (automatska rezerva):\n1. ExchangeRate-API — primarni\n2. F.A. — ako primarni ne radi\n3. Frankfurter (ECB) — druga rezerva\n\nAko primarni izvor ne odgovori tokom automatskog ažuriranja ili na ↻, aplikacija automatski uzima podatke od sljedećeg. Trenutni izvor je prikazan na vrhu pored vremena ažuriranja.\n\nU Postavkama (⚙) možete nametnuti određeni izvor — ostali i dalje ostaju kao rezerva.\n\nAžurira se jednom dnevno. Razlika u odnosu na XE je obično manja od 0.5% — to su referentni kursevi, a ne kotacije u stvarnom vremenu.\n\nLicence i atribucija:\n• ExchangeRate-API — zahtijeva link „Rates By Exchange Rate API“ (u podnožju, klikabilan).\n• F.A. — CC0 (javno vlasništvo), bez obavezne atribucije.\n• Frankfurter — MIT, podaci iz Evropske centralne banke (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Sve",
+"switch_source_title": "Promijeniti izvor?",
+"switch_source_msg": "%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promijeniti i dodati?",
+"switch_and_add": "Promijeni i dodaj",
+"already_added": "Već na listi"
 },
 "cs": {
 "app_name": "FIXXE",
@@ -344,11 +344,11 @@ const I18N = {
 "language_system": "Výchozí nastavení systému",
 "source_info_title": "Zdroj kurzů",
 "source_info_message": "Střední tržní kurz — střed mezi nákupem a prodejem na globálním trhu, stejná reference, kterou zobrazuje XE.\n\nZákladní měna: EUR, ostatní páry se počítají přes euro.\n\nZdroje (automatická záloha):\n1. ExchangeRate-API — primární\n2. F.A. — pokud primární nefunguje\n3. Frankfurter (ECB) — druhá záloha\n\nPokud primární zdroj během automatické aktualizace nebo po ↻ neodpovídá, aplikace automaticky převezme data z dalšího. Aktuální zdroj je zobrazen nahoře vedle času aktualizace.\n\nV Nastavení (⚙) můžete vynutit konkrétní zdroj — ostatní stále zůstávají jako záloha.\n\nAktualizace jednou denně. Rozdíl oproti XE je obvykle pod 0.5% — jde o referenční kurzy, nikoli kotace v reálném čase.\n\nLicence a uvedení zdroje:\n• ExchangeRate-API — vyžaduje odkaz “Rates By Exchange Rate API” (v zápatí, klikací).\n• F.A. — CC0 (volné dílo), uvedení zdroje není nutné.\n• Frankfurter — MIT, data z European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Vše",
+"switch_source_title": "Přepnout zdroj?",
+"switch_source_msg": "%1$s je dostupné přes %2$s, ne přes aktuální zdroj. Přepnout a přidat?",
+"switch_and_add": "Přepnout a přidat",
+"already_added": "Již v seznamu"
 },
 "da": {
 "app_name": "FIXXE",
@@ -394,11 +394,11 @@ const I18N = {
 "language_system": "Systemstandard",
 "source_info_title": "Kurskilde",
 "source_info_message": "Midtmarkedskurs — midtpunktet mellem køb og salg på det globale marked, samme reference som XE viser.\n\nBasisvaluta: EUR, andre par beregnes via euroen.\n\nKilder (automatisk reserve):\n1. ExchangeRate-API — primær\n2. F.A. — hvis den primære er nede\n3. Frankfurter (ECB) — anden reserve\n\nHvis den primære kilde ikke svarer under autoopdatering eller ved ↻, henter appen automatisk data fra den næste. Den aktuelle kilde vises øverst ved siden af opdateringstidspunktet.\n\nI Indstillinger (⚙) kan du tvinge en bestemt kilde — de andre forbliver stadig som reserve.\n\nOpdateres en gang om dagen. Forskellen fra XE er normalt under 0.5% — dette er referencekurser, ikke realtidsnoteringer.\n\nLicenser og attribution:\n• ExchangeRate-API — kræver linket “Rates By Exchange Rate API” (i sidefoden, klikbar).\n• F.A. — CC0 (public domain), ingen attribution krævet.\n• Frankfurter — MIT, data fra European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Alle",
+"switch_source_title": "Skift kilde?",
+"switch_source_msg": "%1$s er tilgængelig via %2$s, ikke den nuværende kilde. Skift og tilføj?",
+"switch_and_add": "Skift og tilføj",
+"already_added": "Allerede på listen"
 },
 "de": {
 "app_name": "FIXXE",
@@ -444,11 +444,11 @@ const I18N = {
 "language_system": "Systemstandard",
 "source_info_title": "Kursquelle",
 "source_info_message": "Mittelkurs — der Mittelwert zwischen An- und Verkauf am globalen Markt, dieselbe Referenz, die XE anzeigt.\n\nBasiswährung: EUR, andere Paare werden über den Euro berechnet.\n\nQuellen (automatischer Fallback):\n1. ExchangeRate-API — primär\n2. F.A. — falls die primäre Quelle ausfällt\n3. Frankfurter (ECB) — zweiter Fallback\n\nWenn die primäre Quelle bei der automatischen Aktualisierung oder bei ↻ nicht antwortet, bezieht die App die Daten automatisch von der nächsten. Die aktuelle Quelle wird oben neben der Aktualisierungszeit angezeigt.\n\nIn den Einstellungen (⚙) kannst du eine bestimmte Quelle erzwingen — die anderen bleiben weiterhin als Fallback.\n\nAktualisiert einmal täglich. Der Unterschied zu XE liegt meist unter 0.5% — dies sind Referenzkurse, keine Echtzeitnotierungen.\n\nLizenzen und Namensnennung:\n• ExchangeRate-API — erfordert den Link „Rates By Exchange Rate API“ (in der Fußzeile, anklickbar).\n• F.A. — CC0 (gemeinfrei), keine Namensnennung erforderlich.\n• Frankfurter — MIT, Daten der European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Alle",
+"switch_source_title": "Quelle wechseln?",
+"switch_source_msg": "%1$s ist über %2$s verfügbar, nicht über die aktuelle Quelle. Wechseln und hinzufügen?",
+"switch_and_add": "Wechseln & hinzufügen",
+"already_added": "Bereits in der Liste"
 },
 "el": {
 "app_name": "FIXXE",
@@ -494,11 +494,11 @@ const I18N = {
 "language_system": "Προεπιλογή συστήματος",
 "source_info_title": "Πηγή τιμών",
 "source_info_message": "Μέση τιμή αγοράς — το μέσο σημείο μεταξύ αγοράς και πώλησης στην παγκόσμια αγορά, η ίδια αναφορά που δείχνει το XE.\n\nΒασικό νόμισμα: EUR, τα άλλα ζεύγη υπολογίζονται μέσω του ευρώ.\n\nΠηγές (αυτόματη εφεδρεία):\n1. ExchangeRate-API — κύρια\n2. F.A. — αν η κύρια δεν λειτουργεί\n3. Frankfurter (ECB) — δεύτερη εφεδρεία\n\nΑν η κύρια πηγή δεν απαντήσει κατά την αυτόματη ενημέρωση ή με ↻, η εφαρμογή παίρνει αυτόματα δεδομένα από την επόμενη. Η τρέχουσα πηγή εμφανίζεται επάνω, δίπλα στην ώρα ενημέρωσης.\n\nΣτις Ρυθμίσεις (⚙) μπορείτε να επιβάλετε συγκεκριμένη πηγή — οι υπόλοιπες παραμένουν ως εφεδρεία.\n\nΕνημερώνεται μία φορά την ημέρα. Η διαφορά από το XE είναι συνήθως κάτω από 0.5% — πρόκειται για ενδεικτικές τιμές, όχι για τιμές σε πραγματικό χρόνο.\n\nΆδειες και απόδοση:\n• ExchangeRate-API — απαιτεί τον σύνδεσμο “Rates By Exchange Rate API” (στο υποσέλιδο, με δυνατότητα κλικ).\n• F.A. — CC0 (δημόσια κτήση), δεν απαιτείται απόδοση.\n• Frankfurter — MIT, δεδομένα από την Ευρωπαϊκή Κεντρική Τράπεζα (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Όλα",
+"switch_source_title": "Αλλαγή πηγής;",
+"switch_source_msg": "Το %1$s είναι διαθέσιμο μέσω %2$s, όχι μέσω της τρέχουσας πηγής. Αλλαγή και προσθήκη;",
+"switch_and_add": "Αλλαγή & προσθήκη",
+"already_added": "Ήδη στη λίστα"
 },
 "es": {
 "app_name": "FIXXE",
@@ -544,11 +544,11 @@ const I18N = {
 "language_system": "Predeterminado del sistema",
 "source_info_title": "Fuente de tasas",
 "source_info_message": "Tasa de mercado medio — el punto medio entre la compra y la venta en el mercado global, la misma referencia que muestra XE.\n\nMoneda base: EUR, los demás pares se calculan a través del euro.\n\nFuentes (respaldo automático):\n1. ExchangeRate-API — principal\n2. F.A. — si la principal no está disponible\n3. Frankfurter (ECB) — segundo respaldo\n\nSi la fuente principal no responde durante la actualización automática o al pulsar ↻, la app toma automáticamente los datos de la siguiente. La fuente actual se muestra arriba, junto a la hora de actualización.\n\nEn Ajustes (⚙) puedes forzar una fuente específica — las demás siguen disponibles como respaldo.\n\nSe actualiza una vez al día. La diferencia con XE suele ser inferior al 0.5% — son tasas de referencia, no cotizaciones en tiempo real.\n\nLicencias y atribución:\n• ExchangeRate-API — requiere el enlace “Rates By Exchange Rate API” (en el pie de página, con enlace).\n• F.A. — CC0 (dominio público), sin atribución requerida.\n• Frankfurter — MIT, datos del European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Todas",
+"switch_source_title": "¿Cambiar de fuente?",
+"switch_source_msg": "%1$s está disponible a través de %2$s, no de la fuente actual. ¿Cambiar y añadirlo?",
+"switch_and_add": "Cambiar y añadir",
+"already_added": "Ya está en la lista"
 },
 "et": {
 "app_name": "FIXXE",
@@ -594,11 +594,11 @@ const I18N = {
 "language_system": "Süsteemi vaikeväärtus",
 "source_info_title": "Kursi allikas",
 "source_info_message": "Keskturu kurss — keskpunkt ostu- ja müügikursi vahel maailmaturul, sama viide, mida näitab XE.\n\nBaasvaluuta: EUR, teised paarid arvutatakse euro kaudu.\n\nAllikad (automaatne varuvariant):\n1. ExchangeRate-API — peamine\n2. F.A. — kui peamine ei tööta\n3. Frankfurter (ECB) — teine varuvariant\n\nKui peamine allikas ei vasta automaatse uuendamise ajal või ↻ vajutamisel, võtab rakendus andmed automaatselt järgmisest. Praegune allikas kuvatakse üleval uuendamisaja kõrval.\n\nSeadetes (⚙) saad sundida kindla allika — teised jäävad ikkagi varuvariandiks.\n\nUuendatakse kord päevas. Erinevus XE-st on tavaliselt alla 0.5% — need on viitekursid, mitte reaalajas noteeringud.\n\nLitsentsid ja viited:\n• ExchangeRate-API — nõuab linki “Rates By Exchange Rate API” (jaluses, klõpsatav).\n• F.A. — CC0 (public domain), viidet pole vaja.\n• Frankfurter — MIT, andmed European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Kõik",
+"switch_source_title": "Vahetada allikat?",
+"switch_source_msg": "%1$s on saadaval %2$s kaudu, mitte praeguse allika kaudu. Vahetada ja lisada?",
+"switch_and_add": "Vaheta ja lisa",
+"already_added": "Juba loendis"
 },
 "fa": {
 "app_name": "FIXXE",
@@ -644,11 +644,11 @@ const I18N = {
 "language_system": "پیش‌فرض سیستم",
 "source_info_title": "منبع نرخ",
 "source_info_message": "نرخ میانهٔ بازار — نقطهٔ میانی بین خرید و فروش در بازار جهانی، همان نرخ مرجعی که XE نشان می‌دهد.\n\nارز پایه: EUR، سایر جفت‌ها از طریق یورو محاسبه می‌شوند.\n\nمنابع (پشتیبان خودکار):\n1. ExchangeRate-API — اصلی\n2. F.A. — اگر منبع اصلی از دسترس خارج شود\n3. Frankfurter (ECB) — پشتیبان دوم\n\nاگر منبع اصلی هنگام به‌روزرسانی خودکار یا با فشردن ↻ پاسخ ندهد، برنامه به‌طور خودکار داده‌ها را از منبع بعدی می‌گیرد. منبع فعلی در بالا کنار زمان به‌روزرسانی نمایش داده می‌شود.\n\nدر تنظیمات (⚙) می‌توانید یک منبع مشخص را اجباری کنید — بقیه همچنان به‌عنوان پشتیبان باقی می‌مانند.\n\nروزی یک‌بار به‌روزرسانی می‌شود. تفاوت با XE معمولاً کمتر از 0.5% است — این‌ها نرخ‌های مرجع‌اند، نه قیمت‌های لحظه‌ای.\n\nمجوزها و اِسناد:\n• ExchangeRate-API — نیازمند پیوند “Rates By Exchange Rate API” (در پاورقی، قابل کلیک).\n• F.A. — CC0 (مالکیت عمومی)، بدون نیاز به اِسناد.\n• Frankfurter — MIT، داده‌ها از بانک مرکزی اروپا (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "همه",
+"switch_source_title": "تغییر منبع؟",
+"switch_source_msg": "%1$s از طریق %2$s در دسترس است، نه منبع فعلی. تغییر داده و اضافه شود؟",
+"switch_and_add": "تغییر و افزودن",
+"already_added": "از قبل در فهرست است"
 },
 "fi": {
 "app_name": "FIXXE",
@@ -694,11 +694,11 @@ const I18N = {
 "language_system": "Järjestelmän oletus",
 "source_info_title": "Kurssilähde",
 "source_info_message": "Keskimarkkinakurssi — osto- ja myyntikurssin keskiarvo maailmanmarkkinoilla, sama viitearvo jonka XE näyttää.\n\nPerusvaluutta: EUR, muut parit lasketaan euron kautta.\n\nLähteet (automaattinen varajärjestelmä):\n1. ExchangeRate-API — ensisijainen\n2. F.A. — jos ensisijainen ei toimi\n3. Frankfurter (ECB) — toinen varalähde\n\nJos ensisijainen lähde ei vastaa automaattipäivityksen aikana tai painettaessa ↻, sovellus hakee tiedot automaattisesti seuraavasta. Nykyinen lähde näkyy ylhäällä päivitysajan vieressä.\n\nAsetuksissa (⚙) voit pakottaa tietyn lähteen — muut jäävät silti varalähteiksi.\n\nPäivittyy kerran päivässä. Ero XE:hen on yleensä alle 0.5% — nämä ovat viitekursseja, eivät reaaliaikaisia noteerauksia.\n\nLisenssit ja attribuutio:\n• ExchangeRate-API — vaatii linkin “Rates By Exchange Rate API” (alatunnisteessa, klikattava).\n• F.A. — CC0 (public domain), ei attribuutiota vaadita.\n• Frankfurter — MIT, tiedot European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Kaikki",
+"switch_source_title": "Vaihdetaanko lähde?",
+"switch_source_msg": "%1$s on saatavilla lähteen %2$s kautta, ei nykyisen lähteen. Vaihda ja lisää?",
+"switch_and_add": "Vaihda ja lisää",
+"already_added": "Jo listassa"
 },
 "fr": {
 "app_name": "FIXXE",
@@ -744,11 +744,11 @@ const I18N = {
 "language_system": "Réglage du système",
 "source_info_title": "Source des taux",
 "source_info_message": "Taux du marché — le point médian entre l'achat et la vente sur le marché mondial, la même référence qu'affiche XE.\n\nDevise de base : EUR, les autres paires sont calculées via l'euro.\n\nSources (repli automatique) :\n1. ExchangeRate-API — principale\n2. F.A. — si la principale est indisponible\n3. Frankfurter (ECB) — second repli\n\nSi la source principale ne répond pas lors de la mise à jour automatique ou sur ↻, l'application prend automatiquement les données de la suivante. La source actuelle est affichée en haut, à côté de l'heure de mise à jour.\n\nDans les Paramètres (⚙), vous pouvez forcer une source précise — les autres restent en repli.\n\nMise à jour une fois par jour. L'écart avec XE est généralement inférieur à 0.5% — ce sont des taux de référence, pas des cotations en temps réel.\n\nLicences et attribution :\n• ExchangeRate-API — nécessite le lien « Rates By Exchange Rate API » (dans le pied de page, cliquable).\n• F.A. — CC0 (domaine public), aucune attribution requise.\n• Frankfurter — MIT, données de la European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Toutes",
+"switch_source_title": "Changer de source ?",
+"switch_source_msg": "%1$s est disponible via %2$s, pas via la source actuelle. Changer et l'ajouter ?",
+"switch_and_add": "Changer et ajouter",
+"already_added": "Déjà dans la liste"
 },
 "hi": {
 "app_name": "FIXXE",
@@ -794,11 +794,11 @@ const I18N = {
 "language_system": "सिस्टम डिफ़ॉल्ट",
 "source_info_title": "दर स्रोत",
 "source_info_message": "मिड-मार्केट दर — वैश्विक बाज़ार में खरीद और बिक्री के बीच का मध्यबिंदु, वही संदर्भ जो XE दिखाता है।\n\nआधार मुद्रा: EUR, अन्य जोड़े यूरो के माध्यम से गणना किए जाते हैं।\n\nस्रोत (स्वचालित फ़ॉलबैक):\n1. ExchangeRate-API — प्राथमिक\n2. F.A. — यदि प्राथमिक बंद हो\n3. Frankfurter (ECB) — दूसरा फ़ॉलबैक\n\nयदि ऑटो-अपडेट के दौरान या ↻ दबाने पर प्राथमिक स्रोत जवाब नहीं देता, तो ऐप स्वतः अगले स्रोत से डेटा लेता है। वर्तमान स्रोत अपडेट समय के बगल में ऊपर दिखाया जाता है।\n\nसेटिंग्स (⚙) में आप किसी विशिष्ट स्रोत को बाध्य कर सकते हैं — बाकी फिर भी फ़ॉलबैक के रूप में बने रहते हैं।\n\nदिन में एक बार अपडेट होता है। XE से अंतर आमतौर पर 0.5% से कम होता है — ये संदर्भ दरें हैं, रीयल-टाइम भाव नहीं।\n\nलाइसेंस और श्रेय:\n• ExchangeRate-API — “Rates By Exchange Rate API” लिंक आवश्यक है (फ़ुटर में, क्लिक करने योग्य)।\n• F.A. — CC0 (सार्वजनिक डोमेन), श्रेय आवश्यक नहीं।\n• Frankfurter — MIT, डेटा यूरोपीय केंद्रीय बैंक (ECB) से।",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "सभी",
+"switch_source_title": "स्रोत बदलें?",
+"switch_source_msg": "%1$s %2$s के ज़रिए उपलब्ध है, मौजूदा स्रोत से नहीं। बदलें और जोड़ें?",
+"switch_and_add": "बदलें और जोड़ें",
+"already_added": "पहले से सूची में है"
 },
 "hr": {
 "app_name": "FIXXE",
@@ -844,11 +844,11 @@ const I18N = {
 "language_system": "Zadano sustavom",
 "source_info_title": "Izvor tečaja",
 "source_info_message": "Srednji tržišni tečaj — sredina između kupovnog i prodajnog na globalnom tržištu, ista referenca koju prikazuje XE.\n\nOsnovna valuta: EUR, ostali parovi računaju se preko eura.\n\nIzvori (automatska pričuva):\n1. ExchangeRate-API — primarni\n2. F.A. — ako primarni ne radi\n3. Frankfurter (ECB) — druga pričuva\n\nAko primarni izvor ne odgovori tijekom automatskog ažuriranja ili na ↻, aplikacija automatski uzima podatke od sljedećeg. Trenutni izvor prikazan je na vrhu pored vremena ažuriranja.\n\nU Postavkama (⚙) možete nametnuti određeni izvor — ostali i dalje ostaju kao pričuva.\n\nAžurira se jednom dnevno. Razlika u odnosu na XE obično je manja od 0.5% — to su referentni tečajevi, a ne kotacije u stvarnom vremenu.\n\nLicence i atribucija:\n• ExchangeRate-API — zahtijeva poveznicu „Rates By Exchange Rate API“ (u podnožju, klikabilna).\n• F.A. — CC0 (javno vlasništvo), bez obavezne atribucije.\n• Frankfurter — MIT, podaci iz Europske središnje banke (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Sve",
+"switch_source_title": "Promijeniti izvor?",
+"switch_source_msg": "%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promijeniti i dodati?",
+"switch_and_add": "Promijeni i dodaj",
+"already_added": "Već na popisu"
 },
 "hu": {
 "app_name": "FIXXE",
@@ -894,11 +894,11 @@ const I18N = {
 "language_system": "Rendszer alapértelmezése",
 "source_info_title": "Árfolyamforrás",
 "source_info_message": "Középárfolyam — a vételi és eladási ár közötti középpont a globális piacon, ugyanaz a referencia, amit az XE mutat.\n\nAlappénznem: EUR, a többi párt az eurón keresztül számítjuk.\n\nForrások (automatikus tartalék):\n1. ExchangeRate-API — elsődleges\n2. F.A. — ha az elsődleges nem elérhető\n3. Frankfurter (ECB) — második tartalék\n\nHa az elsődleges forrás nem válaszol az automatikus frissítés során vagy a ↻ gombra, az alkalmazás automatikusan a következőből veszi az adatokat. Az aktuális forrás felül látható a frissítés ideje mellett.\n\nA Beállításokban (⚙) kényszeríthet egy adott forrást — a többi továbbra is tartalékként marad.\n\nNaponta egyszer frissül. Az XE-től való eltérés általában 0.5% alatt van — ezek referenciaárfolyamok, nem valós idejű jegyzések.\n\nLicencek és forrásmegjelölés:\n• ExchangeRate-API — megköveteli a “Rates By Exchange Rate API” hivatkozást (a láblécben, kattintható).\n• F.A. — CC0 (közkincs), forrásmegjelölés nem szükséges.\n• Frankfurter — MIT, adatok a European Central Bank (ECB) forrásból.",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Mind",
+"switch_source_title": "Forrás váltása?",
+"switch_source_msg": "A(z) %1$s a(z) %2$s forráson keresztül érhető el, nem a jelenlegin. Váltasz és hozzáadod?",
+"switch_and_add": "Váltás és hozzáadás",
+"already_added": "Már a listán"
 },
 "it": {
 "app_name": "FIXXE",
@@ -944,11 +944,11 @@ const I18N = {
 "language_system": "Predefinito di sistema",
 "source_info_title": "Fonte dei tassi",
 "source_info_message": "Tasso di mercato medio — il punto medio tra acquisto e vendita sul mercato globale, lo stesso riferimento mostrato da XE.\n\nValuta di base: EUR, le altre coppie sono calcolate tramite l'euro.\n\nFonti (ripiego automatico):\n1. ExchangeRate-API — principale\n2. F.A. — se la principale non è disponibile\n3. Frankfurter (ECB) — secondo ripiego\n\nSe la fonte principale non risponde durante l'aggiornamento automatico o premendo ↻, l'app prende automaticamente i dati dalla successiva. La fonte attuale è mostrata in alto, accanto all'ora di aggiornamento.\n\nNelle Impostazioni (⚙) puoi forzare una fonte specifica — le altre restano comunque come ripiego.\n\nSi aggiorna una volta al giorno. La differenza rispetto a XE è di solito inferiore allo 0.5% — sono tassi di riferimento, non quotazioni in tempo reale.\n\nLicenze e attribuzione:\n• ExchangeRate-API — richiede il link “Rates By Exchange Rate API” (nel piè di pagina, cliccabile).\n• F.A. — CC0 (pubblico dominio), nessuna attribuzione richiesta.\n• Frankfurter — MIT, dati della European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Tutte",
+"switch_source_title": "Cambiare fonte?",
+"switch_source_msg": "%1$s è disponibile tramite %2$s, non dalla fonte attuale. Cambiare e aggiungerlo?",
+"switch_and_add": "Cambia e aggiungi",
+"already_added": "Già nell'elenco"
 },
 "ja": {
 "app_name": "FIXXE",
@@ -994,11 +994,11 @@ const I18N = {
 "language_system": "システムのデフォルト",
 "source_info_title": "レートソース",
 "source_info_message": "仲値レート — 世界市場での買値と売値の中間値で、XE が表示するのと同じ基準値です。\n\n基準通貨: EUR、その他のペアはユーロを介して計算されます。\n\nソース（自動フォールバック）:\n1. ExchangeRate-API — 主要\n2. F.A. — 主要ソースが停止した場合\n3. Frankfurter (ECB) — 第2フォールバック\n\n自動更新時または ↻ 押下時に主要ソースが応答しない場合、アプリは自動的に次のソースからデータを取得します。現在のソースは更新時刻の隣に上部に表示されます。\n\n設定（⚙）で特定のソースを強制指定できます — 他のソースは引き続きフォールバックとして残ります。\n\n更新は1日1回です。XE との差は通常 0.5% 未満です — これはリアルタイムの相場ではなく参考レートです。\n\nライセンスと表記:\n• ExchangeRate-API —「Rates By Exchange Rate API」リンクが必要です（フッター内、クリック可能）。\n• F.A. — CC0（パブリックドメイン）、表記は不要です。\n• Frankfurter — MIT、データは欧州中央銀行 (ECB) から提供されています。",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "すべて",
+"switch_source_title": "ソースを切り替えますか？",
+"switch_source_msg": "%1$s は現在のソースではなく %2$s から利用できます。切り替えて追加しますか？",
+"switch_and_add": "切り替えて追加",
+"already_added": "追加済み"
 },
 "ka": {
 "app_name": "FIXXE",
@@ -1044,11 +1044,11 @@ const I18N = {
 "language_system": "სისტემის ნაგულისხმევი",
 "source_info_title": "კურსების წყარო",
 "source_info_message": "საშუალო საბაზრო კურსი — შუა წერტილი ყიდვასა და გაყიდვას შორის მსოფლიო ბაზარზე, იგივე ორიენტირი, რომელსაც XE აჩვენებს.\n\nსაბაზისო ვალუტა: EUR, დანარჩენი წყვილები გამოითვლება ევროს გავლით.\n\nწყაროები (ავტომატური სარეზერვო):\n1. ExchangeRate-API — ძირითადი\n2. F.A. — თუ ძირითადი მიუწვდომელია\n3. Frankfurter (ECB) — მეორე სარეზერვო\n\nთუ ძირითადი წყარო არ პასუხობს ავტოგანახლებისას ან ↻-ზე, აპლიკაცია ავტომატურად იღებს მონაცემებს შემდეგიდან. მიმდინარე წყარო ნაჩვენებია ზემოთ, განახლების დროის გვერდით.\n\nპარამეტრებში (⚙) შეგიძლიათ იძულებით აირჩიოთ კონკრეტული წყარო — დანარჩენები მაინც დარჩება სარეზერვოდ.\n\nახლდება დღეში ერთხელ. სხვაობა XE-სთან ჩვეულებრივ 0.5%-ზე ნაკლებია — ეს საცნობარო კურსებია, არა რეალურ დროში კოტირებები.\n\nლიცენზიები და მითითება:\n• ExchangeRate-API — მოითხოვს ბმულს “Rates By Exchange Rate API” (ქვედა კოლონტიტულში, დაწკაპუნებადი).\n• F.A. — CC0 (საზოგადოებრივი საკუთრება), მითითება არ არის საჭირო.\n• Frankfurter — MIT, მონაცემები ევროპის ცენტრალური ბანკიდან (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "ყველა",
+"switch_source_title": "წყაროს შეცვლა?",
+"switch_source_msg": "%1$s ხელმისაწვდომია %2$s-ის მეშვეობით და არა მიმდინარე წყაროდან. გადავრთოთ და დავამატოთ?",
+"switch_and_add": "გადართვა და დამატება",
+"already_added": "უკვე სიაშია"
 },
 "ko": {
 "app_name": "FIXXE",
@@ -1094,11 +1094,11 @@ const I18N = {
 "language_system": "시스템 기본값",
 "source_info_title": "환율 출처",
 "source_info_message": "중간 시장 환율 — 글로벌 시장의 매수와 매도 사이의 중간값으로, XE가 표시하는 것과 동일한 기준값입니다.\n\n기준 통화: EUR, 다른 통화쌍은 유로를 통해 계산됩니다.\n\n출처(자동 대체):\n1. ExchangeRate-API — 기본\n2. F.A. — 기본 출처가 다운된 경우\n3. Frankfurter (ECB) — 두 번째 대체\n\n자동 업데이트 시 또는 ↻ 를 누를 때 기본 출처가 응답하지 않으면 앱이 자동으로 다음 출처에서 데이터를 가져옵니다. 현재 출처는 업데이트 시간 옆 상단에 표시됩니다.\n\n설정(⚙)에서 특정 출처를 강제로 지정할 수 있습니다 — 나머지는 여전히 대체로 남아 있습니다.\n\n하루에 한 번 업데이트됩니다. XE와의 차이는 보통 0.5% 미만입니다 — 이는 실시간 시세가 아닌 참고 환율입니다.\n\n라이선스 및 출처 표기:\n• ExchangeRate-API —“Rates By Exchange Rate API” 링크가 필요합니다(하단 바닥글, 클릭 가능).\n• F.A. — CC0(퍼블릭 도메인), 표기 불필요.\n• Frankfurter — MIT, 데이터는 유럽 중앙은행(ECB)에서 제공됩니다.",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "전체",
+"switch_source_title": "소스를 전환할까요?",
+"switch_source_msg": "%1$s은(는) 현재 소스가 아닌 %2$s을(를) 통해 사용할 수 있습니다. 전환하고 추가할까요?",
+"switch_and_add": "전환 후 추가",
+"already_added": "이미 목록에 있음"
 },
 "lt": {
 "app_name": "FIXXE",
@@ -1144,11 +1144,11 @@ const I18N = {
 "language_system": "Sistemos numatytoji",
 "source_info_title": "Kursų šaltinis",
 "source_info_message": "Vidurinės rinkos kursas — vidurio taškas tarp pirkimo ir pardavimo pasaulinėje rinkoje, ta pati nuoroda, kurią rodo XE.\n\nBazinė valiuta: EUR, kitos poros skaičiuojamos per eurą.\n\nŠaltiniai (automatinis perjungimas):\n1. ExchangeRate-API — pirminis\n2. F.A. — jei pirminis neveikia\n3. Frankfurter (ECB) — antras atsarginis\n\nJei pirminis šaltinis neatsako automatinio atnaujinimo metu arba paspaudus ↻, programa automatiškai paima duomenis iš kito. Dabartinis šaltinis rodomas viršuje šalia atnaujinimo laiko.\n\nNustatymuose (⚙) galite priverstinai nustatyti konkretų šaltinį — kiti vis tiek lieka kaip atsarginiai.\n\nAtnaujinama kartą per dieną. Skirtumas nuo XE paprastai yra mažesnis nei 0.5% — tai orientaciniai kursai, o ne realaus laiko kotiruotės.\n\nLicencijos ir priskyrimas:\n• ExchangeRate-API — reikalauja nuorodos “Rates By Exchange Rate API” (poraštėje, spustelimos).\n• F.A. — CC0 (public domain), priskyrimo nereikia.\n• Frankfurter — MIT, duomenys iš European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Visi",
+"switch_source_title": "Keisti šaltinį?",
+"switch_source_msg": "%1$s pasiekiamas per %2$s, o ne per dabartinį šaltinį. Perjungti ir pridėti?",
+"switch_and_add": "Perjungti ir pridėti",
+"already_added": "Jau sąraše"
 },
 "lv": {
 "app_name": "FIXXE",
@@ -1194,11 +1194,11 @@ const I18N = {
 "language_system": "Sistēmas noklusējums",
 "source_info_title": "Kursu avots",
 "source_info_message": "Vidējā tirgus kurss — viduspunkts starp pirkšanas un pārdošanas kursu pasaules tirgū, tā pati atsauce, ko rāda XE.\n\nBāzes valūta: EUR, citi pāri tiek aprēķināti caur eiro.\n\nAvoti (automātiska pārslēgšanās):\n1. ExchangeRate-API — primārais\n2. F.A. — ja primārais nedarbojas\n3. Frankfurter (ECB) — otrais rezerves\n\nJa primārais avots neatbild automātiskās atjaunināšanas laikā vai nospiežot ↻, lietotne automātiski ņem datus no nākamā. Pašreizējais avots ir redzams augšpusē blakus atjaunināšanas laikam.\n\nIestatījumos (⚙) varat piespiedu kārtā izvēlēties konkrētu avotu — pārējie joprojām paliek kā rezerve.\n\nAtjaunina reizi dienā. Atšķirība no XE parasti ir mazāka par 0.5% — tie ir atsauces kursi, nevis reāllaika kotējumi.\n\nLicences un atsauces:\n• ExchangeRate-API — nepieciešama saite “Rates By Exchange Rate API” (kājenē, noklikšķināma).\n• F.A. — CC0 (public domain), atsauce nav nepieciešama.\n• Frankfurter — MIT, dati no European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Visi",
+"switch_source_title": "Mainīt avotu?",
+"switch_source_msg": "%1$s ir pieejams caur %2$s, nevis pašreizējo avotu. Pārslēgt un pievienot?",
+"switch_and_add": "Pārslēgt un pievienot",
+"already_added": "Jau sarakstā"
 },
 "mk": {
 "app_name": "FIXXE",
@@ -1244,11 +1244,11 @@ const I18N = {
 "language_system": "Системски стандард",
 "source_info_title": "Извор на курс",
 "source_info_message": "Среден пазарен курс — средината помеѓу куповниот и продажниот на глобалниот пазар, истата референца што ја прикажува XE.\n\nОсновна валута: EUR, другите парови се пресметуваат преку еврото.\n\nИзвори (автоматска резерва):\n1. ExchangeRate-API — примарен\n2. F.A. — ако примарниот не работи\n3. Frankfurter (ECB) — втора резерва\n\nАко примарниот извор не одговори за време на автоматското ажурирање или на ↻, апликацијата автоматски зема податоци од следниот. Тековниот извор е прикажан на врвот покрај времето на ажурирање.\n\nВо Поставки (⚙) може да наметнете одреден извор — другите сепак остануваат како резерва.\n\nСе ажурира еднаш дневно. Разликата во однос на XE обично е помала од 0.5% — тоа се референтни курсеви, а не котации во реално време.\n\nЛиценци и атрибуција:\n• ExchangeRate-API — бара линк „Rates By Exchange Rate API“ (во подножјето, кликабилен).\n• F.A. — CC0 (јавна сопственост), без задолжителна атрибуција.\n• Frankfurter — MIT, податоци од Европската централна банка (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Сите",
+"switch_source_title": "Промена на извор?",
+"switch_source_msg": "%1$s е достапен преку %2$s, не преку тековниот извор. Да се промени и додаде?",
+"switch_and_add": "Промени и додај",
+"already_added": "Веќе на листата"
 },
 "nb": {
 "app_name": "FIXXE",
@@ -1294,11 +1294,11 @@ const I18N = {
 "language_system": "Systemstandard",
 "source_info_title": "Kurskilde",
 "source_info_message": "Midtmarkedskurs — midtpunktet mellom kjøp og salg på det globale markedet, samme referanse som XE viser.\n\nBasisvaluta: EUR, andre par beregnes gjennom euroen.\n\nKilder (automatisk reserve):\n1. ExchangeRate-API — primær\n2. F.A. — hvis den primære er nede\n3. Frankfurter (ECB) — andre reserve\n\nHvis den primære kilden ikke svarer under autooppdatering eller ved ↻, henter appen automatisk data fra den neste. Den gjeldende kilden vises øverst ved siden av oppdateringstidspunktet.\n\nI Innstillinger (⚙) kan du tvinge en bestemt kilde — de andre forblir fortsatt som reserve.\n\nOppdateres én gang om dagen. Forskjellen fra XE er vanligvis under 0.5% — dette er referansekurser, ikke sanntidsnoteringer.\n\nLisenser og attribusjon:\n• ExchangeRate-API — krever lenken “Rates By Exchange Rate API” (i bunnteksten, klikkbar).\n• F.A. — CC0 (public domain), ingen attribusjon kreves.\n• Frankfurter — MIT, data fra European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Alle",
+"switch_source_title": "Bytte kilde?",
+"switch_source_msg": "%1$s er tilgjengelig via %2$s, ikke den gjeldende kilden. Bytte og legge til?",
+"switch_and_add": "Bytt og legg til",
+"already_added": "Allerede i listen"
 },
 "nl": {
 "app_name": "FIXXE",
@@ -1344,11 +1344,11 @@ const I18N = {
 "language_system": "Systeemstandaard",
 "source_info_title": "Koersbron",
 "source_info_message": "Mid-market koers — het middelpunt tussen koop en verkoop op de wereldmarkt, dezelfde referentie die XE toont.\n\nBasisvaluta: EUR, andere paren worden berekend via de euro.\n\nBronnen (automatische fallback):\n1. ExchangeRate-API — primair\n2. F.A. — als de primaire bron niet beschikbaar is\n3. Frankfurter (ECB) — tweede fallback\n\nAls de primaire bron niet reageert tijdens de automatische update of bij ↻, haalt de app automatisch gegevens op van de volgende. De huidige bron wordt bovenaan getoond naast de updatetijd.\n\nIn Instellingen (⚙) kun je een specifieke bron forceren — de andere blijven als fallback beschikbaar.\n\nWordt eenmaal per dag bijgewerkt. Het verschil met XE is meestal minder dan 0.5% — dit zijn referentiekoersen, geen realtime noteringen.\n\nLicenties en attributie:\n• ExchangeRate-API — vereist de “Rates By Exchange Rate API” link (in de voettekst, klikbaar).\n• F.A. — CC0 (publiek domein), geen attributie vereist.\n• Frankfurter — MIT, gegevens van de European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Alle",
+"switch_source_title": "Bron wisselen?",
+"switch_source_msg": "%1$s is beschikbaar via %2$s, niet via de huidige bron. Wisselen en toevoegen?",
+"switch_and_add": "Wisselen en toevoegen",
+"already_added": "Al in de lijst"
 },
 "pl": {
 "app_name": "FIXXE",
@@ -1394,11 +1394,11 @@ const I18N = {
 "language_system": "Domyślny systemowy",
 "source_info_title": "Źródło kursów",
 "source_info_message": "Kurs mid-market — punkt środkowy między ceną kupna a sprzedaży na rynku globalnym, ten sam punkt odniesienia, który pokazuje XE.\n\nWaluta bazowa: EUR, pozostałe pary są obliczane przez euro.\n\nŹródła (automatyczna rezerwa):\n1. ExchangeRate-API — główne\n2. F.A. — gdy główne jest niedostępne\n3. Frankfurter (ECB) — druga rezerwa\n\nJeśli główne źródło nie odpowiada podczas automatycznej aktualizacji lub po ↻, aplikacja automatycznie pobiera dane z kolejnego. Bieżące źródło jest pokazane na górze obok czasu aktualizacji.\n\nW Ustawieniach (⚙) można wymusić konkretne źródło — pozostałe nadal działają jako rezerwa.\n\nAktualizacja raz dziennie. Różnica względem XE jest zwykle mniejsza niż 0.5% — są to kursy referencyjne, a nie notowania w czasie rzeczywistym.\n\nLicencje i atrybucja:\n• ExchangeRate-API — wymaga linku “Rates By Exchange Rate API” (w stopce, klikalny).\n• F.A. — CC0 (domena publiczna), atrybucja niewymagana.\n• Frankfurter — MIT, dane z European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Wszystkie",
+"switch_source_title": "Zmienić źródło?",
+"switch_source_msg": "%1$s jest dostępny przez %2$s, a nie z bieżącego źródła. Zmienić i dodać?",
+"switch_and_add": "Zmień i dodaj",
+"already_added": "Już na liście"
 },
 "pt": {
 "app_name": "FIXXE",
@@ -1444,11 +1444,11 @@ const I18N = {
 "language_system": "Padrão do sistema",
 "source_info_title": "Fonte das taxas",
 "source_info_message": "Taxa de mercado médio — o ponto médio entre compra e venda no mercado global, a mesma referência que a XE mostra.\n\nMoeda base: EUR, os outros pares são calculados através do euro.\n\nFontes (alternativa automática):\n1. ExchangeRate-API — principal\n2. F.A. — se a principal estiver indisponível\n3. Frankfurter (ECB) — segunda alternativa\n\nSe a fonte principal não responder durante a atualização automática ou ao tocar em ↻, o app pega automaticamente os dados da próxima. A fonte atual é mostrada no topo, ao lado do horário de atualização.\n\nNas Configurações (⚙) você pode forçar uma fonte específica — as outras continuam como alternativa.\n\nAtualiza uma vez por dia. A diferença em relação à XE costuma ser inferior a 0.5% — são taxas de referência, não cotações em tempo real.\n\nLicenças e atribuição:\n• ExchangeRate-API — exige o link “Rates By Exchange Rate API” (no rodapé, clicável).\n• F.A. — CC0 (domínio público), sem atribuição necessária.\n• Frankfurter — MIT, dados do European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Todas",
+"switch_source_title": "Trocar de fonte?",
+"switch_source_msg": "%1$s está disponível via %2$s, não pela fonte atual. Trocar e adicionar?",
+"switch_and_add": "Trocar e adicionar",
+"already_added": "Já está na lista"
 },
 "ro": {
 "app_name": "FIXXE",
@@ -1494,11 +1494,11 @@ const I18N = {
 "language_system": "Implicit din sistem",
 "source_info_title": "Sursa cursurilor",
 "source_info_message": "Curs mediu de piață — punctul de mijloc între cumpărare și vânzare pe piața globală, aceeași referință afișată de XE.\n\nValută de bază: EUR, celelalte perechi se calculează prin euro.\n\nSurse (rezervă automată):\n1. ExchangeRate-API — principală\n2. F.A. — dacă principala nu funcționează\n3. Frankfurter (ECB) — a doua rezervă\n\nDacă sursa principală nu răspunde în timpul actualizării automate sau la ↻, aplicația preia automat datele de la următoarea. Sursa curentă este afișată sus, lângă ora actualizării.\n\nÎn Setări (⚙) poți impune o anumită sursă — celelalte rămân în continuare ca rezervă.\n\nSe actualizează o dată pe zi. Diferența față de XE este de obicei sub 0.5% — acestea sunt cursuri de referință, nu cotații în timp real.\n\nLicențe și atribuire:\n• ExchangeRate-API — necesită linkul “Rates By Exchange Rate API” (în subsol, pe care se poate face clic).\n• F.A. — CC0 (domeniu public), fără atribuire necesară.\n• Frankfurter — MIT, date de la Banca Centrală Europeană (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Toate",
+"switch_source_title": "Schimbi sursa?",
+"switch_source_msg": "%1$s este disponibil prin %2$s, nu prin sursa curentă. Schimbi și îl adaugi?",
+"switch_and_add": "Schimbă și adaugă",
+"already_added": "Deja în listă"
 },
 "ru": {
 "app_name": "FIXXE",
@@ -1544,11 +1544,11 @@ const I18N = {
 "language_system": "Системный",
 "source_info_title": "Источник курсов",
 "source_info_message": "Среднерыночный курс — середина между покупкой и продажей на мировом рынке, тот же ориентир, что показывает XE.\n\nБазовая валюта: EUR, остальные пары рассчитываются через евро.\n\nИсточники (автоматический резерв):\n1. ExchangeRate-API — основной\n2. F.A. — если основной недоступен\n3. Frankfurter (ECB) — второй резерв\n\nЕсли основной источник не отвечает при автообновлении или по ↻, приложение автоматически берёт данные из следующего. Текущий источник показан вверху рядом со временем обновления.\n\nВ Настройках (⚙) можно принудительно выбрать конкретный источник — остальные всё равно останутся резервом.\n\nОбновляется раз в день. Отличие от XE обычно меньше 0,5% — это справочные курсы, а не котировки в реальном времени.\n\nЛицензии и указание источников:\n• ExchangeRate-API — требует ссылку “Rates By Exchange Rate API” (в подвале, кликабельна).\n• F.A. — CC0 (общественное достояние), указание не требуется.\n• Frankfurter — MIT, данные Европейского центрального банка (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Все",
+"switch_source_title": "Сменить источник?",
+"switch_source_msg": "%1$s доступен через %2$s, а не текущий источник. Переключить и добавить?",
+"switch_and_add": "Переключить и добавить",
+"already_added": "Уже в списке"
 },
 "sk": {
 "app_name": "FIXXE",
@@ -1594,11 +1594,11 @@ const I18N = {
 "language_system": "Predvolené systémom",
 "source_info_title": "Zdroj kurzov",
 "source_info_message": "Stredný trhový kurz — stred medzi nákupom a predajom na globálnom trhu, tá istá referencia, ktorú zobrazuje XE.\n\nZákladná mena: EUR, ostatné páry sa počítajú cez euro.\n\nZdroje (automatická záloha):\n1. ExchangeRate-API — primárny\n2. F.A. — ak primárny nefunguje\n3. Frankfurter (ECB) — druhá záloha\n\nAk primárny zdroj počas automatickej aktualizácie alebo po ↻ neodpovedá, aplikácia automaticky prevezme údaje z ďalšieho. Aktuálny zdroj je zobrazený hore vedľa času aktualizácie.\n\nV Nastaveniach (⚙) môžete vynútiť konkrétny zdroj — ostatné stále zostávajú ako záloha.\n\nAktualizácia raz denne. Rozdiel oproti XE je zvyčajne pod 0.5% — ide o referenčné kurzy, nie kotácie v reálnom čase.\n\nLicencie a uvedenie zdroja:\n• ExchangeRate-API — vyžaduje odkaz “Rates By Exchange Rate API” (v päte, klikateľný).\n• F.A. — CC0 (voľné dielo), uvedenie zdroja nie je potrebné.\n• Frankfurter — MIT, údaje z European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Všetko",
+"switch_source_title": "Prepnúť zdroj?",
+"switch_source_msg": "%1$s je dostupné cez %2$s, nie cez aktuálny zdroj. Prepnúť a pridať?",
+"switch_and_add": "Prepnúť a pridať",
+"already_added": "Už v zozname"
 },
 "sl": {
 "app_name": "FIXXE",
@@ -1644,11 +1644,11 @@ const I18N = {
 "language_system": "Privzeto v sistemu",
 "source_info_title": "Vir tečajev",
 "source_info_message": "Srednji tržni tečaj — sredina med nakupnim in prodajnim tečajem na svetovnem trgu, ista referenca, kot jo prikazuje XE.\n\nOsnovna valuta: EUR, drugi pari se izračunajo prek evra.\n\nViri (samodejna rezerva):\n1. ExchangeRate-API — primarni\n2. F.A. — če primarni ne deluje\n3. Frankfurter (ECB) — druga rezerva\n\nČe se primarni vir med samodejno posodobitvijo ali ob ↻ ne odzove, aplikacija samodejno prevzame podatke iz naslednjega. Trenutni vir je prikazan na vrhu poleg časa posodobitve.\n\nV nastavitvah (⚙) lahko vsilite določen vir — drugi še vedno ostanejo kot rezerva.\n\nPosodablja se enkrat na dan. Razlika od XE je običajno pod 0.5% — to so referenčni tečaji, ne cene v realnem času.\n\nLicence in navedba virov:\n• ExchangeRate-API — zahteva povezavo “Rates By Exchange Rate API” (v nogi, klikljiva).\n• F.A. — CC0 (javna last), navedba ni potrebna.\n• Frankfurter — MIT, podatki Evropske centralne banke (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Vse",
+"switch_source_title": "Zamenjati vir?",
+"switch_source_msg": "%1$s je na voljo prek %2$s, ne prek trenutnega vira. Ga zamenjati in dodati?",
+"switch_and_add": "Zamenjaj in dodaj",
+"already_added": "Že na seznamu"
 },
 "sq": {
 "app_name": "FIXXE",
@@ -1694,11 +1694,11 @@ const I18N = {
 "language_system": "Parazgjedhja e sistemit",
 "source_info_title": "Burimi i kursit",
 "source_info_message": "Kursi mesatar i tregut — pika e mesme midis blerjes dhe shitjes në tregun global, e njëjta referencë që shfaq XE.\n\nMonedha bazë: EUR, çiftet e tjera llogariten përmes euros.\n\nBurimet (rezervë automatike):\n1. ExchangeRate-API — kryesor\n2. F.A. — nëse kryesori nuk punon\n3. Frankfurter (ECB) — rezerva e dytë\n\nNëse burimi kryesor nuk përgjigjet gjatë përditësimit automatik ose në ↻, aplikacioni merr automatikisht të dhënat nga i ardhshmi. Burimi aktual shfaqet në krye pranë kohës së përditësimit.\n\nNë Cilësimet (⚙) mund të impononi një burim të caktuar — të tjerët përsëri mbeten si rezervë.\n\nPërditësohet një herë në ditë. Ndryshimi nga XE zakonisht është nën 0.5% — këto janë kurse referimi, jo kuotime në kohë reale.\n\nLicencat dhe atribuimi:\n• ExchangeRate-API — kërkon lidhjen „Rates By Exchange Rate API“ (në fund, e klikueshme).\n• F.A. — CC0 (domen publik), pa atribuim të detyrueshëm.\n• Frankfurter — MIT, të dhëna nga Banka Qendrore Evropiane (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Të gjitha",
+"switch_source_title": "Të ndërrohet burimi?",
+"switch_source_msg": "%1$s është i disponueshëm përmes %2$s, jo përmes burimit aktual. Ta ndërroni dhe ta shtoni?",
+"switch_and_add": "Ndërro & shto",
+"already_added": "Tashmë në listë"
 },
 "sr": {
 "app_name": "FIXXE",
@@ -1744,11 +1744,11 @@ const I18N = {
 "language_system": "Подразумевано системско",
 "source_info_title": "Извор курса",
 "source_info_message": "Средњи тржишни курс — средина између куповног и продајног на светском тржишту, иста референца коју приказује XE.\n\nОсновна валута: EUR, остали парови се рачунају преко евра.\n\nИзвори (аутоматска резерва):\n1. ExchangeRate-API — примарни\n2. F.A. — ако примарни не ради\n3. Frankfurter (ECB) — друга резерва\n\nАко примарни извор не одговори током аутоматског ажурирања или на ↻, апликација аутоматски узима податке од следећег. Тренутни извор је приказан на врху поред времена ажурирања.\n\nУ Подешавањима (⚙) можете наметнути одређени извор — остали и даље остају као резерва.\n\nАжурира се једном дневно. Разлика у односу на XE је обично мања од 0.5% — то су референтни курсеви, а не котације у реалном времену.\n\nЛиценце и атрибуција:\n• ExchangeRate-API — захтева линк „Rates By Exchange Rate API“ (у подножју, кликабилан).\n• F.A. — CC0 (јавно власништво), без обавезне атрибуције.\n• Frankfurter — MIT, подаци из Европске централне банке (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Sve",
+"switch_source_title": "Promeniti izvor?",
+"switch_source_msg": "%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promeniti i dodati?",
+"switch_and_add": "Promeni i dodaj",
+"already_added": "Već na listi"
 },
 "sv": {
 "app_name": "FIXXE",
@@ -1794,11 +1794,11 @@ const I18N = {
 "language_system": "Systemets standard",
 "source_info_title": "Kurskälla",
 "source_info_message": "Mittmarknadskurs — mittpunkten mellan köp och sälj på den globala marknaden, samma referens som XE visar.\n\nBasvaluta: EUR, andra par beräknas via euron.\n\nKällor (automatisk reserv):\n1. ExchangeRate-API — primär\n2. F.A. — om den primära är nere\n3. Frankfurter (ECB) — andra reserv\n\nOm den primära källan inte svarar vid autouppdatering eller vid ↻ hämtar appen automatiskt data från nästa. Den aktuella källan visas högst upp bredvid uppdateringstiden.\n\nI Inställningar (⚙) kan du tvinga en specifik källa — de andra kvarstår ändå som reserv.\n\nUppdateras en gång om dagen. Skillnaden mot XE är oftast under 0.5% — detta är referenskurser, inte realtidsnoteringar.\n\nLicenser och attribution:\n• ExchangeRate-API — kräver länken “Rates By Exchange Rate API” (i sidfoten, klickbar).\n• F.A. — CC0 (public domain), ingen attribution krävs.\n• Frankfurter — MIT, data från European Central Bank (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Alla",
+"switch_source_title": "Byta källa?",
+"switch_source_msg": "%1$s är tillgänglig via %2$s, inte den nuvarande källan. Byta och lägga till?",
+"switch_and_add": "Byt och lägg till",
+"already_added": "Redan i listan"
 },
 "th": {
 "app_name": "FIXXE",
@@ -1844,11 +1844,11 @@ const I18N = {
 "language_system": "ค่าเริ่มต้นของระบบ",
 "source_info_title": "แหล่งอัตรา",
 "source_info_message": "อัตรากลางตลาด — จุดกึ่งกลางระหว่างราคาซื้อและขายในตลาดโลก อ้างอิงเดียวกับที่ XE แสดง\n\nสกุลเงินฐาน: EUR ส่วนคู่อื่น ๆ คำนวณผ่านยูโร\n\nแหล่งข้อมูล (สลับสำรองอัตโนมัติ):\n1. ExchangeRate-API — หลัก\n2. F.A. — เมื่อแหล่งหลักใช้งานไม่ได้\n3. Frankfurter (ECB) — ตัวสำรองที่สอง\n\nหากแหล่งหลักไม่ตอบสนองระหว่างการอัปเดตอัตโนมัติหรือเมื่อกด ↻ แอปจะดึงข้อมูลจากแหล่งถัดไปให้อัตโนมัติ แหล่งที่ใช้อยู่จะแสดงด้านบนถัดจากเวลาอัปเดต\n\nในการตั้งค่า (⚙) คุณสามารถบังคับใช้แหล่งใดแหล่งหนึ่งได้ — แหล่งอื่นยังคงเป็นตัวสำรอง\n\nอัปเดตวันละครั้ง ความต่างจาก XE มักน้อยกว่า 0.5% — นี่คืออัตราอ้างอิง ไม่ใช่ราคาแบบเรียลไทม์\n\nสัญญาอนุญาตและการให้เครดิต:\n• ExchangeRate-API — ต้องมีลิงก์ “Rates By Exchange Rate API” (อยู่ด้านล่าง คลิกได้)\n• F.A. — CC0 (สาธารณสมบัติ) ไม่ต้องให้เครดิต\n• Frankfurter — MIT ข้อมูลจากธนาคารกลางยุโรป (ECB)",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "ทั้งหมด",
+"switch_source_title": "สลับแหล่งข้อมูลไหม",
+"switch_source_msg": "%1$s ใช้งานได้ผ่าน %2$s ไม่ใช่แหล่งข้อมูลปัจจุบัน สลับและเพิ่มไหม",
+"switch_and_add": "สลับและเพิ่ม",
+"already_added": "อยู่ในรายการแล้ว"
 },
 "tr": {
 "app_name": "FIXXE",
@@ -1894,11 +1894,11 @@ const I18N = {
 "language_system": "Sistem varsayılanı",
 "source_info_title": "Kur kaynağı",
 "source_info_message": "Piyasa orta kuru — küresel piyasadaki alış ve satış arasındaki orta nokta; XE’nin gösterdiği referans değerin aynısı.\n\nAna para birimi: EUR, diğer pariteler euro üzerinden hesaplanır.\n\nKaynaklar (otomatik yedek):\n1. ExchangeRate-API — birincil\n2. F.A. — birincil kaynak çalışmıyorsa\n3. Frankfurter (ECB) — ikinci yedek\n\nBirincil kaynak otomatik güncelleme sırasında ya da ↻ ile yanıt vermezse, uygulama verileri otomatik olarak bir sonrakinden alır. Geçerli kaynak en üstte güncelleme saatinin yanında gösterilir.\n\nAyarlar’da (⚙) belirli bir kaynağı zorunlu kılabilirsiniz — diğerleri yine de yedek olarak kalır.\n\nGünde bir kez güncellenir. XE’den farkı genellikle 0.5% altındadır — bunlar referans kurlardır, gerçek zamanlı fiyatlar değildir.\n\nLisanslar ve atıf:\n• ExchangeRate-API — “Rates By Exchange Rate API” bağlantısını gerektirir (alt bilgide, tıklanabilir).\n• F.A. — CC0 (kamu malı), atıf gerektirmez.\n• Frankfurter — MIT, veriler Avrupa Merkez Bankası’ndan (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Tümü",
+"switch_source_title": "Kaynak değişsin mi?",
+"switch_source_msg": "%1$s %2$s üzerinden mevcut, geçerli kaynakta değil. Değiştirip eklensin mi?",
+"switch_and_add": "Değiştir ve ekle",
+"already_added": "Zaten listede"
 },
 "vi": {
 "app_name": "FIXXE",
@@ -1944,11 +1944,11 @@ const I18N = {
 "language_system": "Mặc định hệ thống",
 "source_info_title": "Nguồn tỷ giá",
 "source_info_message": "Tỷ giá trung bình — điểm giữa giữa giá mua và giá bán trên thị trường toàn cầu, cùng mức tham chiếu mà XE hiển thị.\n\nTiền tệ cơ sở: EUR, các cặp khác được tính qua đồng euro.\n\nNguồn (tự động dự phòng):\n1. ExchangeRate-API — chính\n2. F.A. — khi nguồn chính không hoạt động\n3. Frankfurter (ECB) — dự phòng thứ hai\n\nNếu nguồn chính không phản hồi khi tự động cập nhật hoặc khi nhấn ↻, ứng dụng sẽ tự lấy dữ liệu từ nguồn tiếp theo. Nguồn hiện tại hiển thị ở trên cùng, bên cạnh thời gian cập nhật.\n\nTrong Cài đặt (⚙) bạn có thể buộc dùng một nguồn cụ thể — các nguồn còn lại vẫn làm dự phòng.\n\nCập nhật mỗi ngày một lần. Chênh lệch so với XE thường dưới 0.5% — đây là tỷ giá tham chiếu, không phải báo giá thời gian thực.\n\nGiấy phép và ghi công:\n• ExchangeRate-API — yêu cầu liên kết “Rates By Exchange Rate API” (ở chân trang, có thể nhấp).\n• F.A. — CC0 (phạm vi công cộng), không cần ghi công.\n• Frankfurter — MIT, dữ liệu từ Ngân hàng Trung ương châu Âu (ECB).",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "Tất cả",
+"switch_source_title": "Đổi nguồn?",
+"switch_source_msg": "%1$s có sẵn qua %2$s, không phải nguồn hiện tại. Đổi và thêm?",
+"switch_and_add": "Đổi & thêm",
+"already_added": "Đã có trong danh sách"
 },
 "zh": {
 "app_name": "FIXXE",
@@ -1994,10 +1994,10 @@ const I18N = {
 "language_system": "系统默认",
 "source_info_title": "汇率来源",
 "source_info_message": "中间市场汇率 — 全球市场买入与卖出的中点，与 XE 显示的参考值相同。\n\n基准货币：EUR，其他货币对通过欧元换算。\n\n来源（自动备用）：\n1. ExchangeRate-API — 主要\n2. F.A. — 主要来源不可用时\n3. Frankfurter (ECB) — 第二备用\n\n如果在自动更新或点击 ↻ 时主要来源无响应，应用会自动从下一个来源获取数据。当前来源显示在顶部更新时间旁边。\n\n在设置（⚙）中，你可以强制指定某个来源 — 其他来源仍作为备用。\n\n每天更新一次。与 XE 的差异通常小于 0.5% — 这些是参考汇率，而非实时报价。\n\n许可与署名：\n• ExchangeRate-API — 需要“Rates By Exchange Rate API”链接（位于页脚，可点击）。\n• F.A. — CC0（公共领域），无需署名。\n• Frankfurter — MIT，数据来自欧洲中央银行 (ECB)。",
-"already_added": "Already in list",
-"filter_all": "All",
-"switch_source_title": "Switch source?",
-"switch_source_msg": "%1$s is available via %2$s, not the current source. Switch and add it?",
-"switch_and_add": "Switch & add"
+"filter_all": "全部",
+"switch_source_title": "切换来源？",
+"switch_source_msg": "%1$s 可通过 %2$s 获取，而非当前来源。切换并添加吗？",
+"switch_and_add": "切换并添加",
+"already_added": "已在列表中"
 }
 };

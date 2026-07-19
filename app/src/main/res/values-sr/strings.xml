@@ -43,4 +43,9 @@
     <string name="language_system">Подразумевано системско</string>
     <string name="source_info_title">Извор курса</string>
     <string name="source_info_message">Средњи тржишни курс — средина између куповног и продајног на светском тржишту, иста референца коју приказује XE.\n\nОсновна валута: EUR, остали парови се рачунају преко евра.\n\nИзвори (аутоматска резерва):\n1. ExchangeRate-API — примарни\n2. F.A. — ако примарни не ради\n3. Frankfurter (ECB) — друга резерва\n\nАко примарни извор не одговори током аутоматског ажурирања или на ↻, апликација аутоматски узима податке од следећег. Тренутни извор је приказан на врху поред времена ажурирања.\n\nУ Подешавањима (⚙) можете наметнути одређени извор — остали и даље остају као резерва.\n\nАжурира се једном дневно. Разлика у односу на XE је обично мања од 0.5% — то су референтни курсеви, а не котације у реалном времену.\n\nЛиценце и атрибуција:\n• ExchangeRate-API — захтева линк „Rates By Exchange Rate API“ (у подножју, кликабилан).\n• F.A. — CC0 (јавно власништво), без обавезне атрибуције.\n• Frankfurter — MIT, подаци из Европске централне банке (ECB).</string>
+    <string name="filter_all">Sve</string>
+    <string name="switch_source_title">Promeniti izvor?</string>
+    <string name="switch_source_msg">%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promeniti i dodati?</string>
+    <string name="switch_and_add">Promeni i dodaj</string>
+    <string name="already_added">Već na listi</string>
 </resources>

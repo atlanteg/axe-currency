@@ -1,162 +1,116 @@
-# AXE — Currency Converter
+# FIXXE — Currency Converter
 
-Android app for real-time currency conversion using mid-market exchange rates.  
-Inspired by XE Currency. Built entirely with CLI tools, no Android Studio required.
+Real-time multi-currency converter for **Android** and as an installable **PWA** (web app).
+Mid-market rates, 166+ currencies incl. crypto, 40 languages. Inspired by XE Currency.
+Built entirely with CLI tools — no Android Studio required.
+
+**Live web app:** https://fixe.l23.xyz (install to home screen on iOS/Android)
+**Releases (APK):** https://github.com/atlanteg/axe-currency/releases/latest
 
 ## Features
 
-- **Live mid-market rates** via [open.er-api.com](https://open.er-api.com/) (free, no API key)
-- **60+ currencies** with flags, symbols, and full names
+- **Live mid-market rates** with a 3-source fallback chain (see [Rate sources](#rate-sources))
+- **166+ currencies** (fiat) — and **300+ incl. crypto & metals** when using the F.A. source
 - **Real-time conversion** — type in any field, all others update instantly
-- **Auto-refresh** every 30 minutes + on every app resume
-- **Persistent state** — selected currencies, order, and layout survive app restarts (SharedPreferences)
-- **Drag to reorder** rows via the ⠿ handle on the right
-- **Searchable currency picker** — filter by code or name
-- **CLEAR button** — zero out all amounts at once
-- **Delete per row** — ✕ button on the left (away from the amount field)
-- Force light theme — no dark mode issues
-- Integer-only amounts (no unnecessary decimals)
+- **Dynamic base** — the rate line is computed relative to the currency you're editing, not a fixed one
+- **Smart rounding** — chosen precision (0/1/2/4) is a minimum; if it would distort a value by >2%,
+  that row automatically shows more decimals (e.g. small/strong currencies never collapse to `1`)
+- **Source-aware currency picker** — search across all sources or filter by one; colored dots show
+  which sources have each currency; find a coin even on a source that lacks it and get a one-tap
+  prompt to switch source and add it
+- **Forced source** selection in Settings (Auto / ExchangeRate-API / F.A. / Frankfurter), others stay as fallback
+- **40 languages** with automatic device-language detection (RTL for Arabic/Hebrew/Persian)
+- **Drag to reorder**, delete-with-confirmation, CLEAR, searchable add dialog
+- **Persistent** currencies, order, precision, source and language across restarts
+- **Android:** in-app auto-update via GitHub Releases; settings backed up via Google Backup
+- **PWA:** installable, works offline (app shell cached), local-only settings
 
-## Screenshots
+## Rate sources
 
-| Main screen | Add currency |
-|---|---|
-| _(install APK and screenshot)_ | _(search by code or name)_ |
+Multi-source fallback chain (all normalized to EUR base), tried in order; the current source is
+shown in the header:
 
-## Architecture
+1. **ExchangeRate-API** (`open.er-api.com`) — primary. Open Access tier **requires attribution**:
+   the "Rates By Exchange Rate API" link back to [exchangerate-api.com](https://www.exchangerate-api.com)
+   shown in the footer.
+2. **F.A.** — Fawaz Ahmed currency-api (jsDelivr + `currency-api.pages.dev` mirror). CC0 public
+   domain, no attribution. 300+ currencies incl. crypto/metals.
+3. **Frankfurter** (`api.frankfurter.dev`) — MIT-licensed API, data from the European Central Bank (ECB).
+
+All are free, no API key, CORS-enabled. Rates update roughly once a day; the difference from XE is
+usually under 0.5% — these are mid-market reference rates, not real-time quotes.
+
+## Repository layout
 
 ```
-app/src/main/java/com/example/currencyconverter/
-├── MainActivity.kt              # Activity: RecyclerView, ItemTouchHelper, dialogs
-├── data/
-│   ├── ExchangeRateApi.kt       # Retrofit interface (GET /v6/latest/{base})
-│   ├── ExchangeRateResponse.kt  # Data model for API response
-│   └── CurrencyRepository.kt   # Network layer, returns Result<T>
-└── ui/
-    ├── CurrencyItem.kt          # RecyclerView item model + CurrencyInfo
-    ├── CurrencyAdapter.kt       # RecyclerView adapter with drag support
-    └── CurrencyViewModel.kt     # AndroidViewModel: state, rates, persistence
+app/                         # Android app (Kotlin)
+  src/main/java/com/example/currencyconverter/
+    MainActivity.kt          # UI: RecyclerView, ItemTouchHelper, dialogs, language/source pickers
+    UpdateChecker.kt         # In-app auto-update via GitHub Releases API
+    data/CurrencyRepository.kt  # OkHttp multi-source fetch + per-source currency lists
+    ui/CurrencyViewModel.kt  # AndroidViewModel: state, rates, persistence, source availability
+    ui/CurrencyAdapter.kt    # Row binding, smart rounding, drag, double-tap select-all
+  src/main/res/values*/      # strings.xml in 40 languages (default = English)
+web/                         # PWA (vanilla JS/CSS, no build step)
+  index.html  app.js  styles.css  sw.js  manifest.webmanifest
+  i18n.js                    # auto-generated from Android strings.xml (40 languages)
+  currency-data.js           # auto-generated from CurrencyViewModel.kt (symbols/names/flags)
+  icons/
+release.sh                   # single release command: Android + PWA in sync, auto-deploy
 ```
 
-**Stack:**
-- Kotlin + ViewBinding
-- ViewModel + StateFlow (unidirectional data flow)
-- Retrofit 2 + OkHttp 4 + Gson
-- RecyclerView + DiffUtil + ItemTouchHelper
-- Material Components (MaterialCardView)
-- SharedPreferences for persistence
+**Android stack:** Kotlin, ViewBinding, AndroidViewModel + StateFlow, OkHttp 4 + Gson,
+RecyclerView + DiffUtil + ItemTouchHelper, Material Components, SharedPreferences,
+per-app locales via `AppCompatDelegate.setApplicationLocales`.
 
 ## Exchange rate logic
 
-Rates are fetched with EUR as base. All conversions go through EUR as the pivot:
+Rates are fetched relative to EUR (the pivot). Any pair is a cross-rate `rate[target] / rate[source]`
+computed from a single snapshot — no extra requests when switching the active currency:
 
 ```
 amountInEUR = userInput / rate[activeCurrency]
 result[X]   = amountInEUR × rate[X]
 ```
 
-This gives true mid-market cross rates for any currency pair.
+The pivot is an implementation detail; the displayed rate line uses the active currency as base.
 
-## Building
+## Building the Android app
 
-### Requirements
-
-- macOS (tested on Sonoma / Apple Silicon)
-- JDK 17: `brew install openjdk@17`
-- Android SDK: download [command-line tools](https://developer.android.com/studio#command-tools), unzip to `~/android-sdk/cmdline-tools/latest/`
-- Gradle: `brew install gradle && gradle wrapper` (or use the included `gradlew`)
-
-### Build debug APK
+Requirements: macOS, JDK 17 (`brew install openjdk@17`), Android SDK command-line tools in
+`~/android-sdk/cmdline-tools/latest/`, `platforms;android-34` + `build-tools;34.0.0`.
 
 ```bash
 export JAVA_HOME=$(brew --prefix openjdk@17)
 export ANDROID_HOME=$HOME/android-sdk
 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$PATH
-
-# First time only — accept SDK licenses and install build tools
-sdkmanager --licenses
-sdkmanager "platforms;android-34" "build-tools;34.0.0"
-
-# Build
 ./gradlew assembleDebug
+# APK → app/build/outputs/apk/debug/app-debug.apk
 ```
 
-APK output: `app/build/outputs/apk/debug/app-debug.apk`
+## Releasing (always use the script)
 
-### Install to device
+`release.sh` is the **single source of truth** — it derives everything from one number `N` so the
+Android `versionCode`, `versionName`, the git tag, the release body, the PWA `APP_VERSION` and the
+service-worker cache all stay in sync (a mismatch would cause an endless in-app "update" loop):
 
 ```bash
-adb install app/build/outputs/apk/debug/app-debug.apk
+./release.sh            # auto-increment
+./release.sh 28         # release version 28 explicitly
+./release.sh 28 "note"  # with a custom release note
 ```
 
-## Project config
+It builds the APK, bumps the PWA version + SW cache, commits & pushes, creates GitHub release
+`vN` with asset `FIXXE-vN.apk`, and **auto-deploys the PWA** to the VM (best-effort).
 
-| Parameter | Value |
-|---|---|
-| `minSdk` | 24 (Android 7.0) |
-| `targetSdk` | 34 (Android 14) |
-| `compileSdk` | 34 |
-| `versionName` | 1.0 |
-| Package | `com.example.currencyconverter` |
+## PWA hosting
 
-## Key dependencies
-
-| Library | Version | Purpose |
-|---|---|---|
-| `androidx.recyclerview` | 1.3.2 | Currency list |
-| `lifecycle-viewmodel-ktx` | 2.7.0 | ViewModel + coroutine scope |
-| `kotlinx-coroutines-android` | 1.7.3 | Async network + auto-refresh |
-| `retrofit2` | 2.9.0 | HTTP client |
-| `converter-gson` | 2.9.0 | JSON parsing |
-| `okhttp3` | 4.12.0 | HTTP engine |
-| `material` | 1.11.0 | MaterialCardView |
-
-## Default currencies
-
-On first install: `EUR · USD · RSD · GEL · ILS · TJS · CHF`  
-Add or remove any of the 60+ supported currencies via the **+ Add currency** button.
-
-## Releasing (IMPORTANT — always use the script)
-
-The app auto-updates by comparing its own `versionCode` against the latest GitHub
-release tag (`versionCodeFromTag("v8") → 8`). If the APK's `versionCode` does **not**
-equal the tag number, the app prompts to "update" forever in a loop.
-
-**Therefore: never run `gh release create` by hand.** Always release with the script,
-which derives `versionCode`, `versionName`, the git tag, and the release body from a
-single number `N` — making drift impossible:
-
-```bash
-./release.sh        # auto-increment (current versionCode + 1)
-./release.sh 8      # release version 8 explicitly
-./release.sh 8 "Fixed X"   # with custom release note
-```
-
-The script guarantees `versionCode == versionName minor == tag` (e.g. `8 / 1.8 / v8`).
-After release, verify with:
-
-```bash
-$ANDROID_HOME/build-tools/*/aapt2 dump badging app/build/outputs/apk/debug/app-debug.apk | grep versionCode
-```
-
-The first line of every release body is `versionName=1.N`, which the in-app updater
-reads to show a human-friendly "Доступна версия 1.N" instead of the raw tag.
-
-## Rate source
-
-Multi-source fallback chain (all normalized to EUR base), tried in order:
-
-1. **ExchangeRate-API** (`open.er-api.com`) — primary. Open Access tier **requires
-   attribution**: a visible "Rates By Exchange Rate API" link back to
-   [exchangerate-api.com](https://www.exchangerate-api.com) (shown in the app footer).
-2. **F.A. currency-api** (jsDelivr + `currency-api.pages.dev` mirror) — CC0
-   public domain, no attribution required. 300+ currencies incl. crypto.
-3. **Frankfurter** (`api.frankfurter.dev`) — MIT-licensed API, data from the European
-   Central Bank (ECB). No hard attribution requirement.
-
-Users can force a specific source in Settings (⚙); the others stay as fallback.
-Displayed rates are mid-market reference rates, not buy/sell spreads.
+The web app is served by nginx on the VM `edge2il` (`127.0.0.1:8080`) behind a Cloudflare Tunnel
+(`cloudflared`, systemd) mapped to `fixe.l23.xyz`. `release.sh` redeploys it automatically; a manual
+deploy is `tar → scp → extract → systemctl reload nginx`. Assets carry `Cache-Control: no-cache`
+so updates propagate immediately; installed PWAs refresh on the next open via the SW cache bump.
 
 ## License
 
-MIT © Atlanteg
+MIT © Atlanteg. Displayed rates are mid-market reference rates. "Rates By Exchange Rate API"
+attribution is required by ExchangeRate-API's Open Access tier and shown in-app.

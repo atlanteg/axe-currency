@@ -43,4 +43,9 @@
     <string name="language_system">Bawaan sistem</string>
     <string name="source_info_title">Sumber kurs</string>
     <string name="source_info_message">Kurs tengah pasar — titik tengah antara harga beli dan jual di pasar global, referensi yang sama dengan yang ditampilkan XE.\n\nMata uang dasar: EUR, pasangan lain dihitung melalui euro.\n\nSumber (cadangan otomatis):\n1. ExchangeRate-API — utama\n2. F.A. — jika yang utama tidak aktif\n3. Frankfurter (ECB) — cadangan kedua\n\nJika sumber utama tidak merespons saat pembaruan otomatis atau saat menekan ↻, aplikasi otomatis mengambil data dari sumber berikutnya. Sumber saat ini ditampilkan di atas, di samping waktu pembaruan.\n\nDi Pengaturan (⚙) Anda dapat memaksa sumber tertentu — yang lain tetap menjadi cadangan.\n\nDiperbarui sekali sehari. Selisih dari XE biasanya di bawah 0.5% — ini adalah kurs referensi, bukan kutipan waktu nyata.\n\nLisensi dan atribusi:\n• ExchangeRate-API — memerlukan tautan “Rates By Exchange Rate API” (di footer, dapat diklik).\n• F.A. — CC0 (domain publik), tanpa atribusi.\n• Frankfurter — MIT, data dari Bank Sentral Eropa (ECB).</string>
+    <string name="filter_all">Semua</string>
+    <string name="switch_source_title">Ganti sumber?</string>
+    <string name="switch_source_msg">%1$s tersedia melalui %2$s, bukan sumber saat ini. Ganti dan tambahkan?</string>
+    <string name="switch_and_add">Ganti &amp; tambah</string>
+    <string name="already_added">Sudah ada di daftar</string>
 </resources>

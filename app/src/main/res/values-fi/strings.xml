@@ -43,4 +43,9 @@
     <string name="language_system">Järjestelmän oletus</string>
     <string name="source_info_title">Kurssilähde</string>
     <string name="source_info_message">Keskimarkkinakurssi — osto- ja myyntikurssin keskiarvo maailmanmarkkinoilla, sama viitearvo jonka XE näyttää.\n\nPerusvaluutta: EUR, muut parit lasketaan euron kautta.\n\nLähteet (automaattinen varajärjestelmä):\n1. ExchangeRate-API — ensisijainen\n2. F.A. — jos ensisijainen ei toimi\n3. Frankfurter (ECB) — toinen varalähde\n\nJos ensisijainen lähde ei vastaa automaattipäivityksen aikana tai painettaessa ↻, sovellus hakee tiedot automaattisesti seuraavasta. Nykyinen lähde näkyy ylhäällä päivitysajan vieressä.\n\nAsetuksissa (⚙) voit pakottaa tietyn lähteen — muut jäävät silti varalähteiksi.\n\nPäivittyy kerran päivässä. Ero XE:hen on yleensä alle 0.5% — nämä ovat viitekursseja, eivät reaaliaikaisia noteerauksia.\n\nLisenssit ja attribuutio:\n• ExchangeRate-API — vaatii linkin “Rates By Exchange Rate API” (alatunnisteessa, klikattava).\n• F.A. — CC0 (public domain), ei attribuutiota vaadita.\n• Frankfurter — MIT, tiedot European Central Bank (ECB).</string>
+    <string name="filter_all">Kaikki</string>
+    <string name="switch_source_title">Vaihdetaanko lähde?</string>
+    <string name="switch_source_msg">%1$s on saatavilla lähteen %2$s kautta, ei nykyisen lähteen. Vaihda ja lisää?</string>
+    <string name="switch_and_add">Vaihda ja lisää</string>
+    <string name="already_added">Jo listassa</string>
 </resources>
