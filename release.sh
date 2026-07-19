@@ -27,6 +27,10 @@ echo "▶ Выпускаю версию $N (versionCode=$N, versionName=1.$N, т
 sed -i '' -E "s/versionCode = [0-9]+/versionCode = $N/" "$GRADLE"
 sed -i '' -E "s/versionName = \"[^\"]*\"/versionName = \"1.$N\"/" "$GRADLE"
 
+# 1b. Синхронизируем версию PWA-веб-версии с Android (та же 1.N) + бампим кэш SW
+sed -i '' -E "s/const APP_VERSION = '[^']*'/const APP_VERSION = '1.$N'/" web/app.js
+sed -i '' -E "s/const CACHE = 'fixe-[^']*'/const CACHE = 'fixe-v$N'/" web/sw.js
+
 # 2. Сборка
 export JAVA_HOME="$(brew --prefix openjdk@17)"
 export ANDROID_HOME="$HOME/android-sdk"
@@ -53,4 +57,15 @@ gh release create "v$N" "$NAMED_APK" \
 
 $NOTE"
 
-echo "✓ Готово: v$N выпущен. versionCode=$N == тег v$N — петли обновления не будет."
+echo "✓ Android v$N выпущен. versionCode=$N == тег v$N — петли обновления не будет."
+
+# 5. Деплой веб-версии на VM edge2il (best-effort — если хост доступен)
+VM="ubuntu@130.110.238.118"
+if tar czf /tmp/fixe-web.tgz -C web . 2>/dev/null && \
+   scp -q -o BatchMode=yes -o ConnectTimeout=8 /tmp/fixe-web.tgz "$VM:/tmp/" 2>/dev/null; then
+  ssh -o BatchMode=yes -o ConnectTimeout=8 "$VM" \
+    'sudo tar xzf /tmp/fixe-web.tgz -C /var/www/fixe 2>/dev/null && sudo systemctl reload nginx' \
+    && echo "✓ PWA задеплоена на https://fixe.l23.xyz (версия 1.$N)"
+else
+  echo "⚠ PWA не задеплоена (VM недоступна) — задеплой вручную позже"
+fi
