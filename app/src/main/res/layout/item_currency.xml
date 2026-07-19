@@ -96,6 +96,7 @@
                     android:singleLine="true"
                     android:hint="0"
                     android:textColorHint="#CCCCCC"
+                    android:selectAllOnFocus="true"
                     android:paddingVertical="0dp" />
             </LinearLayout>
 
