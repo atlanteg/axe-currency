@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>FiXE</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.png">
+<!-- iOS PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FiXE">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <!-- Header -->
+  <header class="header">
+    <span id="badge" class="badge">—</span>
+    <span id="status" class="status"></span>
+    <button id="btnRefresh" class="icon-btn" title="Refresh">↻</button>
+    <button id="btnSettings" class="icon-btn gear" title="Settings">⚙</button>
+  </header>
+
+  <!-- Clear -->
+  <div class="clear-row"><button id="btnClear" class="clear-btn">CLEAR</button></div>
+
+  <!-- List -->
+  <main id="list" class="list"></main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <button id="btnAdd" class="add-btn"></button>
+      <button id="btnInfo" class="info-btn"></button>
+    </div>
+    <div class="footer-bottom">
+      <span class="copyright">© Atlanteg</span>
+      <a id="attribution" class="attribution" href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a>
+      <span id="version" class="version"></span>
+    </div>
+  </footer>
+</div>
+
+<!-- Modal host -->
+<div id="modal-root"></div>
+
+<script src="i18n.js"></script>
+<script src="currency-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
