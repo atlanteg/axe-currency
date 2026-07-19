@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = CurrencyAdapter(
             onAmountChanged = { code, amount -> vm.setActiveAmount(code, amount) },
-            onDeleteClick   = { code -> vm.removeCurrency(code) }
+            onDeleteClick   = { code -> confirmDelete(code) }
         )
 
         val dragCallback = object : ItemTouchHelper.SimpleCallback(
@@ -91,7 +91,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.tvVersion.text = "v${BuildConfig.VERSION_NAME}"
+        binding.tvVersion.text = "ver. ${BuildConfig.VERSION_NAME}"
+        binding.btnSourceInfo.setOnClickListener { showSourceInfoDialog() }
 
         binding.btnRefresh.setOnClickListener { vm.refresh() }
         binding.btnClear.setOnClickListener {
@@ -108,6 +109,33 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         vm.refresh()
+    }
+
+    private fun confirmDelete(code: String) {
+        val name = CurrencyViewModel.currencyName(code)
+        AlertDialog.Builder(this)
+            .setTitle("Удалить валюту?")
+            .setMessage("Убрать $code — $name из списка?")
+            .setPositiveButton("Удалить") { _, _ -> vm.removeCurrency(code) }
+            .setNegativeButton("Отмена", null)
+            .show()
+    }
+
+    private fun showSourceInfoDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Источник курсов")
+            .setMessage(
+                "Курсы предоставляет ExchangeRate-API (open.er-api.com).\n\n" +
+                "• Тип: mid-market — средний курс между покупкой и продажей на мировом рынке, " +
+                "тот же ориентир, что показывает XE.\n\n" +
+                "• Базовая валюта: EUR, остальные пары считаются через евро.\n\n" +
+                "• Обновление источника: раз в сутки (~00:00 UTC). Кнопка ↻ перезапрашивает " +
+                "данные, но сам источник меняет цифры только раз в день.\n\n" +
+                "• Точность: обычно расхождение с XE менее 0.5%. Это справочные курсы, " +
+                "а не котировки реального времени."
+            )
+            .setPositiveButton("Понятно", null)
+            .show()
     }
 
     private fun checkForUpdate() {
@@ -208,9 +236,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         dialog = AlertDialog.Builder(this)
-            .setTitle("Add currency")
+            .setTitle("Выберите из ${all.size} доступных валют")
             .setView(dialogView)
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton("Отмена", null)
             .create()
 
         dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
