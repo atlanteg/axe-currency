@@ -93,8 +93,9 @@
             android:letterSpacing="0.12" />
 
         <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:adjustViewBounds="true"
             android:layout_centerInParent="true"
             android:scaleType="fitCenter"
             android:src="@drawable/logo_mini"

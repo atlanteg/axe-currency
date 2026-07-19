@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.35';
+const APP_VERSION = '1.36';
 
 /* ---------- Persistence ---------- */
 const store = {
