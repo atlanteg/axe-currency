@@ -151,11 +151,20 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
         if (allRates.isEmpty()) return emptyList()
         val activeRateInEur = allRates[activeCurrency] ?: 1.0
         val amountInEur = if (activeRateInEur != 0.0) activeAmount / activeRateInEur else 0.0
+
+        // Динамическая база отображения = активная валюта (та, что вводишь/меняешь).
+        // Если активной нет в таблице (напр. кадр во время CLEAR) — показываем от EUR.
+        val pivot = if (allRates.containsKey(activeCurrency)) activeCurrency else "EUR"
+        val pivotRate = allRates[pivot] ?: 1.0
+        val baseLabel = getApplication<android.app.Application>()
+            .getString(com.example.currencyconverter.R.string.base_currency)
+
         return displayCurrencies.mapNotNull { code ->
             val rateInEur = allRates[code] ?: return@mapNotNull null
             val converted = amountInEur * rateInEur
-            val rateText = if (code == "EUR") getApplication<android.app.Application>().getString(com.example.currencyconverter.R.string.base_currency)
-                          else "1 EUR = ${fmtRate(rateInEur)} $code"
+            // Кросс-курс относительно активной валюты: rate[code] / rate[pivot]
+            val rateText = if (code == pivot) baseLabel
+                          else "1 $pivot = ${fmtRate(rateInEur / pivotRate)} $code"
             CurrencyItem(
                 code = code,
                 name = currencyName(code),
