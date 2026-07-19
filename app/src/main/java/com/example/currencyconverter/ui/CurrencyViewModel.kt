@@ -153,6 +153,42 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
 
     fun isAdded(code: String): Boolean = displayCurrencies.contains(code)
 
+    // --- Источники: какая валюта где доступна ---
+    private var sourceCodes: Map<String, Set<String>> = emptyMap()
+    private val sourceNames = listOf("ExchangeRate-API", "F.A.", "Frankfurter (ECB)")
+
+    fun sourceCodesLoaded() = sourceCodes.isNotEmpty()
+
+    fun loadSourceCodes(onDone: () -> Unit) {
+        if (sourceCodes.isNotEmpty()) { onDone(); return }
+        viewModelScope.launch {
+            sourceCodes = repository.fetchSourceCodes()
+            onDone()
+        }
+    }
+
+    // Индексы источников (0=er-api,1=F.A.,2=Frankfurter), где есть код
+    fun sourcesWith(code: String): List<Int> =
+        sourceNames.mapIndexedNotNull { i, n -> if (sourceCodes[n]?.contains(code) == true) i else null }
+
+    fun codesForSource(idx: Int): Set<String> = sourceCodes[sourceNames.getOrNull(idx)] ?: emptySet()
+
+    // Объединение всех валют (активный источник + все списки)
+    fun allCurrencyCodesUnion(): List<String> {
+        val u = HashSet(allRates.keys)
+        sourceCodes.values.forEach { u.addAll(it) }
+        return u.sorted().map { it }
+    }
+
+    fun isInActiveSource(code: String) = allRates.containsKey(code)
+
+    // Принудительно переключить источник и добавить валюту
+    fun switchSourceAndAdd(code: String, srcIdx: Int) {
+        prefs.edit().putInt("rate_source", srcIdx + 1).apply()
+        if (!displayCurrencies.contains(code)) { displayCurrencies.add(code); saveCurrencies() }
+        refresh()
+    }
+
     private fun buildItems(): List<CurrencyItem> {
         if (allRates.isEmpty()) return emptyList()
         val activeRateInEur = allRates[activeCurrency] ?: 1.0

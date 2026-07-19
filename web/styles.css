@@ -124,6 +124,15 @@ body{
 .pick-row .pn{flex:1; font-size:13px; color:#777; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .pick-row.added{opacity:.4; cursor:default}
 .pick-row .added-tag{color:#43A047; font-weight:700; font-size:15px; margin-inline-start:6px}
+.pick-row .src-dots{display:flex; gap:4px; align-items:center; margin-inline-start:8px}
+.pick-row .src-dots .dot{width:9px; height:9px; border-radius:50%}
+.pick-row.unavail{opacity:.72}
+/* Фильтр по источнику */
+.src-filter{display:flex; gap:6px; padding:8px 14px; border-bottom:1px solid var(--line); overflow-x:auto; -webkit-overflow-scrolling:touch}
+.chip{border:1px solid #ddd; background:#fff; border-radius:14px; padding:5px 11px; font-size:12px;
+  white-space:nowrap; cursor:pointer; color:#555; display:flex; align-items:center; gap:5px; font-family:inherit}
+.chip .cdot{width:8px; height:8px; border-radius:50%}
+.chip.on{color:#fff; border-color:transparent; background:#455A64}
 .pick-list{overflow-y:auto}
 [dir="rtl"] .row1,[dir="rtl"] .row2{direction:rtl}
 [dir="rtl"] .amount{text-align:left}

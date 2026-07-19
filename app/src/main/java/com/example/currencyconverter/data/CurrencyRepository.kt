@@ -92,6 +92,34 @@ class CurrencyRepository {
         Result.failure(lastError ?: Exception("Нет доступных источников"))
     }
 
+    /** Списки кодов валют по каждому источнику (какая валюта где есть). Best-effort. */
+    suspend fun fetchSourceCodes(): Map<String, Set<String>> = withContext(Dispatchers.IO) {
+        val res = LinkedHashMap<String, Set<String>>()
+        fetchCodes("https://open.er-api.com/v6/latest/EUR") { o ->
+            if (o.get("result")?.asString == "success") o.getAsJsonObject("rates").keySet().toSet() else null
+        }?.let { res["ExchangeRate-API"] = it }
+
+        (fetchCodes("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json") { o ->
+            o.keySet().map { it.uppercase() }.toSet()
+        } ?: fetchCodes("https://latest.currency-api.pages.dev/v1/currencies.json") { o ->
+            o.keySet().map { it.uppercase() }.toSet()
+        })?.let { res["F.A."] = it }
+
+        fetchCodes("https://api.frankfurter.dev/v1/currencies") { o ->
+            o.keySet().toMutableSet().apply { add("EUR") }
+        }?.let { res["Frankfurter (ECB)"] = it }
+
+        res
+    }
+
+    private fun fetchCodes(url: String, extract: (JsonObject) -> Set<String>?): Set<String>? = try {
+        val req = Request.Builder().url(url).build()
+        client.newCall(req).execute().use { resp ->
+            if (!resp.isSuccessful) null
+            else resp.body?.string()?.let { extract(gson.fromJson(it, JsonObject::class.java)) }
+        }
+    } catch (e: Exception) { null }
+
     private fun parseRates(obj: JsonObject?): Map<String, Double> {
         if (obj == null) return emptyMap()
         val map = HashMap<String, Double>(obj.size())

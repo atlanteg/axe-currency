@@ -34,6 +34,10 @@
     <string name="add_currency_title">Choose from %1$d available currencies</string>
     <string name="search_hint">Code or name…</string>
     <string name="already_added">Already in list</string>
+    <string name="filter_all">All</string>
+    <string name="switch_source_title">Switch source?</string>
+    <string name="switch_source_msg">%1$s is available via %2$s, not the current source. Switch and add it?</string>
+    <string name="switch_and_add">Switch &amp; add</string>
 
     <!-- Update -->
     <string name="update_title">Update available</string>

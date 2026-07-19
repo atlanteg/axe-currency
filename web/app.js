@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.25';
+const APP_VERSION = '1.26';
 
 /* ---------- Persistence ---------- */
 const store = {
@@ -90,6 +90,35 @@ const SOURCES = [
   { name:'Frankfurter (ECB)', urls:['https://api.frankfurter.dev/v1/latest?base=EUR'],
     parse:j => { const o=Object.assign({}, j.rates); o.EUR=1; return o; } },
 ];
+
+// Метаданные источников для UI (индекс+1 = sourceMode при принудительном выборе)
+const SOURCE_META = [
+  { name:'ExchangeRate-API', short:'er-api', color:'#1565C0' },
+  { name:'F.A.',             short:'F.A.',   color:'#43A047' },
+  { name:'Frankfurter (ECB)',short:'ECB',    color:'#FB8C00' },
+];
+// Наборы кодов валют по каждому источнику (какая валюта где есть)
+let sourceCodes = { 'ExchangeRate-API':null, 'F.A.':null, 'Frankfurter (ECB)':null };
+
+async function loadSourceCodes(){
+  const j = async (u,f)=>{ try{ const r=await fetch(u,{cache:'no-store'}); return f(await r.json()); }catch(e){ return null; } };
+  const [a,b,c] = await Promise.all([
+    j('https://open.er-api.com/v6/latest/EUR', d=> d.result==='success'? Object.keys(d.rates):null),
+    j('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json', d=> Object.keys(d).map(k=>k.toUpperCase()))
+      .then(x=> x || j('https://latest.currency-api.pages.dev/v1/currencies.json', d=> Object.keys(d).map(k=>k.toUpperCase()))),
+    j('https://api.frankfurter.dev/v1/currencies', d=> [...Object.keys(d),'EUR']),
+  ]);
+  if (a) sourceCodes['ExchangeRate-API'] = new Set(a);
+  if (b) sourceCodes['F.A.'] = new Set(b);
+  if (c) sourceCodes['Frankfurter (ECB)'] = new Set(c);
+}
+
+// В каких источниках есть код (массив индексов SOURCE_META)
+function sourcesWith(code){
+  const out=[];
+  SOURCE_META.forEach((s,i)=>{ if (sourceCodes[s.name] && sourceCodes[s.name].has(code)) out.push(i); });
+  return out;
+}
 
 async function fetchRates(){
   const ordered = (sourceMode>=1 && sourceMode<=SOURCES.length)
@@ -283,33 +312,81 @@ function clearAll(){
 }
 
 function showAdd(){
-  const all = Object.keys(allRates).sort();
-  if (!all.length) return;
+  let filter = 'all';   // 'all' | 0 | 1 | 2 (индекс источника)
   const m = modal(`<div class="modal">
     <div class="search-box">🔍<input id="psearch" placeholder="${t('search_hint')}"></div>
+    <div class="src-filter" id="chips"></div>
     <div class="pick-list" id="picks"></div>
     <div class="actions"><button data-x>${t('cancel')}</button></div>
   </div>`);
+  const chips = m.querySelector('#chips');
   const picks = m.querySelector('#picks');
-  const draw = q=>{
-    const f = all.filter(c=> c.toLowerCase().includes(q) || cName(c).toLowerCase().includes(q));
-    picks.innerHTML = f.map(c=>{
-      const added = displayCurrencies.includes(c);
-      return `<div class="pick-row${added?' added':''}" data-code="${c}">`+
-        `<span class="pf">${cFlag(c)}</span><span class="pc">${c}</span>`+
-        `<span class="pn">${cName(c)}</span>${added?'<span class="added-tag" title="'+t('already_added')+'">✓</span>':''}</div>`;
-    }).join('');
-    // Кликабельны только НЕ добавленные
-    picks.querySelectorAll('.pick-row:not(.added)').forEach(row=> row.onclick=()=>{
-      displayCurrencies.push(row.dataset.code);
-      store.set('currencies', displayCurrencies); closeModal(); render();
+  const inp   = m.querySelector('#psearch');
+
+  const allCodes = ()=>{
+    const u = new Set(Object.keys(allRates));
+    SOURCE_META.forEach(s=>{ const set=sourceCodes[s.name]; if(set) set.forEach(c=>u.add(c)); });
+    return [...u].sort();
+  };
+
+  const drawChips = ()=>{
+    const mk = (key,label,color,on)=>
+      `<button class="chip${on?' on':''}" data-f="${key}" style="${on&&color?`background:${color}`:''}">`+
+      `${color?`<span class="cdot" style="background:${on?'#fff':color}"></span>`:''}${label}</button>`;
+    chips.innerHTML = mk('all', t('filter_all'), '', filter==='all') +
+      SOURCE_META.map((s,i)=> mk(String(i), s.short, s.color, filter===i)).join('');
+    chips.querySelectorAll('.chip').forEach(b=> b.onclick=()=>{
+      const f=b.dataset.f; filter = f==='all'?'all':(+f);
+      drawChips(); draw(inp.value.trim().toLowerCase());
     });
   };
-  draw('');
-  const inp = m.querySelector('#psearch');
+
+  const draw = q=>{
+    let list = allCodes();
+    if (filter!=='all'){ const set=sourceCodes[SOURCE_META[filter].name]; list = list.filter(c=> set && set.has(c)); }
+    if (q) list = list.filter(c=> c.toLowerCase().includes(q) || cName(c).toLowerCase().includes(q));
+    picks.innerHTML = list.map(c=>{
+      const added = displayCurrencies.includes(c);
+      const inActive = allRates[c]!==undefined;
+      const dots = sourcesWith(c).map(i=>`<span class="dot" style="background:${SOURCE_META[i].color}" title="${SOURCE_META[i].short}"></span>`).join('');
+      return `<div class="pick-row${added?' added':''}${(!inActive&&!added)?' unavail':''}" data-code="${c}">`+
+        `<span class="pf">${cFlag(c)}</span><span class="pc">${c}</span>`+
+        `<span class="pn">${cName(c)}</span>`+
+        `<span class="src-dots">${dots}</span>`+
+        `${added?'<span class="added-tag" title="'+t('already_added')+'">✓</span>':''}</div>`;
+    }).join('');
+    picks.querySelectorAll('.pick-row:not(.added)').forEach(row=> row.onclick=()=>{
+      const c=row.dataset.code;
+      if (allRates[c]!==undefined){          // есть в активном источнике — добавляем сразу
+        displayCurrencies.push(c); store.set('currencies', displayCurrencies); closeModal(); render();
+      } else {                               // есть только в другом — предлагаем переключиться
+        const srcs = sourcesWith(c);
+        if (srcs.length) confirmSwitch(c, srcs[0]);
+      }
+    });
+  };
+
+  drawChips(); draw('');
+  // если списки источников ещё не загрузились — подтянуть и перерисовать
+  if (!sourceCodes['F.A.']) loadSourceCodes().then(()=>{ drawChips(); draw(inp.value.trim().toLowerCase()); });
   inp.addEventListener('input', ()=> draw(inp.value.trim().toLowerCase()));
   m.querySelector('[data-x]').onclick = closeModal;
   setTimeout(()=>inp.focus(), 50);
+}
+
+function confirmSwitch(code, srcIdx){
+  const s = SOURCE_META[srcIdx];
+  const m = modal(`<div class="modal">
+    <h3>${t('switch_source_title')}</h3>
+    <div class="msg">${t('switch_source_msg', code, s.name)}</div>
+    <div class="actions"><button data-x>${t('back')}</button><button data-ok>${t('switch_and_add')}</button></div>
+  </div>`);
+  m.querySelector('[data-x]').onclick = showAdd;   // назад к списку
+  m.querySelector('[data-ok]').onclick = ()=>{
+    sourceMode = srcIdx+1; store.set('source', sourceMode);
+    if(!displayCurrencies.includes(code)){ displayCurrencies.push(code); store.set('currencies', displayCurrencies); }
+    closeModal(); refresh();
+  };
 }
 
 function showInfo(){
@@ -381,6 +458,7 @@ $('#btnSettings').onclick = showSettings;
 
 render();
 refresh();
+loadSourceCodes();   // подтягиваем списки валют всех источников (для значков в поиске)
 setInterval(refresh, 30*60*1000);
 document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) refresh(); });
 

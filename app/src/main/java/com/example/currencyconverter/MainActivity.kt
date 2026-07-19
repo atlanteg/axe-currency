@@ -263,23 +263,34 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun showAddDialog() {
-        val all = vm.getAllCurrencies()          // ВСЕ валюты (добавленные тоже)
-        if (all.isEmpty()) return
-        val addableCount = vm.getAvailableCurrencies().size
+    private val SRC_SHORT  = arrayOf("er-api", "F.A.", "ECB")
+    private val SRC_COLORS = intArrayOf(0xFF1565C0.toInt(), 0xFF43A047.toInt(), 0xFFFB8C00.toInt())
 
+    private fun showAddDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_currency, null)
         val etSearch = dialogView.findViewById<EditText>(R.id.etSearch)
         val listView = dialogView.findViewById<ListView>(R.id.listView)
+        val chipRow  = dialogView.findViewById<android.widget.LinearLayout>(R.id.chipRow)
+        val density  = resources.displayMetrics.density
 
-        var filtered = all.toMutableList()
+        var filter = -1                       // -1 = все, иначе индекс источника
+        var filtered = mutableListOf<CurrencyInfo>()
+        var dialog: AlertDialog? = null
+
+        fun applyFilter() {
+            val q = etSearch.text.toString().trim().lowercase()
+            var list = vm.allCurrencyCodesUnion()
+            if (filter >= 0) { val set = vm.codesForSource(filter); list = list.filter { set.contains(it) } }
+            if (q.isNotEmpty()) list = list.filter {
+                it.lowercase().contains(q) || CurrencyViewModel.currencyName(it).lowercase().contains(q)
+            }
+            filtered = list.map { CurrencyInfo(it, CurrencyViewModel.currencyName(it)) }.toMutableList()
+        }
 
         val rowAdapter = object : BaseAdapter() {
             override fun getCount() = filtered.size
             override fun getItem(pos: Int): CurrencyInfo = filtered[pos]
             override fun getItemId(pos: Int) = pos.toLong()
-
-            // Уже добавленные — некликабельны
             override fun areAllItemsEnabled() = false
             override fun isEnabled(pos: Int) = !vm.isAdded(filtered[pos].code)
 
@@ -288,43 +299,76 @@ class MainActivity : AppCompatActivity() {
                     .inflate(R.layout.dialog_currency_row, parent, false)
                 val item = filtered[pos]
                 val added = vm.isAdded(item.code)
+                val inActive = vm.isInActiveSource(item.code)
                 view.findViewById<TextView>(R.id.tvFlag).text = currencyFlag(item.code)
                 view.findViewById<TextView>(R.id.tvCode).text = item.code
                 view.findViewById<TextView>(R.id.tvName).text = item.name
-                view.findViewById<TextView>(R.id.tvAdded).visibility =
-                    if (added) View.VISIBLE else View.GONE
-                view.alpha = if (added) 0.4f else 1f
+                view.findViewById<TextView>(R.id.tvAdded).visibility = if (added) View.VISIBLE else View.GONE
+                view.alpha = if (added) 0.4f else if (!inActive) 0.72f else 1f
+                // Цветные точки источников
+                val dots = view.findViewById<android.widget.LinearLayout>(R.id.dots)
+                dots.removeAllViews()
+                for (i in vm.sourcesWith(item.code)) {
+                    val d = View(this@MainActivity)
+                    val sz = (9 * density).toInt()
+                    val lp = android.widget.LinearLayout.LayoutParams(sz, sz)
+                    lp.marginStart = (4 * density).toInt()
+                    d.layoutParams = lp
+                    d.background = androidx.core.content.ContextCompat.getDrawable(this@MainActivity, R.drawable.bg_dot)
+                    d.backgroundTintList = android.content.res.ColorStateList.valueOf(SRC_COLORS[i])
+                    dots.addView(d)
+                }
                 return view
             }
         }
-
         listView.adapter = rowAdapter
 
-        var dialog: AlertDialog? = null
+        fun refilterAndDraw() { applyFilter(); rowAdapter.notifyDataSetChanged() }
+
+        fun buildChips() {
+            chipRow.removeAllViews()
+            fun addChip(label: String, idx: Int, color: Int, on: Boolean) {
+                val tv = TextView(this@MainActivity)
+                tv.text = label; tv.textSize = 12f
+                tv.setPadding((11*density).toInt(), (5*density).toInt(), (11*density).toInt(), (5*density).toInt())
+                val bg = android.graphics.drawable.GradientDrawable()
+                bg.cornerRadius = 14 * density
+                if (on) { bg.setColor(color); tv.setTextColor(android.graphics.Color.WHITE) }
+                else { bg.setColor(android.graphics.Color.WHITE); bg.setStroke((1*density).toInt(), 0xFFDDDDDD.toInt()); tv.setTextColor(0xFF555555.toInt()) }
+                tv.background = bg
+                val lp = android.widget.LinearLayout.LayoutParams(
+                    android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
+                    android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
+                lp.marginEnd = (6*density).toInt()
+                tv.layoutParams = lp
+                tv.setOnClickListener { filter = idx; buildChips(); refilterAndDraw() }
+                chipRow.addView(tv)
+            }
+            addChip(getString(R.string.filter_all), -1, 0xFF455A64.toInt(), filter == -1)
+            SRC_SHORT.forEachIndexed { i, s -> addChip(s, i, SRC_COLORS[i], filter == i) }
+        }
 
         listView.setOnItemClickListener { _, _, pos, _ ->
             val code = filtered[pos].code
-            if (vm.isAdded(code)) return@setOnItemClickListener   // страховка
-            vm.addCurrency(code)
-            dialog?.dismiss()
+            if (vm.isAdded(code)) return@setOnItemClickListener
+            if (vm.isInActiveSource(code)) { vm.addCurrency(code); dialog?.dismiss() }
+            else {
+                val s = vm.sourcesWith(code)
+                if (s.isNotEmpty()) { dialog?.dismiss(); confirmSwitch(code, s[0]) }
+            }
         }
 
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, st: Int, c: Int, a: Int) {}
             override fun onTextChanged(s: CharSequence?, st: Int, b: Int, c: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                val q = s?.toString()?.trim()?.lowercase() ?: ""
-                filtered = if (q.isEmpty()) all.toMutableList()
-                else all.filter {
-                    it.code.lowercase().contains(q) ||
-                    it.name.lowercase().contains(q)
-                }.toMutableList()
-                rowAdapter.notifyDataSetChanged()
-            }
+            override fun afterTextChanged(s: Editable?) { refilterAndDraw() }
         })
 
+        buildChips(); refilterAndDraw()
+        if (!vm.sourceCodesLoaded()) vm.loadSourceCodes { runOnUiThread { buildChips(); refilterAndDraw() } }
+
         dialog = AlertDialog.Builder(this)
-            .setTitle(getString(R.string.add_currency_title, addableCount))
+            .setTitle(getString(R.string.add_currency_title, vm.getAvailableCurrencies().size))
             .setView(dialogView)
             .setNegativeButton(getString(R.string.cancel), null)
             .create()
@@ -332,6 +376,16 @@ class MainActivity : AppCompatActivity() {
         dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         dialog.show()
         etSearch.requestFocus()
+    }
+
+    private fun confirmSwitch(code: String, srcIdx: Int) {
+        val srcName = sourceOptions()[srcIdx + 1]   // 0=Авто, 1..3 = источники
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.switch_source_title))
+            .setMessage(getString(R.string.switch_source_msg, code, srcName))
+            .setPositiveButton(getString(R.string.switch_and_add)) { _, _ -> vm.switchSourceAndAdd(code, srcIdx) }
+            .setNegativeButton(getString(R.string.back)) { _, _ -> showAddDialog() }
+            .show()
     }
 
     companion object {
