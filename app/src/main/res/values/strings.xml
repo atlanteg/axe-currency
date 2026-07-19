@@ -33,6 +33,7 @@
     <!-- Add currency dialog -->
     <string name="add_currency_title">Choose from %1$d available currencies</string>
     <string name="search_hint">Code or name…</string>
+    <string name="already_added">Already in list</string>
 
     <!-- Update -->
     <string name="update_title">Update available</string>

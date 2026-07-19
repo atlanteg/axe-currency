@@ -271,21 +271,25 @@ function clearAll(){
 }
 
 function showAdd(){
-  const avail = Object.keys(allRates).filter(c=>!displayCurrencies.includes(c)).sort();
-  if (!avail.length) return;
+  const all = Object.keys(allRates).sort();
+  if (!all.length) return;
   const m = modal(`<div class="modal">
     <div class="search-box">🔍<input id="psearch" placeholder="${t('search_hint')}"></div>
     <div class="pick-list" id="picks"></div>
     <div class="actions"><button data-x>${t('cancel')}</button></div>
   </div>`);
-  m.querySelector('h3, .search-box'); // noop
   const picks = m.querySelector('#picks');
   const draw = q=>{
-    const f = avail.filter(c=> c.toLowerCase().includes(q) || cName(c).toLowerCase().includes(q));
-    picks.innerHTML = f.map(c=>`<div class="pick-row" data-code="${c}"><span class="pf">${cFlag(c)}</span><span class="pc">${c}</span><span class="pn">${cName(c)}</span></div>`).join('');
-    picks.querySelectorAll('.pick-row').forEach(row=> row.onclick=()=>{
-      const c = row.dataset.code;
-      if (!displayCurrencies.includes(c)) displayCurrencies.push(c);
+    const f = all.filter(c=> c.toLowerCase().includes(q) || cName(c).toLowerCase().includes(q));
+    picks.innerHTML = f.map(c=>{
+      const added = displayCurrencies.includes(c);
+      return `<div class="pick-row${added?' added':''}" data-code="${c}">`+
+        `<span class="pf">${cFlag(c)}</span><span class="pc">${c}</span>`+
+        `<span class="pn">${cName(c)}</span>${added?'<span class="added-tag" title="'+t('already_added')+'">✓</span>':''}</div>`;
+    }).join('');
+    // Кликабельны только НЕ добавленные
+    picks.querySelectorAll('.pick-row:not(.added)').forEach(row=> row.onclick=()=>{
+      displayCurrencies.push(row.dataset.code);
       store.set('currencies', displayCurrencies); closeModal(); render();
     });
   };
