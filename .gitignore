@@ -21,6 +21,7 @@ gradle.properties.bak
 app/src/main/res/raw/
 app/release/
 
-# Keystore (never commit)
+# Keystore / signing secrets (never commit)
 *.jks
 *.keystore
+keystore.properties

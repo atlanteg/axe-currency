@@ -143,6 +143,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkForUpdate() {
+        // В Play-сборке самообновление отключено (запрещено правилами Play)
+        if (!BuildConfig.ENABLE_SELF_UPDATE) return
         lifecycleScope.launch {
             val release = UpdateChecker.getLatestRelease() ?: return@launch
             val latestCode = UpdateChecker.versionCodeFromTag(release.tagName)

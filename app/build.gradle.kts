@@ -1,6 +1,15 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+}
+
+// Данные для подписи release читаем из keystore.properties (НЕ в git)
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -8,17 +17,35 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.currencyconverter"
+        applicationId = "com.davidovski.fixxe"
         minSdk = 24
         targetSdk = 34
         versionCode = 39
         versionName = "1.39"
     }
 
+    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            // GitHub-канал: самообновление и установка APK внутри приложения включены
+            buildConfigField("boolean", "ENABLE_SELF_UPDATE", "true")
+        }
         release {
-            isMinifyEnabled = true
+            // Play-сборка: самообновление ЗАПРЕЩЕНО правилами Play → выключено
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("boolean", "ENABLE_SELF_UPDATE", "false")
+            if (keystorePropertiesFile.exists()) signingConfig = signingConfigs.getByName("release")
         }
     }
 
