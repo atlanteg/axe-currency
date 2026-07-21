@@ -183,18 +183,11 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="© Atlanteg"
-                android:textSize="11sp"
-                android:textColor="#BBBBBB" />
-
-            <TextView
                 android:id="@+id/btnAttribution"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
                 android:text="@string/attribution"
                 android:textSize="10sp"
                 android:textColor="#B0BEC5"
