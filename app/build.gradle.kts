@@ -17,7 +17,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.davidovski.fixxe"
+        applicationId = "com.karpinity.fixxe"
         minSdk = 24
         targetSdk = 34
         versionCode = 39
