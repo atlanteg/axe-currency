@@ -25,3 +25,8 @@ app/release/
 *.jks
 *.keystore
 keystore.properties
+
+# iOS
+ios/build/
+xcuserdata/
+*.xcuserstate
