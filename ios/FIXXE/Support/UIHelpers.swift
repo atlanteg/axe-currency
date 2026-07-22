@@ -19,3 +19,15 @@ enum AppInfo {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
     }
 }
+
+extension View {
+    /// scrollContentBackground(.hidden) появился в iOS 16; на iOS 15 фон
+    /// List чистится через UITableView.appearance() (см. FIXXEApp.init)
+    @ViewBuilder func compatHideListBackground() -> some View {
+        if #available(iOS 16.0, *) {
+            self.scrollContentBackground(.hidden)
+        } else {
+            self
+        }
+    }
+}

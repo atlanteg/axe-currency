@@ -5,7 +5,7 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 // Точность
                 Section(L10n.t("precision_title")) {
@@ -86,7 +86,7 @@ struct SourceInfoView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 Text(L10n.t("source_info_message"))
                     .font(.callout)

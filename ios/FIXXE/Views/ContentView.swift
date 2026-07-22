@@ -101,7 +101,7 @@ struct ContentView: View {
             .onMove { from, to in vm.move(from: from, to: to) }
         }
         .listStyle(.plain)
-        .scrollContentBackground(.hidden)
+        .compatHideListBackground()
         .background(Color.bgGray)
     }
 

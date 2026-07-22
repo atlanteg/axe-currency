@@ -24,7 +24,7 @@ struct AddCurrencyView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(spacing: 0) {
                 chips
                 List(codes, id: \.self) { code in row(code) }
