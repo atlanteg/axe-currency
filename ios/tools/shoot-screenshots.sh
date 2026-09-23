@@ -13,7 +13,7 @@
 set -euo pipefail
 
 SIM="${1:-iPhone 17 Pro Max}"
-IPAD="${2:-iPad Pro 13-inch (M4) (16GB)}"
+IPAD="${2:-iPad Pro 13-inch (M5)}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 WORK="${TMPDIR:-/tmp}/fixxe-shots"
 DD="$WORK/dd"
