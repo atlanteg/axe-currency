@@ -1,7 +1,7 @@
 # FIXXE — Currency Converter
 
 Real-time multi-currency converter for **Android** and as an installable **PWA** (web app).
-Mid-market rates, 166+ currencies incl. crypto, 40 languages. Inspired by XE Currency.
+Mid-market rates, 300+ currencies incl. crypto, 40 languages.
 Built entirely with CLI tools — no Android Studio required.
 
 **Live web app:** https://fixe.l23.xyz (install to home screen on iOS/Android)
@@ -37,8 +37,8 @@ shown in the header:
    domain, no attribution. 300+ currencies incl. crypto/metals.
 3. **Frankfurter** (`api.frankfurter.dev`) — MIT-licensed API, data from the European Central Bank (ECB).
 
-All are free, no API key, CORS-enabled. Rates update roughly once a day; the difference from XE is
-usually under 0.5% — these are mid-market reference rates, not real-time quotes.
+All are free, no API key, CORS-enabled. Rates update roughly once a day; the difference from other
+reference services is usually under 0.5% — these are mid-market reference rates, not real-time quotes.
 
 ## Repository layout
 

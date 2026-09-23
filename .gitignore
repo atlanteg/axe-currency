@@ -30,3 +30,15 @@ keystore.properties
 ios/build/
 xcuserdata/
 *.xcuserstate
+
+# Секреты публикации — НИКОГДА не коммитить
+# (полные права выпуска в App Store и Google Play)
+app-ship.tar.gz
+app-ship/
+credentials/
+*.p12
+*.p8
+*.tfbundle
+*.pob
+*.mobileprovision
+*.cer
