@@ -12,13 +12,27 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.karpinity.fixxe
-        MARKETING_VERSION: "1.44"
-        CURRENT_PROJECT_VERSION: "44"
-        TARGETED_DEVICE_FAMILY: "1"
+        MARKETING_VERSION: "1.45"
+        CURRENT_PROJECT_VERSION: "45"
+        TARGETED_DEVICE_FAMILY: "1,2"   # iPhone + iPad
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: FIXXE
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        # iPhone — только портрет; iPad должен поддерживать все ориентации
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         SWIFT_VERSION: "5.9"
         CODE_SIGN_STYLE: Automatic
+  FIXXEUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - FIXXEUITests
+    dependencies:
+      - target: FIXXE
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.karpinity.fixxe.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.9"

@@ -77,6 +77,7 @@ struct ContentView: View {
             }
         }
         .padding(.horizontal, 14).padding(.vertical, 10)
+        .readableWidth()
         .background(Color.white)
     }
 
@@ -95,6 +96,7 @@ struct ContentView: View {
             }
         }
         .padding(.horizontal, 16).padding(.vertical, 4)
+        .readableWidth()
         .background(Color.white)
     }
 
@@ -115,6 +117,7 @@ struct ContentView: View {
         }
         .listStyle(.plain)
         .compatHideListBackground()
+        .readableWidth()
         .background(Color.bgGray)
         .environment(\.editMode, $editMode)
     }
@@ -140,6 +143,7 @@ struct ContentView: View {
             }
         }
         .padding(.horizontal, 14).padding(.vertical, 8)
+        .readableWidth()
         .background(Color.white)
     }
 }

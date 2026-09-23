@@ -49,6 +49,15 @@ enum ScreenshotArgs {
 }
 
 extension View {
+    /// Ограничивает содержимое читаемой шириной и центрирует его.
+    /// На iPhone ничего не меняет (экран уже уже лимита), на iPad не даёт
+    /// строкам растянуться через весь 13" экран.
+    func readableWidth(_ limit: CGFloat = 640) -> some View {
+        frame(maxWidth: limit).frame(maxWidth: .infinity)
+    }
+}
+
+extension View {
     /// scrollContentBackground(.hidden) появился в iOS 16; на iOS 15 фон
     /// List чистится через UITableView.appearance() (см. FIXXEApp.init)
     @ViewBuilder func compatHideListBackground() -> some View {
