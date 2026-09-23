@@ -73,13 +73,13 @@ Live currency converter: 150+ currencies, 40 languages, mid-market rates.
 **Full description:**
 FIXXE is a fast, clean currency converter with live mid-market exchange rates — the neutral midpoint between global buy and sell prices, not bank spreads.
 
-• 150+ currencies (and 300+ including crypto and precious metals via an alternative source), with country flags
+• 300+ currencies including crypto and precious metals, with country flags
 • Real-time conversion — type in any field, all others update instantly
 • Dynamic base — rates are shown relative to the currency you are editing
-• Multi-source rates with automatic fallback (ExchangeRate-API, Fawaz Ahmed, Frankfurter / ECB); pick a source manually if you prefer
+• Multi-source rates with automatic fallback (ExchangeRate-API, F.A., Frankfurter / ECB); pick a source manually if you prefer
 • Smart rounding — small values never collapse to "1"; precision adapts to keep the amount financially accurate
 • Source-aware search — filter currencies by provider, see where each one is available, and switch source in one tap
-• 40 languages with automatic device-language detection (incl. right-to-left)
+• 40 languages, English by default, with an option to follow the device language (incl. right-to-left)
 • Drag to reorder, add/remove currencies, one-tap CLEAR
 • Works offline for the interface; your list, order and settings are saved on your device
 
@@ -90,18 +90,45 @@ Rates By Exchange Rate API.
 
 ---
 
+## Публикация через app-ship (настроено)
+
+Бандл подписи развёрнут: `~/Developer/app-ship` (вне репозитория), пассфраза — в Keychain
+(`security find-generic-password -s "FIXXE app-ship signing bundle" -a "andrei@davidovski.org" -w`).
+Все четыре инструмента проходят `doctor`:
+
+| Инструмент | Состояние |
+|---|---|
+| testflight-ops | ✅ подпись `Apple Distribution: Davidovski GmbH`, ASC API доступен, dry-run проходит |
+| appstore-ops | ✅ `appstore/manifest.yaml` валиден, скриншоты в `appstore/screenshots/en-US/APP_IPHONE_67/` |
+| notarize-ops | ✅ (для macOS-сборок; у FIXXE их нет) |
+| play-ops | ✅ Play API доступен, проект определяется как native `com.karpinity.fixxe` |
+
+Команды после создания записей приложения:
+```bash
+cd ios && testflight-ops ship --yes          # сборка → TestFlight
+appstore-ops submit --yes                    # метаданные + отправка на ревью
+play-ops ship --track internal --yes         # AAB → Google Play
+```
+
+⚠️ **Про ключ подписи Android.** `play-ops` подписывает своим общим upload-ключом
+(`~/.local/state/davidovski-os/play-ops/signing/upload.jks`), а не локальным `keystore.properties`.
+Поэтому при создании приложения в Play Console как upload key надо зарегистрировать
+`~/Developer/app-ship/credentials/upload-certificate.pem`, и заливать через `play-ops`,
+а не вручную собранный `FIXXE-v44.aab`. Смешивать два ключа нельзя — Play примет только один.
+
+---
+
 ## Что должен сделать ВЛАДЕЛЕЦ аккаунта (я не могу — нет доступа и это юр. согласия)
 
 1. **Play App Signing ToS** — Play Console → при создании релиза принять условия.
    Требует аккаунт-уровневых прав; выдать Admin исполнителю либо принять самому.
-2. **Сборка и загрузка iOS-билда в App Store Connect.** На этой машине нет
-   сертификатов подписи (`security find-identity` → 0 identities) и учётной записи
-   Apple в Xcode, поэтому архив может собрать только владелец аккаунта:
-   Xcode → Settings → Accounts → войти под Apple ID команды Davidovski GmbH →
-   в проекте `ios/FIXXE.xcodeproj` выбрать Team → Product → Archive →
-   Distribute App → App Store Connect. Код, версия, иконка, Privacy Manifest
-   и скриншоты уже готовы.
-3. **Trader status (DSA)** — и в Google Play, и в App Store.
+2. **Создать запись приложения в App Store Connect.** Bundle id `com.karpinity.fixxe`
+   в Developer-портале уже зарегистрирован, но саму запись Apple через API создать не даёт:
+   appstoreconnect.apple.com → Apps → + → New App → платформа iOS → выбрать этот bundle id →
+   имя FIXXE, основной язык English, SKU. После этого `testflight-ops ship --yes` работает.
+3. **Создать приложение в Google Play Console** (`com.karpinity.fixxe`) и при включении
+   Play App Signing зарегистрировать `credentials/upload-certificate.pem` как upload key.
+4. **Trader status (DSA)** — и в Google Play, и в App Store.
    Статус: **Trader** (компания). Данные Davidovski GmbH, Wehntalerstrasse 283A,
    8046 Zürich, Switzerland. Email/телефон проходят верификацию кодом.
    ⚠️ Эти контакты станут ПУБЛИЧНЫМИ в карточке приложения для пользователей ЕС —

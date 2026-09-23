@@ -1,0 +1,62 @@
+# App Store manifest — содержимое карточки FIXXE. Секретов здесь нет.
+# Подпись и ключи берутся из testflight-ops (см. store-assets/PUBLISHING.md).
+
+primary_locale: en-US
+copyright: "2026 Davidovski GmbH"
+
+categories:
+  primary: FINANCE
+  secondary: UTILITIES
+
+release: manual
+uses_encryption: false       # только HTTPS к публичным API курсов — non-exempt шифрования нет
+
+review:                      # контакт для ревью, публично не показывается
+  first_name: Vlatko
+  last_name: Davidovski
+  email: systems@davidovski.org
+  phone: "+41791022883"
+  notes: |
+    No account or login is required — the app opens straight into the converter.
+    Rates are public data from ExchangeRate-API, F.A. and Frankfurter (ECB);
+    no user data is collected or sent anywhere.
+
+pricing:
+  free: true
+
+availability:
+  territories: all
+
+privacy:
+  collects_data: false       # ничего не собираем — совпадает с PrivacyInfo.xcprivacy
+
+locales:
+  en-US:
+    name: FIXXE
+    subtitle: "Live currency converter"
+    description: |
+      FIXXE is a fast, clean currency converter with live mid-market exchange rates — the
+      neutral midpoint between global buy and sell prices, not bank spreads.
+
+      • 300+ currencies including crypto and precious metals, with country flags
+      • Real-time conversion — type in any field, all others update instantly
+      • Dynamic base — rates are shown relative to the currency you are editing
+      • Multi-source rates with automatic fallback (ExchangeRate-API, F.A., Frankfurter / ECB);
+        pick a source manually if you prefer
+      • Smart rounding — small values never collapse to "1"; precision adapts to keep the
+        amount financially accurate
+      • Source-aware search — filter currencies by provider, see where each one is available,
+        and switch source in one tap
+      • 40 languages, English by default, with an option to follow your device language
+        (right-to-left layouts included)
+      • Drag to reorder, add or remove currencies, one-tap CLEAR
+      • Your list, order and settings are saved on your device
+
+      No account. No ads. No tracking. Your preferences never leave your phone.
+
+      Displayed rates are mid-market reference values, not real-time trading quotes.
+      Rates By Exchange Rate API.
+    keywords: "currency,converter,exchange,rate,money,travel,forex,crypto,finance"
+    whats_new: "First public release."
+    support_url: "https://fixe.l23.xyz"
+    privacy_policy_url: "https://telebimmer.com/fixxe-privacy.html"
