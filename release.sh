@@ -3,6 +3,11 @@
 # Единая точка выпуска релиза FIXXE.
 # Всё выводится из ОДНОГО числа N → рассинхрон versionCode/тега невозможен.
 #
+# ВАЖНО: всё, что видит пользователь магазина, должно быть НА АНГЛИЙСКОМ — в том числе
+# «что нового». play-ops по умолчанию берёт текст последнего коммита, а коммиты у нас
+# русские, поэтому заметки для магазинов лежат в store-release-notes.txt и передаются
+# в ship явно через --notes-file (см. подсказку в конце скрипта).
+#
 # APK наружу НЕ публикуется: приложение распространяется только через Google Play
 # (Android developer verification требует регистрации ключей для раздачи вне Play,
 # а отладочный ключ для этого не годится). Вне магазина остаётся PWA на fixe.l23.xyz.
@@ -59,8 +64,10 @@ $NOTE
 Установка: Google Play (Android) · App Store (iOS) · https://fixe.l23.xyz (PWA)"
 
 echo "✓ v$N помечен. versionCode=$N == тег v$N."
-echo "  Android в Play:  play-ops ship --track internal --yes"
-echo "  iOS в TestFlight: (cd ios && testflight-ops ship --yes)"
+echo
+echo "  Заметки для магазинов (АНГЛИЙСКИЙ) — обнови store-release-notes.txt, затем:"
+echo "    play-ops ship --track internal --yes --notes-file store-release-notes.txt"
+echo "    (cd ios && testflight-ops ship --yes --notes-file ../store-release-notes.txt)"
 
 # 5. Деплой веб-версии на VM edge2il (best-effort — если хост доступен)
 VM="ubuntu@130.110.238.118"
