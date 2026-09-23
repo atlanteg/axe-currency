@@ -10,7 +10,7 @@
 #
 # APK наружу НЕ публикуется: приложение распространяется только через Google Play
 # (Android developer verification требует регистрации ключей для раздачи вне Play,
-# а отладочный ключ для этого не годится). Вне магазина остаётся PWA на fixe.l23.xyz.
+# а отладочный ключ для этого не годится). Вне магазина остаётся PWA на fixxe.l23.xyz.
 #
 # Usage:
 #   ./release.sh            # авто-инкремент: берёт текущий versionCode и +1
@@ -87,7 +87,7 @@ gh release create "v$N" \
 
 $NOTE
 
-Установка: Google Play (Android) · App Store (iOS) · https://fixe.l23.xyz (PWA)"
+Установка: Google Play (Android) · App Store (iOS) · https://fixxe.l23.xyz (PWA)"
 
 echo "✓ v$N помечен. versionCode=$N == тег v$N."
 echo
@@ -101,7 +101,7 @@ if tar czf /tmp/fixe-web.tgz -C web . 2>/dev/null && \
    scp -q -o BatchMode=yes -o ConnectTimeout=8 /tmp/fixe-web.tgz "$VM:/tmp/" 2>/dev/null; then
   ssh -o BatchMode=yes -o ConnectTimeout=8 "$VM" \
     'sudo tar xzf /tmp/fixe-web.tgz -C /var/www/fixe 2>/dev/null && sudo systemctl reload nginx' \
-    && echo "✓ PWA задеплоена на https://fixe.l23.xyz (версия 1.$N)"
+    && echo "✓ PWA задеплоена на https://fixxe.l23.xyz (версия 1.$N)"
 else
   echo "⚠ PWA не задеплоена (VM недоступна) — задеплой вручную позже"
 fi

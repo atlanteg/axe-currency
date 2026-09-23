@@ -4,7 +4,7 @@ Real-time multi-currency converter for **Android**, **iOS** and as an installabl
 Mid-market rates, 300+ currencies incl. crypto, 40 languages.
 Built entirely with CLI tools — no Android Studio required.
 
-**Install:** Google Play (Android) · App Store (iOS) · https://fixe.l23.xyz — the PWA installs
+**Install:** Google Play (Android) · App Store (iOS) · https://fixxe.l23.xyz — the PWA installs
 to the home screen on both platforms.
 
 APKs are deliberately **not** published here. Google's Android developer verification (from
@@ -116,7 +116,7 @@ play-ops ship --track internal --yes      # Android → Google Play
 ## PWA hosting
 
 The web app is served by nginx on the VM `edge2il` (`127.0.0.1:8080`) behind a Cloudflare Tunnel
-(`cloudflared`, systemd) mapped to `fixe.l23.xyz`. `release.sh` redeploys it automatically; a manual
+(`cloudflared`, systemd) mapped to `fixxe.l23.xyz`. `release.sh` redeploys it automatically; a manual
 deploy is `tar → scp → extract → systemctl reload nginx`. Assets carry `Cache-Control: no-cache`
 so updates propagate immediately; installed PWAs refresh on the next open via the SW cache bump.
 
