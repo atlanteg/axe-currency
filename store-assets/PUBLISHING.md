@@ -1,12 +1,12 @@
 # FIXXE — материалы и ответы для публикации
 
-Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 40 / versionName 1.40 · targetSdk 36
+Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 41 / versionName 1.41 · targetSdk 36
 Разработчик: KARPINITY / Davidovski GmbH
 
 ## Файлы
 | Что | Файл | Требование стора |
 |---|---|---|
-| AAB для загрузки | `../FIXXE-v40.aab` | подписан, targetSdk 36 |
+| AAB для загрузки | `../FIXXE-v41.aab` | подписан, targetSdk 36 |
 | Иконка | `icon-512.png` | 512×512 PNG |
 | Feature graphic | `feature-graphic-1024x500.png` | 1024×500 |
 | Скриншоты Play (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
@@ -57,7 +57,7 @@
 | Privacy Manifest в бандле | ✅ `PrivacyInfo.xcprivacy` лежит в `.app` |
 | Вёрстка на «челке»/Dynamic Island | ✅ проверено на iPhone 17 Pro Max |
 | Вёрстка на маленьком экране | ✅ проверено на iPhone SE 3 (375×667 — как 6s/7/8/SE) |
-| Версия синхронна с Android | ✅ MARKETING_VERSION 1.40 / CURRENT_PROJECT_VERSION 40 |
+| Версия синхронна с Android | ✅ MARKETING_VERSION 1.41 / CURRENT_PROJECT_VERSION 41 |
 | Отладочный код в релизе | ✅ отсутствует (проверено `strings` по релизному бинарнику) |
 
 Скриншоты снимаются одной командой: `ios/tools/shoot-screenshots.sh`.
@@ -72,7 +72,7 @@ Live currency converter: 150+ currencies, 40 languages, mid-market rates.
 **Full description:**
 FIXXE is a fast, clean currency converter with live mid-market exchange rates — the neutral midpoint between global buy and sell prices, not bank spreads.
 
-• 150+ currencies (and 300+ including crypto and precious metals via an alternative source)
+• 150+ currencies (and 300+ including crypto and precious metals via an alternative source), with country flags
 • Real-time conversion — type in any field, all others update instantly
 • Dynamic base — rates are shown relative to the currency you are editing
 • Multi-source rates with automatic fallback (ExchangeRate-API, Fawaz Ahmed, Frankfurter / ECB); pick a source manually if you prefer
