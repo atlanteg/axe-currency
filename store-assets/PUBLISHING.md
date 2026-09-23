@@ -9,7 +9,8 @@
 | AAB для загрузки | `../FIXXE-v40.aab` | подписан, targetSdk 36 |
 | Иконка | `icon-512.png` | 512×512 PNG |
 | Feature graphic | `feature-graphic-1024x500.png` | 1024×500 |
-| Скриншоты (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
+| Скриншоты Play (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
+| Скриншоты App Store (4 шт.) | `screenshots-ios/*.png` | 1320×2868 (6.9"), мин. 1 |
 
 Политика конфиденциальности: **https://telebimmer.com/fixxe-privacy.html**
 
@@ -47,6 +48,20 @@
 - Privacy Manifest уже в проекте: `ios/FIXXE/Resources/PrivacyInfo.xcprivacy`
   (NSPrivacyTracking = false, collected data types = пусто, UserDefaults с причиной CA92.1).
 
+### Проверено на собранном бандле (iOS)
+| Пункт | Состояние |
+|---|---|
+| Сборка под iPhone | ✅ BUILD SUCCEEDED, Debug и Release |
+| Минимальная iOS | ✅ `MinimumOSVersion 15.0` в Info.plist (iPhone 6s и новее) |
+| Иконка без альфа-канала | ✅ AppIcon 1024×1024, Opaque = true |
+| Privacy Manifest в бандле | ✅ `PrivacyInfo.xcprivacy` лежит в `.app` |
+| Вёрстка на «челке»/Dynamic Island | ✅ проверено на iPhone 17 Pro Max |
+| Вёрстка на маленьком экране | ✅ проверено на iPhone SE 3 (375×667 — как 6s/7/8/SE) |
+| Версия синхронна с Android | ✅ MARKETING_VERSION 1.40 / CURRENT_PROJECT_VERSION 40 |
+| Отладочный код в релизе | ✅ отсутствует (проверено `strings` по релизному бинарнику) |
+
+Скриншоты снимаются одной командой: `ios/tools/shoot-screenshots.sh`.
+
 ---
 
 ## Store listing
@@ -78,7 +93,14 @@ Rates By Exchange Rate API.
 
 1. **Play App Signing ToS** — Play Console → при создании релиза принять условия.
    Требует аккаунт-уровневых прав; выдать Admin исполнителю либо принять самому.
-2. **Trader status (DSA)** — и в Google Play, и в App Store.
+2. **Сборка и загрузка iOS-билда в App Store Connect.** На этой машине нет
+   сертификатов подписи (`security find-identity` → 0 identities) и учётной записи
+   Apple в Xcode, поэтому архив может собрать только владелец аккаунта:
+   Xcode → Settings → Accounts → войти под Apple ID команды Davidovski GmbH →
+   в проекте `ios/FIXXE.xcodeproj` выбрать Team → Product → Archive →
+   Distribute App → App Store Connect. Код, версия, иконка, Privacy Manifest
+   и скриншоты уже готовы.
+3. **Trader status (DSA)** — и в Google Play, и в App Store.
    Статус: **Trader** (компания). Данные Davidovski GmbH, Wehntalerstrasse 283A,
    8046 Zürich, Switzerland. Email/телефон проходят верификацию кодом.
    ⚠️ Эти контакты станут ПУБЛИЧНЫМИ в карточке приложения для пользователей ЕС —
