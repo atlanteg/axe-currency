@@ -93,7 +93,7 @@ Rates By Exchange Rate API.
 ## Публикация через app-ship (настроено)
 
 Бандл подписи развёрнут: `~/Developer/app-ship` (вне репозитория), пассфраза — в Keychain
-(`security find-generic-password -s "FIXXE app-ship signing bundle" -a "andrei@davidovski.org" -w`).
+(`security find-generic-password -s "FIXXE app-ship signing bundle" -a "app-ship" -w`).
 Все четыре инструмента проходят `doctor`:
 
 | Инструмент | Состояние |
@@ -122,7 +122,10 @@ play-ops ship --track internal --yes         # AAB → Google Play
 
 1. **Play App Signing ToS** — Play Console → при создании релиза принять условия.
    Требует аккаунт-уровневых прав; выдать Admin исполнителю либо принять самому.
-2. **Создать запись приложения в App Store Connect.** Bundle id `com.karpinity.fixxe`
+2. **Создать запись приложения в App Store Connect.** Вход — Apple ID `atlant-spb@yandex.ru`
+   (роль App Manager в команде Davidovski GmbH, team K6J2KS5XF7); если Apple предложит выбор
+   команды — выбрать Davidovski GmbH, иначе нужный bundle id не будет виден.
+   Bundle id `com.karpinity.fixxe`
    в Developer-портале уже зарегистрирован, но саму запись Apple через API создать не даёт:
    appstoreconnect.apple.com → Apps → + → New App → платформа iOS → выбрать этот bundle id →
    имя FIXXE, основной язык English, SKU. После этого `testflight-ops ship --yes` работает.
