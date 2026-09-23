@@ -1,7 +1,8 @@
 import Foundation
 
 /// Локализация с мгновенным переключением (та же модель, что в Android/PWA):
-/// словарь 40 языков из i18n.json, выбранный язык ?? системный ?? en.
+/// словарь 40 языков из i18n.json. По умолчанию приложение на английском;
+/// язык устройства подхватывается, только если пользователь выбрал «Системный».
 enum L10n {
     private static let table: [String: [String: String]] = {
         guard let url = Bundle.main.url(forResource: "i18n", withExtension: "json"),
@@ -11,6 +12,9 @@ enum L10n {
         return obj
     }()
 
+    /// маркер пункта «Системный» — автоопределение по языку устройства
+    static let systemTag = "system"
+
     static var chosenLang: String? {
         get { UserDefaults.standard.string(forKey: "lang") }
         set {
@@ -19,14 +23,18 @@ enum L10n {
         }
     }
 
-    /// Язык: выбранный → первый поддерживаемый системный → en (неизвестный язык → English)
+    /// Язык: выбранный → при «Системном» язык устройства → en.
+    /// Ничего не выбрано — английский (а не язык устройства).
     static func resolved() -> String {
-        if let c = chosenLang, table[c] != nil { return c }
-        for pref in Locale.preferredLanguages {
-            let base = String(pref.prefix(while: { $0 != "-" && $0 != "_" })).lowercased()
-            if table[base] != nil { return base }
+        guard let c = chosenLang else { return "en" }
+        if c == systemTag {
+            for pref in Locale.preferredLanguages {
+                let base = String(pref.prefix(while: { $0 != "-" && $0 != "_" })).lowercased()
+                if table[base] != nil { return base }
+            }
+            return "en"
         }
-        return "en"
+        return table[c] != nil ? c : "en"
     }
 
     static var isRTL: Bool { ["ar", "he", "fa"].contains(resolved()) }

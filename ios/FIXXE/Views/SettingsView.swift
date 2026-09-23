@@ -44,12 +44,14 @@ struct SettingsView: View {
                 // Язык
                 Section(L10n.t("language_title")) {
                     Button {
-                        L10n.chosenLang = nil; vm.langVersion += 1
+                        L10n.chosenLang = L10n.systemTag; vm.langVersion += 1
                     } label: {
                         HStack {
                             Text(L10n.t("language_system")).foregroundColor(.primary)
                             Spacer()
-                            if L10n.chosenLang == nil { Image(systemName: "checkmark").foregroundColor(.brandBlue) }
+                            if L10n.chosenLang == L10n.systemTag {
+                                Image(systemName: "checkmark").foregroundColor(.brandBlue)
+                            }
                         }
                     }
                     ForEach(CurrencyData.languages, id: \.0) { tag, native in
@@ -59,7 +61,10 @@ struct SettingsView: View {
                             HStack {
                                 Text(native).foregroundColor(.primary)
                                 Spacer()
-                                if L10n.chosenLang == tag { Image(systemName: "checkmark").foregroundColor(.brandBlue) }
+                                // ничего не выбрано → отмечен English (дефолт приложения)
+                                if L10n.chosenLang == tag || (L10n.chosenLang == nil && tag == "en") {
+                                    Image(systemName: "checkmark").foregroundColor(.brandBlue)
+                                }
                             }
                         }
                     }

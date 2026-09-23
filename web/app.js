@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.43';
+const APP_VERSION = '1.44';
 
 /* ---------- Persistence ---------- */
 const store = {
@@ -16,7 +16,10 @@ let displayCurrencies = (()=>{
 })();
 let decimalPlaces = store.get('decimals', 0);
 let sourceMode = store.get('source', 0);          // 0=auto, 1..3 forced
-let lang = store.get('lang', null);               // null = system
+// null = ничего не выбрано → английский (дефолт всех платформ);
+// 'system' = автоопределение по языку устройства
+const SYSTEM_LANG = 'system';
+let lang = store.get('lang', null);
 let allRates = {};
 let activeCurrency = displayCurrencies[0] || 'EUR';
 let activeAmount = 1;
@@ -25,13 +28,15 @@ let lastUpdated = '';
 
 /* ---------- i18n ---------- */
 function resolveLang(){
-  if (lang && I18N[lang]) return lang;
-  const cands = (navigator.languages || [navigator.language || 'en']);
-  for (const l of cands){
-    const base = (l||'').toLowerCase().split('-')[0];
-    if (I18N[base]) return base;
+  if (lang && lang !== SYSTEM_LANG && I18N[lang]) return lang;
+  if (lang === SYSTEM_LANG){
+    const cands = (navigator.languages || [navigator.language || 'en']);
+    for (const l of cands){
+      const base = (l||'').toLowerCase().split('-')[0];
+      if (I18N[base]) return base;
+    }
   }
-  return 'en'; // неизвестный язык → English (не ru)
+  return 'en'; // по умолчанию и при неизвестном языке устройства — English
 }
 function t(key, ...args){
   const L = resolveLang();
@@ -405,7 +410,9 @@ function sourceOptions(){ return [t('source_auto'),'ExchangeRate-API','F.A.','Fr
 function showSettings(){
   const dec = decimalPlaces===0 ? t('precision_value_int') : t('precision_value_n', decimalPlaces);
   const src = sourceOptions()[Math.min(Math.max(sourceMode,0),3)];
-  const langLabel = lang ? (LANGUAGES.find(l=>l[0]===lang)?.[1]||lang) : t('language_system');
+  const langLabel = (lang && lang !== SYSTEM_LANG)
+    ? (LANGUAGES.find(l=>l[0]===lang)?.[1]||lang)
+    : (lang === SYSTEM_LANG ? t('language_system') : (LANGUAGES.find(l=>l[0]==='en')?.[1]||'English'));
   const m = modal(`<div class="modal">
     <h3>${t('settings')}</h3>
     <div class="list-choice">
@@ -444,9 +451,11 @@ function showSource(){
 }
 function showLanguage(){
   const items = [t('language_system'), ...LANGUAGES.map(l=>l[1])];
-  const checked = lang ? (LANGUAGES.findIndex(l=>l[0]===lang)+1) : 0;
+  // ничего не выбрано → отмечен English, а не «системный»
+  const effective = lang || 'en';
+  const checked = effective === SYSTEM_LANG ? 0 : (LANGUAGES.findIndex(l=>l[0]===effective)+1);
   choiceList(t('language_title'), items, checked<0?0:checked, i=>{
-    lang = i===0 ? null : LANGUAGES[i-1][0];
+    lang = i===0 ? SYSTEM_LANG : LANGUAGES[i-1][0];
     store.set('lang', lang); closeModal(); render();
   });
 }

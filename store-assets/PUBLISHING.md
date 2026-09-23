@@ -1,12 +1,12 @@
 # FIXXE — материалы и ответы для публикации
 
-Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 43 / versionName 1.43 · targetSdk 36
+Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 44 / versionName 1.44 · targetSdk 36
 Разработчик: KARPINITY / Davidovski GmbH
 
 ## Файлы
 | Что | Файл | Требование стора |
 |---|---|---|
-| AAB для загрузки | `../FIXXE-v43.aab` | подписан, targetSdk 36 |
+| AAB для загрузки | `../FIXXE-v44.aab` | подписан, targetSdk 36 |
 | Иконка | `icon-512.png` | 512×512 PNG |
 | Feature graphic | `feature-graphic-1024x500.png` | 1024×500 |
 | Скриншоты Play (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
@@ -57,8 +57,9 @@
 | Privacy Manifest в бандле | ✅ `PrivacyInfo.xcprivacy` лежит в `.app` |
 | Вёрстка на «челке»/Dynamic Island | ✅ проверено на iPhone 17 Pro Max |
 | Вёрстка на маленьком экране | ✅ проверено на iPhone SE 3 (375×667 — как 6s/7/8/SE) |
-| Версия синхронна с Android | ✅ MARKETING_VERSION 1.43 / CURRENT_PROJECT_VERSION 43 |
+| Версия синхронна с Android | ✅ MARKETING_VERSION 1.44 / CURRENT_PROJECT_VERSION 44 |
 | Отладочный код в релизе | ✅ отсутствует (проверено `strings` по релизному бинарнику) |
+| Язык по умолчанию | ✅ английский на всех платформах; язык устройства — опцией «System default» |
 
 Скриншоты снимаются одной командой: `ios/tools/shoot-screenshots.sh`.
 

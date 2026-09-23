@@ -1,5 +1,6 @@
 package com.example.currencyconverter
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
+        applyDefaultLanguage()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -252,6 +254,22 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    /** По умолчанию приложение на английском, а не на языке устройства
+     *  (Android иначе сам подхватил бы values-<язык системы>). Язык системы
+     *  включается только явным выбором «Системный» в настройках. */
+    private fun applyDefaultLanguage() {
+        val prefs = getSharedPreferences("axe_prefs", Context.MODE_PRIVATE)
+        if (prefs.getBoolean(KEY_LANG_INITIALIZED, false)) return
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+            // вызывать строго ПОСЛЕ super.onCreate(): раньше AppCompat ещё не
+            // готов и локаль молча не применяется
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
+        }
+        // флаг ставим только после фактической установки, иначе при сбое
+        // приложение навсегда осталось бы на языке устройства
+        prefs.edit().putBoolean(KEY_LANG_INITIALIZED, true).apply()
+    }
+
     private fun currentLanguageLabel(): String {
         val locales = AppCompatDelegate.getApplicationLocales()
         if (locales.isEmpty) return getString(R.string.language_system)
@@ -407,6 +425,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         // 40 языков: тег (совпадает с папкой ресурсов) → родное название
+        const val KEY_LANG_INITIALIZED = "lang_initialized"
+
         val LANGUAGES = listOf(
             "en" to "English",
             "sr" to "Srpski",
