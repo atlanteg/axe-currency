@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.41';
+const APP_VERSION = '1.42';
 
 /* ---------- Persistence ---------- */
 const store = {
@@ -47,6 +47,8 @@ function applyDir(){
 
 /* ---------- Currency helpers ---------- */
 const cName = c => NAMES[c] || c;
+// название рядом с кодом: пусто, если названия нет (иначе дубль «BTC  BTC»)
+const cDisplayName = c => NAMES[c] || '';
 const cFlag = c => FLAGS[c] || '🌐';
 const cSym  = c => SYMBOLS[c] || c;
 
@@ -211,7 +213,7 @@ function render(){
       `<button class="handle" data-code="${code}" title="Reorder">⠿</button>`;
 
     const r2 = document.createElement('div'); r2.className='row2';
-    r2.innerHTML = `<span class="name">${cName(code)}</span><span class="rate">${rateText}</span>`;
+    r2.innerHTML = `<span class="name">${cDisplayName(code)}</span><span class="rate">${rateText}</span>`;
 
     card.appendChild(r1); card.appendChild(r2);
 
@@ -351,7 +353,7 @@ function showAdd(){
       const dots = sourcesWith(c).map(i=>`<span class="dot" style="background:${SOURCE_META[i].color}" title="${SOURCE_META[i].short}"></span>`).join('');
       return `<div class="pick-row${added?' added':''}${(!inActive&&!added)?' unavail':''}" data-code="${c}">`+
         `<span class="pf">${cFlag(c)}</span><span class="pc">${c}</span>`+
-        `<span class="pn">${cName(c)}</span>`+
+        `<span class="pn">${cDisplayName(c)}</span>`+
         `<span class="src-dots">${dots}</span>`+
         `${added?'<span class="added-tag" title="'+t('already_added')+'">✓</span>':''}</div>`;
     }).join('');

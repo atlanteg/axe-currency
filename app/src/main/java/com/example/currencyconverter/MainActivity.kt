@@ -301,7 +301,7 @@ class MainActivity : AppCompatActivity() {
             if (q.isNotEmpty()) list = list.filter {
                 it.lowercase().contains(q) || CurrencyViewModel.currencyName(it).lowercase().contains(q)
             }
-            filtered = list.map { CurrencyInfo(it, CurrencyViewModel.currencyName(it)) }.toMutableList()
+            filtered = list.map { CurrencyInfo(it, CurrencyViewModel.currencyDisplayName(it)) }.toMutableList()
         }
 
         val rowAdapter = object : BaseAdapter() {

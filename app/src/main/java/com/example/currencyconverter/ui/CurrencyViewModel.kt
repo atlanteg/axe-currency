@@ -145,11 +145,11 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
         allRates.keys
             .filter { it !in displayCurrencies }
             .sorted()
-            .map { CurrencyInfo(it, currencyName(it)) }
+            .map { CurrencyInfo(it, currencyDisplayName(it)) }
 
     // Все валюты (для окна добавления) — уже добавленные показываем серыми
     fun getAllCurrencies(): List<CurrencyInfo> =
-        allRates.keys.sorted().map { CurrencyInfo(it, currencyName(it)) }
+        allRates.keys.sorted().map { CurrencyInfo(it, currencyDisplayName(it)) }
 
     fun isAdded(code: String): Boolean = displayCurrencies.contains(code)
 
@@ -209,7 +209,7 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
                           else "1 $pivot = ${fmtRate(rateInEur / pivotRate)} $code"
             CurrencyItem(
                 code = code,
-                name = currencyName(code),
+                name = currencyDisplayName(code),
                 flag = currencyFlag(code),
                 symbol = currencySymbol(code),
                 amount = converted,
@@ -248,6 +248,9 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
 
     companion object {
         fun currencyName(code: String) = NAMES[code] ?: code
+        /** Название для показа рядом с кодом: пусто, если названия нет
+         *  и вышел бы дубль вида «BTC  BTC». */
+        fun currencyDisplayName(code: String) = NAMES[code] ?: ""
         fun currencyFlag(code: String) = FLAGS[code] ?: "🌐"
         fun currencySymbol(code: String) = SYMBOLS[code] ?: code
 
