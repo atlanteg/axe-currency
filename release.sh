@@ -21,6 +21,32 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+# 0. Тексты, которые увидит пользователь магазина, обязаны быть английскими.
+#    Проверяем до сборки: дешевле поймать здесь, чем вычищать из Play и App Store.
+python3 - <<'PYCHK' || exit 1
+import re, sys, pathlib
+CYR = re.compile('[\u0400-\u04FF]')
+
+def user_visible(path, line):
+    """Комментарии — для разработчика, пользователь магазина их не видит."""
+    if path.suffix == ".yaml":
+        line = re.sub(r"(^|\s)#.*$", "", line)
+    return line
+
+bad = []
+for f in ["store-release-notes.txt", "appstore/manifest.yaml"]:
+    p = pathlib.Path(f)
+    if not p.exists():
+        continue
+    for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+        if CYR.search(user_visible(p, line)):
+            bad.append(f"  {f}:{i}: {line.strip()[:70]}")
+if bad:
+    print("\u2717 Кириллица в текстах для магазинов (должен быть английский):")
+    print("\n".join(bad))
+    sys.exit(1)
+PYCHK
+
 GRADLE="app/build.gradle.kts"
 
 # Текущий versionCode из gradle
