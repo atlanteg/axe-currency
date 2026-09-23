@@ -7,8 +7,10 @@
 
     <!-- Хедер: бейдж | статус | ↻ -->
     <LinearLayout
+        android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:background="#FFFFFF"
         android:gravity="center_vertical"
         android:paddingStart="14dp"
@@ -130,6 +132,7 @@
 
     <!-- Футер -->
     <LinearLayout
+        android:id="@+id/footerBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"

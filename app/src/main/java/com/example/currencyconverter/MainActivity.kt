@@ -18,6 +18,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,6 +45,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // targetSdk 36 → принудительный edge-to-edge: разводим контент из-под
+        // системных панелей (шапка под статус-бар, подвал над навигацией).
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.headerBar.updatePadding(top = bars.top)
+            binding.footerBar.updatePadding(bottom = bars.bottom)
+            binding.root.updatePadding(left = bars.left, right = bars.right)
+            insets
+        }
 
         adapter = CurrencyAdapter(
             onAmountChanged = { code, amount -> vm.setActiveAmount(code, amount) },
