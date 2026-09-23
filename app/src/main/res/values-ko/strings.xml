@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s은(는) 현재 소스가 아닌 %2$s을(를) 통해 사용할 수 있습니다. 전환하고 추가할까요?</string>
     <string name="switch_and_add">전환 후 추가</string>
     <string name="already_added">이미 목록에 있음</string>
+    <string name="reorder">순서 변경</string>
 </resources>

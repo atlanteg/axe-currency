@@ -8,6 +8,7 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var showInfo = false
     @State private var deleteCandidate: String?
+    @State private var editMode: EditMode = .inactive
 
     var body: some View {
         VStack(spacing: 0) {
@@ -22,6 +23,10 @@ struct ContentView: View {
         .task {
             await vm.refresh()
             await vm.loadSourceCodes()
+            if ScreenshotArgs.openAdd { showAdd = true }
+            if ScreenshotArgs.openSettings { showSettings = true }
+            if ScreenshotArgs.openReorder { editMode = .active }
+            if ScreenshotArgs.openInfo { showInfo = true }
         }
         .sheet(isPresented: $showAdd) { AddCurrencyView(vm: vm) }
         .sheet(isPresented: $showSettings) { SettingsView(vm: vm) }
@@ -56,6 +61,14 @@ struct ContentView: View {
             .font(.caption).foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             if vm.isLoading { ProgressView().scaleEffect(0.8) }
+            Button {
+                focusedCode = nil
+                withAnimation { editMode = editMode.isEditing ? .inactive : .active }
+            } label: {
+                Image(systemName: editMode.isEditing ? "checkmark" : "arrow.up.arrow.down")
+                    .foregroundColor(editMode.isEditing ? .brandBlue : .gray)
+            }
+            .accessibilityLabel(L10n.t("reorder"))
             Button { Task { await vm.refresh() } } label: {
                 Image(systemName: "arrow.clockwise").foregroundColor(.brandBlue)
             }
@@ -103,6 +116,7 @@ struct ContentView: View {
         .listStyle(.plain)
         .compatHideListBackground()
         .background(Color.bgGray)
+        .environment(\.editMode, $editMode)
     }
 
     private var footer: some View {

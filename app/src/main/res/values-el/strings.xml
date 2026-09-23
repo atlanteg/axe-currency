@@ -48,4 +48,5 @@
     <string name="switch_source_msg">Το %1$s είναι διαθέσιμο μέσω %2$s, όχι μέσω της τρέχουσας πηγής. Αλλαγή και προσθήκη;</string>
     <string name="switch_and_add">Αλλαγή &amp; προσθήκη</string>
     <string name="already_added">Ήδη στη λίστα</string>
+    <string name="reorder">Αναδιάταξη</string>
 </resources>

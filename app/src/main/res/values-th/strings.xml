@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s ใช้งานได้ผ่าน %2$s ไม่ใช่แหล่งข้อมูลปัจจุบัน สลับและเพิ่มไหม</string>
     <string name="switch_and_add">สลับและเพิ่ม</string>
     <string name="already_added">อยู่ในรายการแล้ว</string>
+    <string name="reorder">จัดเรียงใหม่</string>
 </resources>

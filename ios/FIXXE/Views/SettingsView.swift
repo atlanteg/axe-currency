@@ -42,7 +42,7 @@ struct SettingsView: View {
                     }
                 }
                 // Язык
-                Section("🌐 " + L10n.t("language_title")) {
+                Section(L10n.t("language_title")) {
                     Button {
                         L10n.chosenLang = nil; vm.langVersion += 1
                     } label: {
@@ -88,18 +88,19 @@ struct SourceInfoView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                Text(L10n.t("source_info_message"))
-                    .font(.callout)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(L10n.t("source_info_message"))
+                        .font(.callout)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    // ссылка-атрибуция ExchangeRate-API (требование лицензии)
+                    Link(L10n.t("attribution"), destination: URL(string: "https://www.exchangerate-api.com")!)
+                        .font(.footnote)
+                }
+                .padding()
             }
             .navigationTitle(L10n.t("source_info_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Link("exchangerate-api.com", destination: URL(string: "https://www.exchangerate-api.com")!)
-                        .font(.caption)
-                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(L10n.t("ok")) { dismiss() }
                 }

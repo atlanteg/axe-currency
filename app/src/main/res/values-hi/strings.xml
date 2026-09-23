@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s %2$s के ज़रिए उपलब्ध है, मौजूदा स्रोत से नहीं। बदलें और जोड़ें?</string>
     <string name="switch_and_add">बदलें और जोड़ें</string>
     <string name="already_added">पहले से सूची में है</string>
+    <string name="reorder">क्रम बदलें</string>
 </resources>

@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promijeniti i dodati?</string>
     <string name="switch_and_add">Promijeni i dodaj</string>
     <string name="already_added">Već na listi</string>
+    <string name="reorder">Promijeni redoslijed</string>
 </resources>

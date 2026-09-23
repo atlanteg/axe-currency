@@ -10,7 +10,7 @@ struct CurrencyRowView: View {
     var body: some View {
         VStack(spacing: 2) {
             HStack(spacing: 8) {
-                Text(CurrencyData.flag(code)).font(.title2)
+                FlagView(code: code, size: 24)
                 Text(code).font(.subheadline.bold())
                 Spacer()
                 Text(CurrencyData.symbol(code))
@@ -18,7 +18,7 @@ struct CurrencyRowView: View {
                 amountField
             }
             HStack {
-                Text(CurrencyData.name(code))
+                Text(CurrencyData.displayName(code) ?? "")
                     .font(.caption2).foregroundColor(.secondary)
                 Spacer()
                 Text(vm.rateLine(code))

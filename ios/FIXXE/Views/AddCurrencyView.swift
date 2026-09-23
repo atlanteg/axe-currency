@@ -6,8 +6,8 @@ struct AddCurrencyView: View {
     @ObservedObject var vm: ConverterViewModel
     @Environment(\.dismiss) private var dismiss
 
-    @State private var query = ""
-    @State private var filter: Int = -1        // -1 = все, 0..2 — источник
+    @State private var query = ScreenshotArgs.initialQuery
+    @State private var filter: Int = ScreenshotArgs.initialFilter   // -1 = все, 0..2 — источник
     @State private var switchCandidate: (code: String, srcIdx: Int)?
 
     private var codes: [String] {
@@ -86,9 +86,9 @@ struct AddCurrencyView: View {
         let added = vm.currencies.contains(code)
         let inActive = vm.rates[code] != nil
         return HStack(spacing: 10) {
-            Text(CurrencyData.flag(code)).font(.title3)
+            FlagView(code: code, size: 21)
             Text(code).font(.subheadline.bold()).frame(width: 54, alignment: .leading)
-            Text(CurrencyData.name(code))
+            Text(CurrencyData.displayName(code) ?? "")
                 .font(.footnote).foregroundColor(.secondary)
                 .lineLimit(1)
             Spacer()

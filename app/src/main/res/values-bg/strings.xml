@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s е достъпен чрез %2$s, а не чрез текущия източник. Да се смени и добави?</string>
     <string name="switch_and_add">Смени и добави</string>
     <string name="already_added">Вече в списъка</string>
+    <string name="reorder">Пренареждане</string>
 </resources>

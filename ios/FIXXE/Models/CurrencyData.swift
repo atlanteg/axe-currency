@@ -21,7 +21,12 @@ enum CurrencyData {
     }()
 
     static func name(_ code: String) -> String { raw.names[code] ?? code }
+    /// Название для показа рядом с кодом: nil, если названия нет и вышел бы
+    /// дубль вида «BTC  BTC».
+    static func displayName(_ code: String) -> String? { raw.names[code] }
     static func flag(_ code: String) -> String { raw.flags[code] ?? "🌐" }
+    /// Флаг-эмодзи, если он есть в справочнике (у крипты и части фиата — нет).
+    static func flagOrNil(_ code: String) -> String? { raw.flags[code] }
     static func symbol(_ code: String) -> String { raw.symbols[code] ?? code }
     static var defaults: [String] { raw.defaults }
     /// [(тег, родное название)] — 40 языков

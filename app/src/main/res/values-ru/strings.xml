@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s доступен через %2$s, а не текущий источник. Переключить и добавить?</string>
     <string name="switch_and_add">Переключить и добавить</string>
     <string name="already_added">Уже в списке</string>
+    <string name="reorder">Изменить порядок</string>
 </resources>

@@ -48,4 +48,5 @@
     <string name="switch_source_msg">A(z) %1$s a(z) %2$s forráson keresztül érhető el, nem a jelenlegin. Váltasz és hozzáadod?</string>
     <string name="switch_and_add">Váltás és hozzáadás</string>
     <string name="already_added">Már a listán</string>
+    <string name="reorder">Átrendezés</string>
 </resources>

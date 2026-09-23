@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s ir pieejams caur %2$s, nevis pašreizējo avotu. Pārslēgt un pievienot?</string>
     <string name="switch_and_add">Pārslēgt un pievienot</string>
     <string name="already_added">Jau sarakstā</string>
+    <string name="reorder">Mainīt secību</string>
 </resources>

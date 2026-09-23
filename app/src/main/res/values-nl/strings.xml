@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s is beschikbaar via %2$s, niet via de huidige bron. Wisselen en toevoegen?</string>
     <string name="switch_and_add">Wisselen en toevoegen</string>
     <string name="already_added">Al in de lijst</string>
+    <string name="reorder">Volgorde wijzigen</string>
 </resources>

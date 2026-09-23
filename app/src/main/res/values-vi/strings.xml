@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s có sẵn qua %2$s, không phải nguồn hiện tại. Đổi và thêm?</string>
     <string name="switch_and_add">Đổi &amp; thêm</string>
     <string name="already_added">Đã có trong danh sách</string>
+    <string name="reorder">Sắp xếp lại</string>
 </resources>

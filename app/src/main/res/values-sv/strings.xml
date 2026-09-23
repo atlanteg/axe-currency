@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s är tillgänglig via %2$s, inte den nuvarande källan. Byta och lägga till?</string>
     <string name="switch_and_add">Byt och lägg till</string>
     <string name="already_added">Redan i listan</string>
+    <string name="reorder">Ändra ordning</string>
 </resources>

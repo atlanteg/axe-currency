@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s pasiekiamas per %2$s, o ne per dabartinį šaltinį. Perjungti ir pridėti?</string>
     <string name="switch_and_add">Perjungti ir pridėti</string>
     <string name="already_added">Jau sąraše</string>
+    <string name="reorder">Pertvarkyti</string>
 </resources>

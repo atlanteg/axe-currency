@@ -20,6 +20,34 @@ enum AppInfo {
     }
 }
 
+/// Аргументы запуска для автоматической съёмки скриншотов магазина.
+/// Только в DEBUG — в релизной сборке всегда «пусто».
+enum ScreenshotArgs {
+#if DEBUG
+    private static var args: [String] { ProcessInfo.processInfo.arguments }
+    static var openAdd: Bool { args.contains("-screen-add") }
+    static var openSettings: Bool { args.contains("-screen-settings") }
+    static var openReorder: Bool { args.contains("-screen-reorder") }
+    static var openInfo: Bool { args.contains("-screen-info") }
+    static var initialQuery: String {
+        guard let i = args.firstIndex(of: "-screen-query"), i + 1 < args.count else { return "" }
+        return args[i + 1]
+    }
+    /// индекс источника для чипа-фильтра, -1 = «все»
+    static var initialFilter: Int {
+        guard let i = args.firstIndex(of: "-screen-filter"), i + 1 < args.count else { return -1 }
+        return Int(args[i + 1]) ?? -1
+    }
+#else
+    static var openAdd: Bool { false }
+    static var openSettings: Bool { false }
+    static var openReorder: Bool { false }
+    static var openInfo: Bool { false }
+    static var initialQuery: String { "" }
+    static var initialFilter: Int { -1 }
+#endif
+}
+
 extension View {
     /// scrollContentBackground(.hidden) появился в iOS 16; на iOS 15 фон
     /// List чистится через UITableView.appearance() (см. FIXXEApp.init)

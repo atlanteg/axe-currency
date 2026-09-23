@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s este disponibil prin %2$s, nu prin sursa curentă. Schimbi și îl adaugi?</string>
     <string name="switch_and_add">Schimbă și adaugă</string>
     <string name="already_added">Deja în listă</string>
+    <string name="reorder">Reordonare</string>
 </resources>

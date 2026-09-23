@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s on saatavilla lähteen %2$s kautta, ei nykyisen lähteen. Vaihda ja lisää?</string>
     <string name="switch_and_add">Vaihda ja lisää</string>
     <string name="already_added">Jo listassa</string>
+    <string name="reorder">Järjestä uudelleen</string>
 </resources>

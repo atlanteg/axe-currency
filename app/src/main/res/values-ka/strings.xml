@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s ხელმისაწვდომია %2$s-ის მეშვეობით და არა მიმდინარე წყაროდან. გადავრთოთ და დავამატოთ?</string>
     <string name="switch_and_add">გადართვა და დამატება</string>
     <string name="already_added">უკვე სიაშია</string>
+    <string name="reorder">თანმიმდევრობის შეცვლა</string>
 </resources>

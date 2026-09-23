@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s è disponibile tramite %2$s, non dalla fonte attuale. Cambiare e aggiungerlo?</string>
     <string name="switch_and_add">Cambia e aggiungi</string>
     <string name="already_added">Già nell\'elenco</string>
+    <string name="reorder">Riordina</string>
 </resources>

@@ -48,4 +48,5 @@
     <string name="switch_source_msg">%1$s është i disponueshëm përmes %2$s, jo përmes burimit aktual. Ta ndërroni dhe ta shtoni?</string>
     <string name="switch_and_add">Ndërro &amp; shto</string>
     <string name="already_added">Tashmë në listë</string>
+    <string name="reorder">Ndrysho renditjen</string>
 </resources>
