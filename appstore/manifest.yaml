@@ -57,6 +57,7 @@ locales:
       Displayed rates are mid-market reference values, not real-time trading quotes.
       Rates By Exchange Rate API.
     keywords: "currency,converter,exchange,rate,money,travel,forex,crypto,finance"
-    whats_new: "First public release."
+    # whats_new — только для обновлений; у первой версии приложения
+    # App Store Connect это поле редактировать не даёт
     support_url: "https://fixe.l23.xyz"
     privacy_policy_url: "https://telebimmer.com/fixxe-privacy.html"

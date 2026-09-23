@@ -7,6 +7,10 @@ plugins {
 }
 
 // Данные для подписи release читаем из keystore.properties (НЕ в git)
+// play-ops подписывает своим общим upload-ключом через -Pandroid.injected.signing.*;
+// в этом случае проектный signingConfig применять нельзя — иначе AGP возьмёт наш
+// keystore с чужим паролем и подпись упадёт.
+val hasInjectedSigning = project.hasProperty("android.injected.signing.store.file")
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 val keystoreProperties = Properties().apply {
     if (keystorePropertiesFile.exists()) load(FileInputStream(keystorePropertiesFile))
@@ -45,7 +49,9 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("boolean", "ENABLE_SELF_UPDATE", "false")
-            if (keystorePropertiesFile.exists()) signingConfig = signingConfigs.getByName("release")
+            if (keystorePropertiesFile.exists() && !hasInjectedSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 

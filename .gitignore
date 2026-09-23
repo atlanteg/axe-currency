@@ -42,3 +42,4 @@ credentials/
 *.pob
 *.mobileprovision
 *.cer
+*.pass
