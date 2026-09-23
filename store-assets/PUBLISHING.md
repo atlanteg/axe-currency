@@ -1,6 +1,6 @@
 # FIXXE — материалы и ответы для публикации
 
-Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 46 / versionName 1.46 · targetSdk 36
+Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 47 / versionName 1.47 · targetSdk 36
 Разработчик: KARPINITY / Davidovski GmbH
 
 ## Файлы
@@ -9,7 +9,8 @@
 | AAB для загрузки | собирает и заливает `play-ops ship` | подписан upload-ключом, targetSdk 36 |
 | Иконка | `icon-512.png` | 512×512 PNG |
 | Feature graphic | `feature-graphic-1024x500.png` | 1024×500 |
-| Скриншоты Play (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
+| Скриншоты Play — телефон (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
+| Скриншоты Play — планшет (4 шт.) | `screenshots-tablet/*.png` | 2560×1600; годятся и в слот 7", и в 10" |
 | Скриншоты App Store (4 шт.) | `screenshots-ios/*.png` | 1320×2868 (6.9"), мин. 1 |
 
 Политика конфиденциальности: **https://telebimmer.com/fixxe-privacy.html**
@@ -57,7 +58,7 @@
 | Privacy Manifest в бандле | ✅ `PrivacyInfo.xcprivacy` лежит в `.app` |
 | Вёрстка на «челке»/Dynamic Island | ✅ проверено на iPhone 17 Pro Max |
 | Вёрстка на маленьком экране | ✅ проверено на iPhone SE 3 (375×667 — как 6s/7/8/SE) |
-| Версия синхронна с Android | ✅ MARKETING_VERSION 1.46 / CURRENT_PROJECT_VERSION 46 |
+| Версия синхронна с Android | ✅ MARKETING_VERSION 1.47 / CURRENT_PROJECT_VERSION 47 |
 | Отладочный код в релизе | ✅ отсутствует (проверено `strings` по релизному бинарнику) |
 | Язык по умолчанию | ✅ английский на всех платформах; язык устройства — опцией «System default» |
 

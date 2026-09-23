@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
+        limitListWidth()
         binding.recyclerView.itemAnimator = null
 
         lifecycleScope.launch {
@@ -129,6 +130,19 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         vm.refresh()
+    }
+
+    /** На планшетах строка во всю ширину экрана выглядит пустой: код слева,
+     *  сумма у правого края. Держим список в читаемой ширине по центру. */
+    private fun limitListWidth() {
+        val dm = resources.displayMetrics
+        val widthDp = dm.widthPixels / dm.density
+        val maxContentDp = 640f
+        if (widthDp <= maxContentDp) return
+        val padPx = ((widthDp - maxContentDp) / 2f * dm.density).toInt()
+        binding.recyclerView.setPadding(
+            padPx, binding.recyclerView.paddingTop, padPx, binding.recyclerView.paddingBottom
+        )
     }
 
     private fun confirmDelete(code: String) {
