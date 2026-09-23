@@ -24,8 +24,8 @@ android {
         applicationId = "com.karpinity.fixxe"
         minSdk = 24
         targetSdk = 36
-        versionCode = 45
-        versionName = "1.45"
+        versionCode = 46
+        versionName = "1.46"
     }
 
     signingConfigs {
@@ -40,15 +40,9 @@ android {
     }
 
     buildTypes {
-        debug {
-            // GitHub-канал: самообновление и установка APK внутри приложения включены
-            buildConfigField("boolean", "ENABLE_SELF_UPDATE", "true")
-        }
         release {
-            // Play-сборка: самообновление ЗАПРЕЩЕНО правилами Play → выключено
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("boolean", "ENABLE_SELF_UPDATE", "false")
             if (keystorePropertiesFile.exists() && !hasInjectedSigning) {
                 signingConfig = signingConfigs.getByName("release")
             }

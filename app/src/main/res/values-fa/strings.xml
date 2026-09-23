@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">حذف %1$s — %2$s از فهرست؟</string>
     <string name="add_currency_title">از میان %1$d ارز موجود انتخاب کنید</string>
     <string name="search_hint">کد یا نام…</string>
-    <string name="update_title">به‌روزرسانی موجود است</string>
-    <string name="update_msg">نسخهٔ %1$s در دسترس است. دانلود و نصب شود؟</string>
-    <string name="update_now">به‌روزرسانی</string>
-    <string name="update_later">بعداً</string>
-    <string name="downloading">در حال دانلود…</string>
     <string name="settings">تنظیمات</string>
     <string name="setting_precision">دقت نمایش:  %1$s</string>
     <string name="setting_source">منبع نرخ:  %1$s</string>

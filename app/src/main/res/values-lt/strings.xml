@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Pašalinti %1$s — %2$s iš sąrašo?</string>
     <string name="add_currency_title">Pasirinkite iš %1$d galimų valiutų</string>
     <string name="search_hint">Kodas arba pavadinimas…</string>
-    <string name="update_title">Yra atnaujinimas</string>
-    <string name="update_msg">Prieinama versija %1$s. Atsisiųsti ir įdiegti?</string>
-    <string name="update_now">Atnaujinti</string>
-    <string name="update_later">Vėliau</string>
-    <string name="downloading">Atsisiunčiama…</string>
     <string name="settings">Nustatymai</string>
     <string name="setting_precision">Rodymo tikslumas:  %1$s</string>
     <string name="setting_source">Kursų šaltinis:  %1$s</string>

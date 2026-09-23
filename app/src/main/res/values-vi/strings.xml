@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Gỡ %1$s — %2$s khỏi danh sách?</string>
     <string name="add_currency_title">Chọn từ %1$d loại tiền tệ có sẵn</string>
     <string name="search_hint">Mã hoặc tên…</string>
-    <string name="update_title">Có bản cập nhật</string>
-    <string name="update_msg">Đã có phiên bản %1$s. Tải xuống và cài đặt?</string>
-    <string name="update_now">Cập nhật</string>
-    <string name="update_later">Để sau</string>
-    <string name="downloading">Đang tải xuống…</string>
     <string name="settings">Cài đặt</string>
     <string name="setting_precision">Độ chính xác hiển thị:  %1$s</string>
     <string name="setting_source">Nguồn tỷ giá:  %1$s</string>

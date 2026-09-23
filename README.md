@@ -1,11 +1,15 @@
 # FIXXE — Currency Converter
 
-Real-time multi-currency converter for **Android** and as an installable **PWA** (web app).
+Real-time multi-currency converter for **Android**, **iOS** and as an installable **PWA** (web app).
 Mid-market rates, 300+ currencies incl. crypto, 40 languages.
 Built entirely with CLI tools — no Android Studio required.
 
-**Live web app:** https://fixe.l23.xyz (install to home screen on iOS/Android)
-**Releases (APK):** https://github.com/atlanteg/axe-currency/releases/latest
+**Install:** Google Play (Android) · App Store (iOS) · https://fixe.l23.xyz — the PWA installs
+to the home screen on both platforms.
+
+APKs are deliberately **not** published here. Google's Android developer verification (from
+30 Sep 2026) requires every signing key used outside Play to be registered, and the debug key
+the GitHub channel used cannot be. The PWA covers the "install without a store" case instead.
 
 ## Features
 
@@ -92,7 +96,7 @@ export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:
 
 `release.sh` is the **single source of truth** — it derives everything from one number `N` so the
 Android `versionCode`, `versionName`, the git tag, the release body, the PWA `APP_VERSION` and the
-service-worker cache all stay in sync (a mismatch would cause an endless in-app "update" loop):
+service-worker cache all stay in sync:
 
 ```bash
 ./release.sh            # auto-increment
@@ -100,8 +104,14 @@ service-worker cache all stay in sync (a mismatch would cause an endless in-app 
 ./release.sh 28 "note"  # with a custom release note
 ```
 
-It builds the APK, bumps the PWA version + SW cache, commits & pushes, creates GitHub release
-`vN` with asset `FIXXE-vN.apk`, and **auto-deploys the PWA** to the VM (best-effort).
+It builds the app, bumps the PWA version + SW cache, commits & pushes, tags GitHub release `vN`
+(no APK attached), and **auto-deploys the PWA** to the VM (best-effort). Shipping to the stores
+is separate:
+
+```bash
+play-ops ship --track internal --yes      # Android → Google Play
+(cd ios && testflight-ops ship --yes)     # iOS → TestFlight
+```
 
 ## PWA hosting
 

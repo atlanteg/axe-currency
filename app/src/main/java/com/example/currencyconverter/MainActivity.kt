@@ -124,7 +124,6 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddCurrency.setOnClickListener { showAddDialog() }
         binding.btnSettings.setOnClickListener { showSettingsDialog() }
 
-        checkForUpdate()
     }
 
     override fun onResume() {
@@ -157,40 +156,6 @@ class MainActivity : AppCompatActivity() {
             }
             .setPositiveButton(getString(R.string.ok), null)
             .show()
-    }
-
-    private fun checkForUpdate() {
-        // В Play-сборке самообновление отключено (запрещено правилами Play)
-        if (!BuildConfig.ENABLE_SELF_UPDATE) return
-        lifecycleScope.launch {
-            val release = UpdateChecker.getLatestRelease() ?: return@launch
-            val latestCode = UpdateChecker.versionCodeFromTag(release.tagName)
-            if (latestCode <= BuildConfig.VERSION_CODE) return@launch
-            val apkAsset = release.assets.firstOrNull { it.name.endsWith(".apk") } ?: return@launch
-
-            AlertDialog.Builder(this@MainActivity)
-                .setTitle(getString(R.string.update_title))
-                .setMessage(getString(R.string.update_msg, UpdateChecker.displayVersion(release)))
-                .setPositiveButton(getString(R.string.update_now)) { _, _ ->
-                    lifecycleScope.launch {
-                        var progressDialog: AlertDialog? = AlertDialog.Builder(this@MainActivity)
-                            .setTitle(getString(R.string.downloading))
-                            .setMessage("0%")
-                            .setCancelable(false)
-                            .show()
-                        UpdateChecker.downloadAndInstall(
-                            this@MainActivity,
-                            apkAsset.downloadUrl
-                        ) { pct ->
-                            runOnUiThread { progressDialog?.setMessage("$pct%") }
-                        }
-                        progressDialog?.dismiss()
-                        progressDialog = null
-                    }
-                }
-                .setNegativeButton(getString(R.string.update_later), null)
-                .show()
-        }
     }
 
     // Названия источников: индекс 0 = Авто (локализуется), дальше — бренды (не переводятся)

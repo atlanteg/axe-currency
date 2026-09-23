@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">%1$s — %2$s listeden kaldırılsın mı?</string>
     <string name="add_currency_title">Mevcut %1$d para biriminden seçin</string>
     <string name="search_hint">Kod veya ad…</string>
-    <string name="update_title">Güncelleme mevcut</string>
-    <string name="update_msg">%1$s sürümü mevcut. İndirilip kurulsun mu?</string>
-    <string name="update_now">Güncelle</string>
-    <string name="update_later">Sonra</string>
-    <string name="downloading">İndiriliyor…</string>
     <string name="settings">Ayarlar</string>
     <string name="setting_precision">Gösterim hassasiyeti:  %1$s</string>
     <string name="setting_source">Kur kaynağı:  %1$s</string>

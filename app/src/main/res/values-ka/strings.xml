@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">ამოვშალოთ %1$s — %2$s სიიდან?</string>
     <string name="add_currency_title">აირჩიეთ %1$d ხელმისაწვდომ ვალუტიდან</string>
     <string name="search_hint">კოდი ან სახელი…</string>
-    <string name="update_title">ხელმისაწვდომია განახლება</string>
-    <string name="update_msg">ხელმისაწვდომია ვერსია %1$s. ჩამოვტვირთოთ და დავაინსტალიროთ?</string>
-    <string name="update_now">განახლება</string>
-    <string name="update_later">მოგვიანებით</string>
-    <string name="downloading">იტვირთება…</string>
     <string name="settings">პარამეტრები</string>
     <string name="setting_precision">ჩვენების სიზუსტე:  %1$s</string>
     <string name="setting_source">კურსების წყარო:  %1$s</string>

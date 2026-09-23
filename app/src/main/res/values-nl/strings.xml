@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">%1$s — %2$s uit de lijst verwijderen?</string>
     <string name="add_currency_title">Kies uit %1$d beschikbare valuta\'s</string>
     <string name="search_hint">Code of naam…</string>
-    <string name="update_title">Update beschikbaar</string>
-    <string name="update_msg">Versie %1$s is beschikbaar. Downloaden en installeren?</string>
-    <string name="update_now">Bijwerken</string>
-    <string name="update_later">Later</string>
-    <string name="downloading">Downloaden…</string>
     <string name="settings">Instellingen</string>
     <string name="setting_precision">Weergavenauwkeurigheid:  %1$s</string>
     <string name="setting_source">Koersbron:  %1$s</string>

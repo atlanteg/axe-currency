@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">목록에서 %1$s — %2$s 을(를) 삭제할까요?</string>
     <string name="add_currency_title">사용 가능한 %1$d개 통화 중 선택</string>
     <string name="search_hint">코드 또는 이름…</string>
-    <string name="update_title">업데이트 사용 가능</string>
-    <string name="update_msg">버전 %1$s 을(를) 사용할 수 있습니다. 다운로드하여 설치할까요?</string>
-    <string name="update_now">업데이트</string>
-    <string name="update_later">나중에</string>
-    <string name="downloading">다운로드 중…</string>
     <string name="settings">설정</string>
     <string name="setting_precision">표시 정밀도:  %1$s</string>
     <string name="setting_source">환율 출처:  %1$s</string>

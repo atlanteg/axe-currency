@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Eltávolítja a(z) %1$s — %2$s elemet a listából?</string>
     <string name="add_currency_title">Válasszon a(z) %1$d elérhető pénznem közül</string>
     <string name="search_hint">Kód vagy név…</string>
-    <string name="update_title">Frissítés érhető el</string>
-    <string name="update_msg">A(z) %1$s verzió elérhető. Letölti és telepíti?</string>
-    <string name="update_now">Frissítés</string>
-    <string name="update_later">Később</string>
-    <string name="downloading">Letöltés…</string>
     <string name="settings">Beállítások</string>
     <string name="setting_precision">Megjelenítési pontosság:  %1$s</string>
     <string name="setting_source">Árfolyamforrás:  %1$s</string>

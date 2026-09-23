@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Fjerne %1$s — %2$s fra listen?</string>
     <string name="add_currency_title">Velg blant %1$d tilgjengelige valutaer</string>
     <string name="search_hint">Kode eller navn…</string>
-    <string name="update_title">Oppdatering tilgjengelig</string>
-    <string name="update_msg">Versjon %1$s er tilgjengelig. Laste ned og installere?</string>
-    <string name="update_now">Oppdater</string>
-    <string name="update_later">Senere</string>
-    <string name="downloading">Laster ned…</string>
     <string name="settings">Innstillinger</string>
     <string name="setting_precision">Visningspresisjon:  %1$s</string>
     <string name="setting_source">Kurskilde:  %1$s</string>

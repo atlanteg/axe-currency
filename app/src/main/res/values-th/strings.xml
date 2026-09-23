@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">นำ %1$s — %2$s ออกจากรายการ?</string>
     <string name="add_currency_title">เลือกจากสกุลเงินที่มี %1$d รายการ</string>
     <string name="search_hint">รหัสหรือชื่อ…</string>
-    <string name="update_title">มีอัปเดตใหม่</string>
-    <string name="update_msg">เวอร์ชัน %1$s พร้อมใช้งาน ดาวน์โหลดและติดตั้งเลยไหม?</string>
-    <string name="update_now">อัปเดต</string>
-    <string name="update_later">ภายหลัง</string>
-    <string name="downloading">กำลังดาวน์โหลด…</string>
     <string name="settings">การตั้งค่า</string>
     <string name="setting_precision">ความละเอียดที่แสดง:  %1$s</string>
     <string name="setting_source">แหล่งอัตรา:  %1$s</string>

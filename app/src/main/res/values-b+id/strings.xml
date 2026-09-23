@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Hapus %1$s — %2$s dari daftar?</string>
     <string name="add_currency_title">Pilih dari %1$d mata uang tersedia</string>
     <string name="search_hint">Kode atau nama…</string>
-    <string name="update_title">Pembaruan tersedia</string>
-    <string name="update_msg">Versi %1$s tersedia. Unduh dan pasang?</string>
-    <string name="update_now">Perbarui</string>
-    <string name="update_later">Nanti</string>
-    <string name="downloading">Mengunduh…</string>
     <string name="settings">Pengaturan</string>
     <string name="setting_precision">Presisi tampilan:  %1$s</string>
     <string name="setting_source">Sumber kurs:  %1$s</string>

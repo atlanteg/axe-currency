@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Да се отстрани %1$s — %2$s од списокот?</string>
     <string name="add_currency_title">Изберете од %1$d достапни валути</string>
     <string name="search_hint">Код или име…</string>
-    <string name="update_title">Достапно ажурирање</string>
-    <string name="update_msg">Верзијата %1$s е достапна. Да се преземе и инсталира?</string>
-    <string name="update_now">Ажурирај</string>
-    <string name="update_later">Подоцна</string>
-    <string name="downloading">Се презема…</string>
     <string name="settings">Поставки</string>
     <string name="setting_precision">Прикажана прецизност:  %1$s</string>
     <string name="setting_source">Извор на курс:  %1$s</string>

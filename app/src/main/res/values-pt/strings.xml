@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Remover %1$s — %2$s da lista?</string>
     <string name="add_currency_title">Escolha entre %1$d moedas disponíveis</string>
     <string name="search_hint">Código ou nome…</string>
-    <string name="update_title">Atualização disponível</string>
-    <string name="update_msg">A versão %1$s está disponível. Baixar e instalar?</string>
-    <string name="update_now">Atualizar</string>
-    <string name="update_later">Depois</string>
-    <string name="downloading">Baixando…</string>
     <string name="settings">Configurações</string>
     <string name="setting_precision">Precisão de exibição:  %1$s</string>
     <string name="setting_source">Fonte das taxas:  %1$s</string>

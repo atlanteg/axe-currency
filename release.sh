@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 #
-# Единая точка выпуска релиза AXE.
+# Единая точка выпуска релиза FIXXE.
 # Всё выводится из ОДНОГО числа N → рассинхрон versionCode/тега невозможен.
+#
+# APK наружу НЕ публикуется: приложение распространяется только через Google Play
+# (Android developer verification требует регистрации ключей для раздачи вне Play,
+# а отладочный ключ для этого не годится). Вне магазина остаётся PWA на fixe.l23.xyz.
 #
 # Usage:
 #   ./release.sh            # авто-инкремент: берёт текущий versionCode и +1
@@ -40,24 +44,23 @@ export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
 APK="app/build/outputs/apk/debug/app-debug.apk"
 [ -f "$APK" ] || { echo "✗ APK не собрался"; exit 1; }
 
-# Копируем под осмысленным именем, чтобы ассет в релизе был FIXXE-vN.apk
-NAMED_APK="app/build/outputs/apk/debug/FIXXE-v$N.apk"
-cp "$APK" "$NAMED_APK"
-
 # 3. Коммит + пуш
 git add -A
 git commit -m "v$N: $NOTE"
 git push
 
-# 4. GitHub Release. Тег v$N СОВПАДАЕТ с versionCode=$N — гарантированно.
-#    Первая строка body = versionName=1.$N (приложение читает её для красивого показа).
-gh release create "v$N" "$NAMED_APK" \
+# 4. GitHub Release — только отметка версии в истории, без APK-файла.
+gh release create "v$N" \
   --title "FIXXE v$N" \
   --notes "versionName=1.$N
 
-$NOTE"
+$NOTE
 
-echo "✓ Android v$N выпущен. versionCode=$N == тег v$N — петли обновления не будет."
+Установка: Google Play (Android) · App Store (iOS) · https://fixe.l23.xyz (PWA)"
+
+echo "✓ v$N помечен. versionCode=$N == тег v$N."
+echo "  Android в Play:  play-ops ship --track internal --yes"
+echo "  iOS в TestFlight: (cd ios && testflight-ops ship --yes)"
 
 # 5. Деплой веб-версии на VM edge2il (best-effort — если хост доступен)
 VM="ubuntu@130.110.238.118"

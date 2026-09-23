@@ -1,12 +1,12 @@
 # FIXXE — материалы и ответы для публикации
 
-Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 44 / versionName 1.44 · targetSdk 36
+Пакет: `com.karpinity.fixxe` · Имя: **FIXXE** · versionCode 46 / versionName 1.46 · targetSdk 36
 Разработчик: KARPINITY / Davidovski GmbH
 
 ## Файлы
 | Что | Файл | Требование стора |
 |---|---|---|
-| AAB для загрузки | `../FIXXE-v44.aab` | подписан, targetSdk 36 |
+| AAB для загрузки | собирает и заливает `play-ops ship` | подписан upload-ключом, targetSdk 36 |
 | Иконка | `icon-512.png` | 512×512 PNG |
 | Feature graphic | `feature-graphic-1024x500.png` | 1024×500 |
 | Скриншоты Play (4 шт.) | `screenshots/*.png` | 1080×1920 (9:16), мин. 2 |
@@ -57,7 +57,7 @@
 | Privacy Manifest в бандле | ✅ `PrivacyInfo.xcprivacy` лежит в `.app` |
 | Вёрстка на «челке»/Dynamic Island | ✅ проверено на iPhone 17 Pro Max |
 | Вёрстка на маленьком экране | ✅ проверено на iPhone SE 3 (375×667 — как 6s/7/8/SE) |
-| Версия синхронна с Android | ✅ MARKETING_VERSION 1.44 / CURRENT_PROJECT_VERSION 44 |
+| Версия синхронна с Android | ✅ MARKETING_VERSION 1.46 / CURRENT_PROJECT_VERSION 46 |
 | Отладочный код в релизе | ✅ отсутствует (проверено `strings` по релизному бинарнику) |
 | Язык по умолчанию | ✅ английский на всех платформах; язык устройства — опцией «System default» |
 
@@ -110,11 +110,18 @@ appstore-ops submit --yes                    # метаданные + отпра
 play-ops ship --track internal --yes         # AAB → Google Play
 ```
 
-⚠️ **Про ключ подписи Android.** `play-ops` подписывает своим общим upload-ключом
-(`~/.local/state/davidovski-os/play-ops/signing/upload.jks`), а не локальным `keystore.properties`.
-Поэтому при создании приложения в Play Console как upload key надо зарегистрировать
-`~/Developer/app-ship/credentials/upload-certificate.pem`, и заливать через `play-ops`,
-а не вручную собранный `FIXXE-v44.aab`. Смешивать два ключа нельзя — Play примет только один.
+⚠️ **Ключ подписи Android.** Общий бандл `android-signing.pob` оказался бракованным: пароль
+внутри него не открывает его же keystore (проверено — файл на диске побайтово совпадает с тем,
+что в бандле, дело не в импорте). Владельцу стоит его перевыпустить. Пока в
+`~/.local/state/davidovski-os/play-ops/signing/upload.jks` лежит НАШ ключ
+(`upload-keystore.jks`, SHA-256 `81:51:99:87:0D:DC:68:D3:…`), пароль — в Keychain:
+`security find-generic-password -s "FIXXE Android upload keystore" -a "fixxe-upload-key" -w`.
+Нерабочие файлы из бандла сохранены рядом с суффиксом `.broken-bundle`.
+**Потеря этого ключа = невозможность обновлять приложение в Play.**
+
+⚠️ **APK вне Play не распространяется.** С 30.09.2026 Android developer verification требует
+регистрации всех ключей, которыми подписано раздаваемое вне Play; отладочный ключ для этого
+не годится. Поэтому самообновление и публикация APK убраны, канал вне магазина — PWA.
 
 ---
 

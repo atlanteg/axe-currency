@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">להסיר את %1$s — %2$s מהרשימה?</string>
     <string name="add_currency_title">בחר מתוך %1$d מטבעות זמינים</string>
     <string name="search_hint">קוד או שם…</string>
-    <string name="update_title">עדכון זמין</string>
-    <string name="update_msg">גרסה %1$s זמינה. להוריד ולהתקין?</string>
-    <string name="update_now">עדכון</string>
-    <string name="update_later">מאוחר יותר</string>
-    <string name="downloading">מוריד…</string>
     <string name="settings">הגדרות</string>
     <string name="setting_precision">דיוק תצוגה:  %1$s</string>
     <string name="setting_source">מקור שער:  %1$s</string>

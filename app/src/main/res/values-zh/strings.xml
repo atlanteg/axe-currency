@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">从列表中移除 %1$s — %2$s？</string>
     <string name="add_currency_title">从 %1$d 种可用货币中选择</string>
     <string name="search_hint">代码或名称…</string>
-    <string name="update_title">有可用更新</string>
-    <string name="update_msg">有可用版本 %1$s。下载并安装？</string>
-    <string name="update_now">更新</string>
-    <string name="update_later">稍后</string>
-    <string name="downloading">下载中…</string>
     <string name="settings">设置</string>
     <string name="setting_precision">显示精度：  %1$s</string>
     <string name="setting_source">汇率来源：  %1$s</string>

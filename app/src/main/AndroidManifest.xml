@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- REQUEST_INSTALL_PACKAGES — только для debug (GitHub-самообновление), см. src/debug/AndroidManifest.xml -->
 
     <application
         android:allowBackup="true"

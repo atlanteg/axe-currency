@@ -21,11 +21,6 @@
     <string name="delete_currency_msg">Odstrániť %1$s — %2$s zo zoznamu?</string>
     <string name="add_currency_title">Vyberte z %1$d dostupných mien</string>
     <string name="search_hint">Kód alebo názov…</string>
-    <string name="update_title">Dostupná aktualizácia</string>
-    <string name="update_msg">Verzia %1$s je dostupná. Stiahnuť a nainštalovať?</string>
-    <string name="update_now">Aktualizovať</string>
-    <string name="update_later">Neskôr</string>
-    <string name="downloading">Sťahovanie…</string>
     <string name="settings">Nastavenia</string>
     <string name="setting_precision">Presnosť zobrazenia:  %1$s</string>
     <string name="setting_source">Zdroj kurzov:  %1$s</string>
