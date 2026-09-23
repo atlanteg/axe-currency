@@ -1,0 +1,79 @@
+# Google Play store listing + release manifest для FIXXE. Секретов здесь нет.
+# Читается `play-ops metadata push`, `graphics upload` и `promote --to production`.
+#
+# ВАЖНО: все тексты — только на английском (их видит пользователь магазина).
+# release.sh падает, если находит кириллицу в текстах для магазинов.
+
+default_locale: en-US
+
+contact:
+  email: innovation@karpinity.com
+  website: https://fixxe.l23.xyz
+
+category: FINANCE
+
+release:
+  # Первый релиз приложения Google принимает только как draft: публикацию
+  # подтверждают кнопкой в Play Console. Поэтапный раскат на draft-приложении
+  # тоже запрещён — он станет доступен со второго релиза.
+  status: draft
+  # rollout_fraction: 0.2   # включить после первой публикации
+
+graphics:
+  icon: icon-512.png
+  feature_graphic: feature-1024x500.png
+  phone_screenshots:
+    - phone-1.png
+    - phone-2.png
+    - phone-3.png
+    - phone-4.png
+  tablet_screenshots:
+    - tablet-1.png
+    - tablet-2.png
+    - tablet-3.png
+    - tablet-4.png
+
+# Зеркало ответов из Play Console (у Google нет write-API для этих разделов).
+content_rating:
+  violence: none
+  sexual_content: none
+  language: none
+  controlled_substances: none
+  gambling: false
+  user_generated_content: false
+
+data_safety:
+  collects_personal_info: false
+  shares_data_with_third_parties: false
+  data_encrypted_in_transit: true
+  data_deletion_supported: false
+
+pricing:
+  free: true
+  tier: null
+
+locales:
+  en-US:
+    title: "FIXXE"
+    short_description: "Live currency converter: 300+ currencies, 40 languages, mid-market rates."
+    full_description: |
+      FIXXE is a fast, clean currency converter with live mid-market exchange rates — the neutral midpoint between global buy and sell prices, not bank spreads.
+
+      • 300+ currencies including crypto and precious metals, with country flags
+      • Real-time conversion — type in any field, all others update instantly
+      • Dynamic base — rates are shown relative to the currency you are editing
+      • Multi-source rates with automatic fallback (ExchangeRate-API, F.A., Frankfurter / ECB); pick a source manually if you prefer
+      • Smart rounding — small values never collapse to "1"; precision adapts to keep the amount financially accurate
+      • Source-aware search — filter currencies by provider, see where each one is available, and switch source in one tap
+      • 40 languages, English by default, with an option to follow the device language (incl. right-to-left)
+      • Drag to reorder, add/remove currencies, one-tap CLEAR
+      • Works offline for the interface; your list, order and settings are saved on your device
+
+      No account. No ads. No tracking. Your preferences never leave your phone.
+
+      Displayed rates are mid-market reference values, not real-time trading quotes.
+      Rates By Exchange Rate API.
+    recent_changes: |
+      Tablet support: the currency list now stays at a readable width instead of stretching across the whole screen.
+
+      Also in this release: English is the default language (your device language is available as an option), country flags for all fiat currencies, and drag-to-reorder.
