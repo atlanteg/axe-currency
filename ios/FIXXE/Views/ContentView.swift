@@ -118,7 +118,10 @@ struct ContentView: View {
         .listStyle(.plain)
         .compatHideListBackground()
         .readableWidth()
-        .background(Color.bgGray)
+        .background(
+            // тап по фону списка — ещё один способ убрать клавиатуру
+            Color.bgGray.onTapGesture { focusedCode = nil }
+        )
         .environment(\.editMode, $editMode)
     }
 

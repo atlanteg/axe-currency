@@ -43,10 +43,24 @@ struct CurrencyRowView: View {
                 .font(.title3.bold())
                 .frame(width: 130)
                 .focused(focusedCode, equals: code)
+                .accessibilityIdentifier("amount-\(code)")
+                // на цифровой клавиатуре iOS нет кнопки «Готово» — добавляем свою,
+                // иначе клавиатуру нечем убрать и она закрывает нижние строки
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button { focusedCode.wrappedValue = nil } label: {
+                            Image(systemName: "keyboard.chevron.compact.down")
+                        }
+                        .accessibilityLabel(L10n.t("close"))
+                        .accessibilityIdentifier("dismiss-keyboard")
+                    }
+                }
         } else {
             Text(SmartFormat.amount(vm.converted(code), decimals: vm.decimals))
                 .font(.title3.bold())
                 .frame(width: 130, alignment: .trailing)
+                .accessibilityIdentifier("amount-\(code)")
                 .onTapGesture {
                     vm.setActive(code)
                     focusedCode.wrappedValue = code

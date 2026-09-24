@@ -1,3 +1,3 @@
-Tablet support: the currency list now stays at a readable width instead of stretching across the whole screen.
+You can now dismiss the number pad: a keyboard button appears above it, and tapping the background closes it too. On iOS the numeric keyboard has no built-in Done key, so the amount field kept it open and covered the lower rows.
 
-Also in this release: English is the default language (your device language is available as an option), country flags for all fiat currencies, and drag-to-reorder.
+Also in this release: tablet layout keeps the currency list at a readable width, English is the default language (your device language is available as an option), country flags for all fiat currencies, and drag-to-reorder via the ↑↓ button in the header.
