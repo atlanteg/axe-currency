@@ -38,7 +38,9 @@ locales:
       FIXXE is a fast, clean currency converter with live mid-market exchange rates — the
       neutral midpoint between global buy and sell prices, not bank spreads.
 
-      • 300+ currencies including crypto and precious metals, with country flags
+      • 300+ currencies with country flags — majors, regional currencies that
+        converters often skip (Russian ruble, Serbian dinar, Georgian lari,
+        Tajikistani somoni, Kyrgyz som), plus crypto and precious metals
       • Real-time conversion — type in any field, all others update instantly
       • Dynamic base — rates are shown relative to the currency you are editing
       • Multi-source rates with automatic fallback (ExchangeRate-API, F.A., Frankfurter / ECB);
@@ -56,7 +58,10 @@ locales:
 
       Displayed rates are mid-market reference values, not real-time trading quotes.
       Rates By Exchange Rate API.
-    keywords: "currency,converter,exchange,rate,money,travel,forex,crypto,finance"
+    promotional_text: |
+      300+ currencies with flags, including the Russian ruble and other regional
+      currencies. Mid-market rates from three sources, 40 languages, no ads, no tracking.
+    keywords: "currency,converter,exchange,rate,money,travel,forex,crypto,finance,ruble"
     # whats_new — только для обновлений; у первой версии приложения
     # App Store Connect это поле редактировать не даёт
     support_url: "https://telebimmer.com/fixxe/"
