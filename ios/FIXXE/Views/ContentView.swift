@@ -8,7 +8,7 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var showInfo = false
     @State private var deleteCandidate: String?
-    @State private var editMode: EditMode = .inactive
+    @State private var dragged: String?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -25,7 +25,6 @@ struct ContentView: View {
             await vm.loadSourceCodes()
             if ScreenshotArgs.openAdd { showAdd = true }
             if ScreenshotArgs.openSettings { showSettings = true }
-            if ScreenshotArgs.openReorder { editMode = .active }
             if ScreenshotArgs.openInfo { showInfo = true }
         }
         .sheet(isPresented: $showAdd) { AddCurrencyView(vm: vm) }
@@ -61,14 +60,6 @@ struct ContentView: View {
             .font(.caption).foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             if vm.isLoading { ProgressView().scaleEffect(0.8) }
-            Button {
-                focusedCode = nil
-                withAnimation { editMode = editMode.isEditing ? .inactive : .active }
-            } label: {
-                Image(systemName: editMode.isEditing ? "checkmark" : "arrow.up.arrow.down")
-                    .foregroundColor(editMode.isEditing ? .brandBlue : .gray)
-            }
-            .accessibilityLabel(L10n.t("reorder"))
             Button { Task { await vm.refresh() } } label: {
                 Image(systemName: "arrow.clockwise").foregroundColor(.brandBlue)
             }
@@ -101,28 +92,24 @@ struct ContentView: View {
     }
 
     private var currencyList: some View {
-        List {
-            ForEach(vm.currencies, id: \.self) { code in
-                CurrencyRowView(vm: vm, code: code, focusedCode: $focusedCode)
-                    .listRowInsets(EdgeInsets(top: 4, leading: 10, bottom: 4, trailing: 10))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) { deleteCandidate = code } label: {
-                            Image(systemName: "trash")
-                        }
-                    }
+        // Не List: он перехватывает drag & drop и отдаёт перестановку только
+        // своему .onMove, который работает лишь в режиме редактирования.
+        // На LazyVStack перетаскивание за ручку работает сразу, как в Android.
+        ScrollView {
+            LazyVStack(spacing: 8) {
+                ForEach(vm.currencies, id: \.self) { code in
+                    CurrencyRowView(vm: vm, code: code, focusedCode: $focusedCode,
+                                    dragged: $dragged, onDelete: { deleteCandidate = code })
+                }
             }
-            .onMove { from, to in vm.move(from: from, to: to) }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
         }
-        .listStyle(.plain)
-        .compatHideListBackground()
         .readableWidth()
         .background(
-            // тап по фону списка — ещё один способ убрать клавиатуру
+            // тап по фону — ещё один способ убрать клавиатуру
             Color.bgGray.onTapGesture { focusedCode = nil }
         )
-        .environment(\.editMode, $editMode)
     }
 
     private var footer: some View {

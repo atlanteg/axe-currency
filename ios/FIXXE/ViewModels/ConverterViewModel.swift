@@ -100,6 +100,16 @@ final class ConverterViewModel: ObservableObject {
 
     func move(from: IndexSet, to: Int) { currencies.move(fromOffsets: from, toOffset: to) }
 
+    /// Перестановка перетаскиванием: код `dragged` встаёт на место кода `target`.
+    func move(_ dragged: String, before target: String) {
+        guard dragged != target,
+              let from = currencies.firstIndex(of: dragged),
+              let to = currencies.firstIndex(of: target) else { return }
+        withAnimation {
+            currencies.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
+        }
+    }
+
     // Какие источники (индексы 0..2) содержат код
     func sourcesWith(_ code: String) -> [Int] {
         RatesService.sources.enumerated().compactMap { i, s in

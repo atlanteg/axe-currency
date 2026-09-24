@@ -11,6 +11,7 @@
 		0A92B8F83040587BE49D5DA0 /* OrientationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5993802983544C36948747 /* OrientationTests.swift */; };
 		16C40C7884F134B526BBFFBC /* currency-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 0196D5A38670EB6B1B06A2C1 /* currency-data.json */; };
 		298E55A3B962BB9B2912CC15 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A267E45A50BF97C2CA766F46 /* FlagView.swift */; };
+		4C3E6F0DFC68FEEDAFAF0807 /* ReorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E25FC99B6B5EA41C3F6D4C /* ReorderTests.swift */; };
 		5228B0E3040BEC0E30B95690 /* RatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB5A70E6477BB43FD4D59D2 /* RatesService.swift */; };
 		524EE471F8451BB1C6E4D45C /* SmartFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311FA3D94D8506F03C29956 /* SmartFormat.swift */; };
 		6592C86165FC60B94FD64A29 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC905DA39A7FC24568DEEBE /* ConverterViewModel.swift */; };
@@ -21,6 +22,7 @@
 		82FB531099F87A21CD1D6B6C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8E6CD2E09A979B0707F1666C /* PrivacyInfo.xcprivacy */; };
 		84E62203AAAB528186124EBD /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226419E3D43E1EAEF8D4330C /* CurrencyData.swift */; };
 		952EB819D1D3119E48EC7524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68D604946C3A5A771C49B396 /* Assets.xcassets */; };
+		A4644BAC9D8305B3D117FD14 /* RowDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE730FAD8CAD8576907366 /* RowDropDelegate.swift */; };
 		AD53D43B2FA5EA24FA49BF61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BE26C83A3E86B94DFB87 /* ContentView.swift */; };
 		C1C4801A84BC5B850311F521 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5EE0A4AEF75010731DE0ED /* L10n.swift */; };
 		D8A363D4F4A3CD6D7B2E4B48 /* FIXXEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62226A2CEBCEFBC634494829 /* FIXXEApp.swift */; };
@@ -39,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		0196D5A38670EB6B1B06A2C1 /* currency-data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "currency-data.json"; sourceTree = "<group>"; };
+		10AE730FAD8CAD8576907366 /* RowDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowDropDelegate.swift; sourceTree = "<group>"; };
 		226419E3D43E1EAEF8D4330C /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
 		5C5993802983544C36948747 /* OrientationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTests.swift; sourceTree = "<group>"; };
 		603B72B1ECB700C2621B94EE /* FIXXE.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FIXXE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +52,7 @@
 		78CCE8ABB75B2FDDF802BEB6 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		7A9DE17165DBC26A211F6222 /* FIXXEUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FIXXEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E0CDC4F07CFC6D685D38F31 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		86E25FC99B6B5EA41C3F6D4C /* ReorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTests.swift; sourceTree = "<group>"; };
 		8AC905DA39A7FC24568DEEBE /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 		8E6CD2E09A979B0707F1666C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9D5EE0A4AEF75010731DE0ED /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				F191BE26C83A3E86B94DFB87 /* ContentView.swift */,
 				633F0813B564E37AAF56E162 /* CurrencyRowView.swift */,
 				A267E45A50BF97C2CA766F46 /* FlagView.swift */,
+				10AE730FAD8CAD8576907366 /* RowDropDelegate.swift */,
 				7E0CDC4F07CFC6D685D38F31 /* SettingsView.swift */,
 			);
 			path = Views;
@@ -163,6 +168,7 @@
 			children = (
 				E522B41204AA2122AC64BF93 /* KeyboardTests.swift */,
 				5C5993802983544C36948747 /* OrientationTests.swift */,
+				86E25FC99B6B5EA41C3F6D4C /* ReorderTests.swift */,
 			);
 			path = FIXXEUITests;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 			files = (
 				65D600C3FBF26028B8B98A8D /* KeyboardTests.swift in Sources */,
 				0A92B8F83040587BE49D5DA0 /* OrientationTests.swift in Sources */,
+				4C3E6F0DFC68FEEDAFAF0807 /* ReorderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +287,7 @@
 				298E55A3B962BB9B2912CC15 /* FlagView.swift in Sources */,
 				C1C4801A84BC5B850311F521 /* L10n.swift in Sources */,
 				5228B0E3040BEC0E30B95690 /* RatesService.swift in Sources */,
+				A4644BAC9D8305B3D117FD14 /* RowDropDelegate.swift in Sources */,
 				E5D87D9076E22FE36EB8715B /* SettingsView.swift in Sources */,
 				524EE471F8451BB1C6E4D45C /* SmartFormat.swift in Sources */,
 				7DB6B5726FD5A4FDA2381486 /* UIHelpers.swift in Sources */,
@@ -303,7 +311,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FIXXE;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -313,7 +321,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.48;
+				MARKETING_VERSION = 1.49;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karpinity.fixxe;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
@@ -482,7 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FIXXE;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -492,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.48;
+				MARKETING_VERSION = 1.49;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karpinity.fixxe;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;

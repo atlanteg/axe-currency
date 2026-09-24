@@ -55,7 +55,7 @@ echo "▶ съёмка"
 shot 1-main
 shot 2-add-currency -screen-add
 shot 3-settings -screen-settings
-shot 4-reorder -screen-reorder
+shot 4-sources -screen-add -screen-filter 1
 
 xcrun simctl terminate "$SIM" "$BUNDLE_ID" 2>/dev/null || true
 
@@ -83,7 +83,7 @@ ipad_shot() {
 ipad_shot 1-main
 ipad_shot 2-add-currency -screen-add
 ipad_shot 3-settings -screen-settings
-ipad_shot 4-reorder -screen-reorder
+ipad_shot 4-sources -screen-add -screen-filter 1
 xcrun simctl terminate "$IPAD" "$BUNDLE_ID" 2>/dev/null || true
 
 echo "готово: $OUT и $OUT_IPAD"

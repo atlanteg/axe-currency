@@ -1,3 +1,5 @@
-You can now dismiss the number pad: a keyboard button appears above it, and tapping the background closes it too. On iOS the numeric keyboard has no built-in Done key, so the amount field kept it open and covered the lower rows.
+Reordering now works the way it does on Android: drag a row by the handle on the right, no edit mode to turn on first. Each row also has a delete button on the left.
 
-Also in this release: tablet layout keeps the currency list at a readable width, English is the default language (your device language is available as an option), country flags for all fiat currencies, and drag-to-reorder via the ↑↓ button in the header.
+You can dismiss the number pad too — a keyboard button appears above it, and tapping the background closes it. On iOS the numeric keyboard has no built-in Done key, so it used to stay open and cover the lower rows.
+
+Also in this release: tablet layout keeps the currency list at a readable width, English is the default language with your device language available as an option, and country flags for all fiat currencies.
