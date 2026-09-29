@@ -1,3 +1,3 @@
-Rates now work offline: the last known rates are kept on your device, so the app keeps converting without a connection. If those rates are more than a day old, the header says so clearly instead of pretending they are current.
+The "add currency" list now offers every currency from all three rate providers at once — 335 instead of only the ones the active source happens to return. Each entry still shows where it is available, and picking one switches the source for you.
 
-Also in this release: reorder rows by dragging the handle on the right, delete a currency with one tap, and dismiss the number pad with the keyboard button above it.
+The app also gives up faster on a provider that is not responding, so a dead source costs seconds rather than tens of seconds before the next one is tried.

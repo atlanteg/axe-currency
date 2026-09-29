@@ -229,7 +229,9 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
     fun sourceCodesLoaded() = sourceCodes.isNotEmpty()
 
     fun loadSourceCodes(onDone: () -> Unit) {
-        if (sourceCodes.isNotEmpty()) { onDone(); return }
+        // @Suppress: поле инициализируется ниже по файлу, вызов до этого момента дал бы NPE
+        @Suppress("SENSELESS_COMPARISON")
+        if (sourceCodes != null && sourceCodes.isNotEmpty()) { onDone(); return }
         viewModelScope.launch {
             sourceCodes = repository.fetchSourceCodes()
             onDone()
@@ -250,6 +252,10 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun isInActiveSource(code: String) = allRates.containsKey(code)
+
+    /** Сколько валют можно добавить: объединение всех источников минус уже добавленные. */
+    fun addableCount(): Int =
+        (allCurrencyCodesUnion().size - displayCurrencies.size).coerceAtLeast(0)
 
     // Принудительно переключить источник и добавить валюту
     fun switchSourceAndAdd(code: String, srcIdx: Int) {

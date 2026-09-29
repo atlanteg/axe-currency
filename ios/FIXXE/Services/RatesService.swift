@@ -42,7 +42,7 @@ enum RatesService {
 
     private static func get(_ url: String) async throws -> Data {
         var req = URLRequest(url: URL(string: url)!)
-        req.timeoutInterval = 12
+        req.timeoutInterval = 8
         req.cachePolicy = .reloadIgnoringLocalCacheData
         let (data, resp) = try await URLSession.shared.data(for: req)
         guard (resp as? HTTPURLResponse)?.statusCode == 200 else { throw RatesError.allFailed }

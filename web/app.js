@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.50';
+const APP_VERSION = '1.51';
 
 /* ---------- Persistence ---------- */
 const store = {
@@ -111,7 +111,14 @@ const SOURCE_META = [
 let sourceCodes = { 'ExchangeRate-API':null, 'F.A.':null, 'Frankfurter (ECB)':null };
 
 async function loadSourceCodes(){
-  const j = async (u,f)=>{ try{ const r=await fetch(u,{cache:'no-store'}); return f(await r.json()); }catch(e){ return null; } };
+  // с таймаутом: без него зависший источник держал бы загрузку списка валют бесконечно
+  const j = async (u,f)=>{
+    const ctrl = new AbortController();
+    const to = setTimeout(()=>ctrl.abort(), 8000);
+    try{ const r = await fetch(u,{cache:'no-store', signal:ctrl.signal}); return f(await r.json()); }
+    catch(e){ return null; }
+    finally{ clearTimeout(to); }
+  };
   const [a,b,c] = await Promise.all([
     j('https://open.er-api.com/v6/latest/EUR', d=> d.result==='success'? Object.keys(d.rates):null),
     j('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json', d=> Object.keys(d).map(k=>k.toUpperCase()))
@@ -139,7 +146,7 @@ async function fetchRates(){
     for (const url of src.urls){
       try{
         const ctrl = new AbortController();
-        const to = setTimeout(()=>ctrl.abort(), 12000);
+        const to = setTimeout(()=>ctrl.abort(), 8000);
         const r = await fetch(url, {signal:ctrl.signal, cache:'no-store'});
         clearTimeout(to);
         if(!r.ok) throw new Error('HTTP '+r.status);

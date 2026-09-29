@@ -132,6 +132,9 @@ class MainActivity : AppCompatActivity() {
             currentFocus?.clearFocus()
             vm.clearAll()
         }
+        // списки источников тянем заранее: иначе в диалоге добавления сначала
+        // видно только валюты активного источника (159 вместо 335)
+        if (!vm.sourceCodesLoaded()) vm.loadSourceCodes { }
         binding.btnAddCurrency.setOnClickListener { showAddDialog() }
         binding.btnSettings.setOnClickListener { showSettingsDialog() }
 
@@ -389,10 +392,15 @@ class MainActivity : AppCompatActivity() {
         })
 
         buildChips(); refilterAndDraw()
-        if (!vm.sourceCodesLoaded()) vm.loadSourceCodes { runOnUiThread { buildChips(); refilterAndDraw() } }
+        if (!vm.sourceCodesLoaded()) vm.loadSourceCodes {
+            runOnUiThread {
+                buildChips(); refilterAndDraw()
+                dialog?.setTitle(getString(R.string.add_currency_title, vm.addableCount()))
+            }
+        }
 
         dialog = AlertDialog.Builder(this)
-            .setTitle(getString(R.string.add_currency_title, vm.getAvailableCurrencies().size))
+            .setTitle(getString(R.string.add_currency_title, vm.addableCount()))
             .setView(dialogView)
             .setNegativeButton(getString(R.string.cancel), null)
             .create()
