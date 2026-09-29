@@ -44,4 +44,6 @@
     <string name="switch_and_add">تغییر و افزودن</string>
     <string name="already_added">از قبل در فهرست است</string>
     <string name="reorder">تغییر ترتیب</string>
+    <string name="rates_offline">آفلاین · نرخ‌ها از %1$s · %2$s</string>
+    <string name="rates_stale">⚠ نرخ‌ها قدیمی‌اند — از %1$s · %2$s</string>
 </resources>

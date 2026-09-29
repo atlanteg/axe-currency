@@ -105,8 +105,18 @@ class MainActivity : AppCompatActivity() {
                 binding.tvStatus.text = when {
                     s.error != null         -> getString(R.string.error_prefix, s.error)
                     s.lastUpdated.isEmpty() -> getString(R.string.loading)
+                    // кэшу больше суток — предупреждаем заметно
+                    s.stale                 -> getString(R.string.rates_stale, s.lastUpdated, s.source)
+                    s.fromCache             -> getString(R.string.rates_offline, s.lastUpdated, s.source)
                     else                    -> getString(R.string.updated, s.lastUpdated, s.source)
                 }
+                binding.tvStatus.setTextColor(
+                    when {
+                        s.stale     -> 0xFFD84315.toInt()   // устаревшие курсы — оранжево-красный
+                        s.fromCache -> 0xFF8D6E63.toInt()   // офлайн, но свежие — приглушённый
+                        else        -> 0xFF666666.toInt()
+                    }
+                )
                 adapter.decimalPlaces = s.decimalPlaces
                 adapter.submitList(s.currencyItems, s.activeCurrency)
             }

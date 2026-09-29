@@ -15,6 +15,10 @@ final class ConverterViewModel: ObservableObject {
     @Published var lastUpdated = ""
     @Published var isLoading = false
     @Published var errorText: String?
+    /// данные показаны из кэша (сеть недоступна)
+    @Published var fromCache = false
+    /// кэшу больше суток — курсы могли устареть
+    @Published var stale = false
 
     // Активная валюта и ввод
     @Published var activeCode: String
@@ -32,21 +36,61 @@ final class ConverterViewModel: ObservableObject {
         decimals = UserDefaults.standard.integer(forKey: "decimals")
         sourceMode = UserDefaults.standard.integer(forKey: "source")
         activeCode = list.first ?? "EUR"
+        if ScreenshotArgs.staleCache {
+            UserDefaults.standard.set(Date().timeIntervalSince1970 - 3 * 24 * 60 * 60, forKey: "cached_at")
+        }
+        showCached()   // мгновенный старт с последними известными курсами
+    }
+
+    // MARK: кэш курсов
+    //
+    // Без сети приложение всё равно считает по последним известным курсам,
+    // а если кэшу больше суток — интерфейс об этом предупреждает.
+
+    private static let cacheAge: TimeInterval = 24 * 60 * 60
+
+    private func cache(_ rates: [String: Double], source: String) {
+        let d = UserDefaults.standard
+        d.set(rates, forKey: "cached_rates")
+        d.set(source, forKey: "cached_source")
+        d.set(Date().timeIntervalSince1970, forKey: "cached_at")
+    }
+
+    private func showCached() {
+        let d = UserDefaults.standard
+        guard let cached = d.dictionary(forKey: "cached_rates") as? [String: Double],
+              !cached.isEmpty else { return }
+        let at = d.double(forKey: "cached_at")
+        guard at > 0 else { return }
+        rates = cached
+        currentSource = d.string(forKey: "cached_source") ?? ""
+        lastUpdated = Self.format(Date(timeIntervalSince1970: at))
+        fromCache = true
+        stale = Date().timeIntervalSince1970 - at > Self.cacheAge
+    }
+
+    private static func format(_ date: Date) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "dd MMM yyyy HH:mm"
+        return df.string(from: date)
     }
 
     // MARK: курсы
 
     func refresh() async {
+        if ScreenshotArgs.staleCache { return }   // проверяем именно состояние «кэш устарел»
         isLoading = true; errorText = nil
         defer { isLoading = false }
         do {
             let r = try await RatesService.fetchRates(preferred: sourceMode)
             rates = r.rates; currentSource = r.source
-            let df = DateFormatter()
-            df.dateFormat = "dd MMM yyyy HH:mm"
-            lastUpdated = df.string(from: Date())
+            lastUpdated = Self.format(Date())
+            fromCache = false; stale = false
+            cache(r.rates, source: r.source)
         } catch {
-            errorText = L10n.t("network_error")
+            // сеть недоступна — остаёмся на кэше, а не показываем пустоту
+            showCached()
+            if rates.isEmpty { errorText = L10n.t("network_error") }
         }
     }
 

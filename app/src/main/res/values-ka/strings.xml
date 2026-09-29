@@ -44,4 +44,6 @@
     <string name="switch_and_add">გადართვა და დამატება</string>
     <string name="already_added">უკვე სიაშია</string>
     <string name="reorder">თანმიმდევრობის შეცვლა</string>
+    <string name="rates_offline">ოფლაინ · კურსები %1$s · %2$s</string>
+    <string name="rates_stale">⚠ კურსები მოძველებულია — %1$s · %2$s</string>
 </resources>

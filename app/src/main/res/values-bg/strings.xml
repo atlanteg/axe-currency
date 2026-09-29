@@ -44,4 +44,6 @@
     <string name="switch_and_add">Смени и добави</string>
     <string name="already_added">Вече в списъка</string>
     <string name="reorder">Пренареждане</string>
+    <string name="rates_offline">Офлайн · курсове от %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Курсовете са остарели — от %1$s · %2$s</string>
 </resources>

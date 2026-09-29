@@ -44,4 +44,6 @@
     <string name="switch_and_add">Pārslēgt un pievienot</string>
     <string name="already_added">Jau sarakstā</string>
     <string name="reorder">Mainīt secību</string>
+    <string name="rates_offline">Bezsaistē · kursi no %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kursi ir novecojuši — no %1$s · %2$s</string>
 </resources>

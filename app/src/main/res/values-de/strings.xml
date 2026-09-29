@@ -44,4 +44,6 @@
     <string name="switch_and_add">Wechseln &amp; hinzufügen</string>
     <string name="already_added">Bereits in der Liste</string>
     <string name="reorder">Reihenfolge ändern</string>
+    <string name="rates_offline">Offline · Kurse vom %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kurse sind veraltet — vom %1$s · %2$s</string>
 </resources>

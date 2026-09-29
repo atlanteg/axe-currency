@@ -44,4 +44,6 @@
     <string name="switch_and_add">Αλλαγή &amp; προσθήκη</string>
     <string name="already_added">Ήδη στη λίστα</string>
     <string name="reorder">Αναδιάταξη</string>
+    <string name="rates_offline">Εκτός σύνδεσης · τιμές από %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Οι τιμές είναι παλιές — από %1$s · %2$s</string>
 </resources>

@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION = '1.49';
+const APP_VERSION = '1.50';
 
 /* ---------- Persistence ---------- */
 const store = {
@@ -25,6 +25,9 @@ let activeCurrency = displayCurrencies[0] || 'EUR';
 let activeAmount = 1;
 let currentSource = '';
 let lastUpdated = '';
+let fromCache = false;   // данные из кэша (сеть недоступна)
+let stale = false;       // кэшу больше суток — курсы могли устареть
+const CACHE_AGE_MS = 24*60*60*1000;
 
 /* ---------- i18n ---------- */
 function resolveLang(){
@@ -149,18 +152,40 @@ async function fetchRates(){
   throw lastErr || new Error('no sources');
 }
 
+function fmtTime(d){
+  const pad = n => String(n).padStart(2,'0');
+  const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+  return `${pad(d.getDate())} ${mon} ${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+// Курсы держим в кэше: без сети приложение всё равно считает,
+// а если кэшу больше суток — интерфейс об этом предупреждает.
+function cacheRates(rates, source){
+  store.set('rates', { rates, source, at: Date.now() });
+}
+function showCached(){
+  const c = store.get('rates', null);
+  if (!c || !c.rates || !Object.keys(c.rates).length) return false;
+  allRates = c.rates; currentSource = c.source || '';
+  lastUpdated = fmtTime(new Date(c.at));
+  fromCache = true;
+  stale = Date.now() - c.at > CACHE_AGE_MS;
+  return true;
+}
+
 async function refresh(){
   setStatus(t('loading'));
   try{
     const { rates, source } = await fetchRates();
     allRates = rates; currentSource = source;
-    const d = new Date();
-    const pad = n => String(n).padStart(2,'0');
-    const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
-    lastUpdated = `${pad(d.getDate())} ${mon} ${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    lastUpdated = fmtTime(new Date());
+    fromCache = false; stale = false;
+    cacheRates(rates, source);
     render();
   }catch(e){
-    setStatus('⚠ ' + t('network_error'));
+    // сеть недоступна — считаем по последним известным курсам
+    if (showCached()) render();
+    else setStatus('⚠ ' + t('network_error'));
   }
 }
 
@@ -182,7 +207,19 @@ function render(){
   $('#attribution').textContent = t('attribution');
   $('#version').textContent = t('version', APP_VERSION);
   $('#badge').textContent = t('selected', displayCurrencies.length);
-  if (lastUpdated) setStatus(t('updated', lastUpdated, currentSource));
+  if (lastUpdated){
+    const el = $('#status');
+    if (stale){
+      setStatus(t('rates_stale', lastUpdated, currentSource));
+      el.style.color = '#D84315';           // устаревшие курсы — заметно
+    } else if (fromCache){
+      setStatus(t('rates_offline', lastUpdated, currentSource));
+      el.style.color = '#8D6E63';
+    } else {
+      setStatus(t('updated', lastUpdated, currentSource));
+      el.style.color = '';
+    }
+  }
 
   const list = listEl();
   list.innerHTML = '';
@@ -468,6 +505,7 @@ $('#btnInfo').onclick = showInfo;
 $('#btnSettings').onclick = showSettings;
 
 render();
+showCached() && render();   // мгновенный старт с последними известными курсами
 refresh();
 loadSourceCodes();   // подтягиваем списки валют всех источников (для значков в поиске)
 setInterval(refresh, 30*60*1000);

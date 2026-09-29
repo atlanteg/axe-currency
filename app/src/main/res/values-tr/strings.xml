@@ -44,4 +44,6 @@
     <string name="switch_and_add">Değiştir ve ekle</string>
     <string name="already_added">Zaten listede</string>
     <string name="reorder">Yeniden sırala</string>
+    <string name="rates_offline">Çevrimdışı · %1$s kurları · %2$s</string>
+    <string name="rates_stale">⚠ Kurlar güncel değil — %1$s · %2$s</string>
 </resources>

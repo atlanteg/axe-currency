@@ -44,4 +44,6 @@
     <string name="switch_and_add">Bytt og legg til</string>
     <string name="already_added">Allerede i listen</string>
     <string name="reorder">Endre rekkefølge</string>
+    <string name="rates_offline">Frakoblet · kurser fra %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kursene er utdaterte — fra %1$s · %2$s</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="switch_and_add">切换并添加</string>
     <string name="already_added">已在列表中</string>
     <string name="reorder">重新排序</string>
+    <string name="rates_offline">离线 · %1$s 的汇率 · %2$s</string>
+    <string name="rates_stale">⚠ 汇率已过时 — %1$s · %2$s</string>
 </resources>

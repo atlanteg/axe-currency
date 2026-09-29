@@ -44,4 +44,6 @@
     <string name="switch_and_add">تغيير وإضافة</string>
     <string name="already_added">موجود في القائمة</string>
     <string name="reorder">إعادة الترتيب</string>
+    <string name="rates_offline">دون اتصال · أسعار من %1$s · %2$s</string>
+    <string name="rates_stale">⚠ الأسعار قديمة — من %1$s · %2$s</string>
 </resources>

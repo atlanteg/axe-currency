@@ -44,4 +44,6 @@
     <string name="switch_and_add">Cambiar y añadir</string>
     <string name="already_added">Ya está en la lista</string>
     <string name="reorder">Reordenar</string>
+    <string name="rates_offline">Sin conexión · tasas del %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Las tasas están desactualizadas — del %1$s · %2$s</string>
 </resources>

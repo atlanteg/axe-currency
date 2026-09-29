@@ -53,11 +53,20 @@ struct ContentView: View {
                 .foregroundColor(.brandBlue)
                 .cornerRadius(6)
             Group {
-                if let e = vm.errorText { Text("⚠ \(e)") }
-                else if vm.lastUpdated.isEmpty { Text(L10n.t("loading")) }
-                else { Text(L10n.t("updated", vm.lastUpdated, vm.currentSource)) }
+                if let e = vm.errorText { Text("⚠ \(e)").foregroundColor(.secondary) }
+                else if vm.lastUpdated.isEmpty { Text(L10n.t("loading")).foregroundColor(.secondary) }
+                else if vm.stale {
+                    // кэшу больше суток — предупреждаем заметно
+                    Text(L10n.t("rates_stale", vm.lastUpdated, vm.currentSource))
+                        .foregroundColor(Color(hex: "D84315"))
+                } else if vm.fromCache {
+                    Text(L10n.t("rates_offline", vm.lastUpdated, vm.currentSource))
+                        .foregroundColor(Color(hex: "8D6E63"))
+                } else {
+                    Text(L10n.t("updated", vm.lastUpdated, vm.currentSource)).foregroundColor(.secondary)
+                }
             }
-            .font(.caption).foregroundColor(.secondary)
+            .font(.caption)
             .frame(maxWidth: .infinity, alignment: .leading)
             if vm.isLoading { ProgressView().scaleEffect(0.8) }
             Button { Task { await vm.refresh() } } label: {

@@ -44,4 +44,6 @@
     <string name="switch_and_add">Perjungti ir pridėti</string>
     <string name="already_added">Jau sąraše</string>
     <string name="reorder">Pertvarkyti</string>
+    <string name="rates_offline">Neprisijungus · kursai nuo %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kursai pasenę — nuo %1$s · %2$s</string>
 </resources>

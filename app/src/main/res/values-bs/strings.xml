@@ -44,4 +44,6 @@
     <string name="switch_and_add">Promijeni i dodaj</string>
     <string name="already_added">Već na listi</string>
     <string name="reorder">Promijeni redoslijed</string>
+    <string name="rates_offline">Offline · kursevi od %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kursevi su zastarjeli — od %1$s · %2$s</string>
 </resources>

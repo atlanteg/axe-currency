@@ -44,4 +44,6 @@
     <string name="switch_and_add">전환 후 추가</string>
     <string name="already_added">이미 목록에 있음</string>
     <string name="reorder">순서 변경</string>
+    <string name="rates_offline">오프라인 · %1$s 환율 · %2$s</string>
+    <string name="rates_stale">⚠ 환율이 오래되었습니다 — %1$s · %2$s</string>
 </resources>

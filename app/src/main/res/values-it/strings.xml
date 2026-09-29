@@ -44,4 +44,6 @@
     <string name="switch_and_add">Cambia e aggiungi</string>
     <string name="already_added">Già nell\'elenco</string>
     <string name="reorder">Riordina</string>
+    <string name="rates_offline">Offline · tassi del %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Tassi non aggiornati — del %1$s · %2$s</string>
 </resources>

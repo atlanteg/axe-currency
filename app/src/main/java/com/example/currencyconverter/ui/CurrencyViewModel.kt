@@ -23,6 +23,10 @@ data class UiState(
     val source: String = "",
     val totalCurrencies: Int = 0,
     val error: String? = null,
+    /** данные показаны из кэша (сеть недоступна) */
+    val fromCache: Boolean = false,
+    /** кэшу больше суток — курсы могли устареть */
+    val stale: Boolean = false,
     val decimalPlaces: Int = 0
 )
 
@@ -67,8 +71,53 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
 
     init {
         _state.value = _state.value.copy(decimalPlaces = getDecimalPlaces())
+        showCached()   // мгновенный старт с последними известными курсами
         refresh()
         startAutoRefresh()
+    }
+
+    /** Курсы держим в кэше: без сети приложение всё равно считает,
+     *  а если кэшу больше суток — интерфейс об этом предупреждает. */
+    private fun cacheRates(rates: Map<String, Double>, source: String) {
+        val payload = rates.entries.joinToString(",") { "${it.key}=${it.value}" }
+        prefs.edit()
+            .putString("cached_rates", payload)
+            .putString("cached_source", source)
+            .putLong("cached_at", System.currentTimeMillis())
+            .apply()
+    }
+
+    private fun loadCachedRates(): Triple<Map<String, Double>, String, Long>? {
+        val payload = prefs.getString("cached_rates", null) ?: return null
+        val at = prefs.getLong("cached_at", 0L)
+        if (at == 0L) return null
+        val rates = payload.split(",").mapNotNull {
+            val parts = it.split("=")
+            val v = parts.getOrNull(1)?.toDoubleOrNull()
+            if (parts.size == 2 && v != null) parts[0] to v else null
+        }.toMap()
+        if (rates.isEmpty()) return null
+        return Triple(rates, prefs.getString("cached_source", "") ?: "", at)
+    }
+
+    private fun isStale(at: Long) = System.currentTimeMillis() - at > 24 * 60 * 60 * 1000L
+
+    private fun formatTime(at: Long) =
+        SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(Date(at))
+
+    /** Показать кэш, пока идёт (или не удался) сетевой запрос. */
+    private fun showCached() {
+        val cached = loadCachedRates() ?: return
+        val (rates, source, at) = cached
+        allRates = rates
+        _state.value = _state.value.copy(
+            lastUpdated = formatTime(at),
+            source = source,
+            totalCurrencies = rates.size,
+            fromCache = true,
+            stale = isStale(at),
+            currencyItems = buildItems()
+        )
     }
 
     fun refresh() {
@@ -77,6 +126,7 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
             repository.getRates(getSourceMode()).fold(
                 onSuccess = { snap ->
                     allRates = snap.rates
+                    cacheRates(snap.rates, snap.source)
                     // Показываем ВРЕМЯ НАШЕГО запроса — чтобы refresh был виден
                     val fetchTime = SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault())
                         .format(Date())
@@ -85,14 +135,33 @@ class CurrencyViewModel(app: Application) : AndroidViewModel(app) {
                         lastUpdated = fetchTime,
                         source = snap.source,
                         totalCurrencies = snap.rates.size,
+                        fromCache = false,
+                        stale = false,
                         currencyItems = buildItems()
                     )
                 },
                 onFailure = { e ->
-                    _state.value = _state.value.copy(
-                        isLoading = false,
-                        error = e.message ?: "Network error"
-                    )
+                    val cached = loadCachedRates()
+                    if (cached != null) {
+                        // сеть недоступна — считаем по последним известным курсам
+                        val (rates, source, at) = cached
+                        allRates = rates
+                        _state.value = _state.value.copy(
+                            isLoading = false,
+                            error = null,
+                            lastUpdated = formatTime(at),
+                            source = source,
+                            totalCurrencies = rates.size,
+                            fromCache = true,
+                            stale = isStale(at),
+                            currencyItems = buildItems()
+                        )
+                    } else {
+                        _state.value = _state.value.copy(
+                            isLoading = false,
+                            error = e.message ?: "Network error"
+                        )
+                    }
                 }
             )
         }

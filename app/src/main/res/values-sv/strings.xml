@@ -44,4 +44,6 @@
     <string name="switch_and_add">Byt och lägg till</string>
     <string name="already_added">Redan i listan</string>
     <string name="reorder">Ändra ordning</string>
+    <string name="rates_offline">Offline · kurser från %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kurserna är inaktuella — från %1$s · %2$s</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="switch_and_add">สลับและเพิ่ม</string>
     <string name="already_added">อยู่ในรายการแล้ว</string>
     <string name="reorder">จัดเรียงใหม่</string>
+    <string name="rates_offline">ออฟไลน์ · อัตราจาก %1$s · %2$s</string>
+    <string name="rates_stale">⚠ อัตราล้าสมัย — จาก %1$s · %2$s</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="switch_and_add">Vaheta ja lisa</string>
     <string name="already_added">Juba loendis</string>
     <string name="reorder">Muuda järjekorda</string>
+    <string name="rates_offline">Võrguühenduseta · kursid seisuga %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kursid on aegunud — seisuga %1$s · %2$s</string>
 </resources>

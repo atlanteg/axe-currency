@@ -44,4 +44,6 @@
     <string name="switch_and_add">Đổi &amp; thêm</string>
     <string name="already_added">Đã có trong danh sách</string>
     <string name="reorder">Sắp xếp lại</string>
+    <string name="rates_offline">Ngoại tuyến · tỷ giá từ %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Tỷ giá đã cũ — từ %1$s · %2$s</string>
 </resources>

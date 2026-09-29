@@ -44,4 +44,6 @@
     <string name="switch_and_add">החלף והוסף</string>
     <string name="already_added">כבר ברשימה</string>
     <string name="reorder">שינוי סדר</string>
+    <string name="rates_offline">לא מקוון · שערים מ-%1$s · %2$s</string>
+    <string name="rates_stale">⚠ השערים אינם עדכניים — מ-%1$s · %2$s</string>
 </resources>

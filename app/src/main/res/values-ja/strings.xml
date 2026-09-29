@@ -44,4 +44,6 @@
     <string name="switch_and_add">切り替えて追加</string>
     <string name="already_added">追加済み</string>
     <string name="reorder">並べ替え</string>
+    <string name="rates_offline">オフライン · %1$s のレート · %2$s</string>
+    <string name="rates_stale">⚠ レートが古いです — %1$s · %2$s</string>
 </resources>

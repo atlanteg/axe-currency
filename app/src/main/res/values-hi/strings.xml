@@ -44,4 +44,6 @@
     <string name="switch_and_add">बदलें और जोड़ें</string>
     <string name="already_added">पहले से सूची में है</string>
     <string name="reorder">क्रम बदलें</string>
+    <string name="rates_offline">ऑफ़लाइन · %1$s की दरें · %2$s</string>
+    <string name="rates_stale">⚠ दरें पुरानी हैं — %1$s की · %2$s</string>
 </resources>

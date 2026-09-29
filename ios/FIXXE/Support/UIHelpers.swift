@@ -28,6 +28,8 @@ enum ScreenshotArgs {
     static var openAdd: Bool { args.contains("-screen-add") }
     static var openSettings: Bool { args.contains("-screen-settings") }
     static var openInfo: Bool { args.contains("-screen-info") }
+    /// состарить кэш курсов, чтобы проверить предупреждение об устаревших данных
+    static var staleCache: Bool { args.contains("-stale-cache") }
     static var initialQuery: String {
         guard let i = args.firstIndex(of: "-screen-query"), i + 1 < args.count else { return "" }
         return args[i + 1]
@@ -41,6 +43,7 @@ enum ScreenshotArgs {
     static var openAdd: Bool { false }
     static var openSettings: Bool { false }
     static var openInfo: Bool { false }
+    static var staleCache: Bool { false }
     static var initialQuery: String { "" }
     static var initialFilter: Int { -1 }
 #endif

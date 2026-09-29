@@ -44,4 +44,6 @@
     <string name="switch_and_add">Přepnout a přidat</string>
     <string name="already_added">Již v seznamu</string>
     <string name="reorder">Změnit pořadí</string>
+    <string name="rates_offline">Offline · kurzy z %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kurzy jsou zastaralé — z %1$s · %2$s</string>
 </resources>

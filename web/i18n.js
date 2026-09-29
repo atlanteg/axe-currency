@@ -44,7 +44,9 @@ const I18N = {
 "language_system": "System default",
 "source_info_title": "Rate source",
 "source_info_message": "Mid-market rate — the midpoint between buy and sell on the global market.\n\nBase currency: EUR, other pairs are computed through the euro.\n\nSources (automatic fallback):\n1. ExchangeRate-API — primary\n2. F.A. — if the primary is down\n3. Frankfurter (ECB) — second fallback\n\nIf the primary source does not respond during auto-update or on ↻, the app automatically takes data from the next one. The current source is shown at the top next to the update time.\n\nIn Settings (⚙) you can force a specific source — the others still remain as fallback.\n\nUpdates once a day. The difference from other reference services is usually under 0.5% — these are reference rates, not real-time quotes.\n\nLicenses and attribution:\n• ExchangeRate-API — requires the “Rates By Exchange Rate API” link (in the footer, clickable).\n• F.A. — CC0 (public domain), no attribution required.\n• Frankfurter — MIT, data from the European Central Bank (ECB).",
-"reorder": "Reorder"
+"reorder": "Reorder",
+"rates_offline": "Offline · rates from %1$s · %2$s",
+"rates_stale": "⚠ Rates are out of date — from %1$s · %2$s"
 },
 "ar": {
 "app_name": "FIXXE",
@@ -90,7 +92,9 @@ const I18N = {
 "switch_source_msg": "%1$s متاح عبر %2$s، وليس المصدر الحالي. هل تريد التغيير والإضافة؟",
 "switch_and_add": "تغيير وإضافة",
 "already_added": "موجود في القائمة",
-"reorder": "إعادة الترتيب"
+"reorder": "إعادة الترتيب",
+"rates_offline": "دون اتصال · أسعار من %1$s · %2$s",
+"rates_stale": "⚠ الأسعار قديمة — من %1$s · %2$s"
 },
 "he": {
 "app_name": "FIXXE",
@@ -136,7 +140,9 @@ const I18N = {
 "switch_source_msg": "%1$s זמין דרך %2$s, לא המקור הנוכחי. להחליף ולהוסיף?",
 "switch_and_add": "החלף והוסף",
 "already_added": "כבר ברשימה",
-"reorder": "שינוי סדר"
+"reorder": "שינוי סדר",
+"rates_offline": "לא מקוון · שערים מ-%1$s · %2$s",
+"rates_stale": "⚠ השערים אינם עדכניים — מ-%1$s · %2$s"
 },
 "id": {
 "app_name": "FIXXE",
@@ -182,7 +188,9 @@ const I18N = {
 "switch_source_msg": "%1$s tersedia melalui %2$s, bukan sumber saat ini. Ganti dan tambahkan?",
 "switch_and_add": "Ganti & tambah",
 "already_added": "Sudah ada di daftar",
-"reorder": "Ubah urutan"
+"reorder": "Ubah urutan",
+"rates_offline": "Offline · kurs per %1$s · %2$s",
+"rates_stale": "⚠ Kurs sudah usang — per %1$s · %2$s"
 },
 "bg": {
 "app_name": "FIXXE",
@@ -228,7 +236,9 @@ const I18N = {
 "switch_source_msg": "%1$s е достъпен чрез %2$s, а не чрез текущия източник. Да се смени и добави?",
 "switch_and_add": "Смени и добави",
 "already_added": "Вече в списъка",
-"reorder": "Пренареждане"
+"reorder": "Пренареждане",
+"rates_offline": "Офлайн · курсове от %1$s · %2$s",
+"rates_stale": "⚠ Курсовете са остарели — от %1$s · %2$s"
 },
 "bs": {
 "app_name": "FIXXE",
@@ -274,7 +284,9 @@ const I18N = {
 "switch_source_msg": "%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promijeniti i dodati?",
 "switch_and_add": "Promijeni i dodaj",
 "already_added": "Već na listi",
-"reorder": "Promijeni redoslijed"
+"reorder": "Promijeni redoslijed",
+"rates_offline": "Offline · kursevi od %1$s · %2$s",
+"rates_stale": "⚠ Kursevi su zastarjeli — od %1$s · %2$s"
 },
 "cs": {
 "app_name": "FIXXE",
@@ -320,7 +332,9 @@ const I18N = {
 "switch_source_msg": "%1$s je dostupné přes %2$s, ne přes aktuální zdroj. Přepnout a přidat?",
 "switch_and_add": "Přepnout a přidat",
 "already_added": "Již v seznamu",
-"reorder": "Změnit pořadí"
+"reorder": "Změnit pořadí",
+"rates_offline": "Offline · kurzy z %1$s · %2$s",
+"rates_stale": "⚠ Kurzy jsou zastaralé — z %1$s · %2$s"
 },
 "da": {
 "app_name": "FIXXE",
@@ -366,7 +380,9 @@ const I18N = {
 "switch_source_msg": "%1$s er tilgængelig via %2$s, ikke den nuværende kilde. Skift og tilføj?",
 "switch_and_add": "Skift og tilføj",
 "already_added": "Allerede på listen",
-"reorder": "Skift rækkefølge"
+"reorder": "Skift rækkefølge",
+"rates_offline": "Offline · kurser fra %1$s · %2$s",
+"rates_stale": "⚠ Kurserne er forældede — fra %1$s · %2$s"
 },
 "de": {
 "app_name": "FIXXE",
@@ -412,7 +428,9 @@ const I18N = {
 "switch_source_msg": "%1$s ist über %2$s verfügbar, nicht über die aktuelle Quelle. Wechseln und hinzufügen?",
 "switch_and_add": "Wechseln & hinzufügen",
 "already_added": "Bereits in der Liste",
-"reorder": "Reihenfolge ändern"
+"reorder": "Reihenfolge ändern",
+"rates_offline": "Offline · Kurse vom %1$s · %2$s",
+"rates_stale": "⚠ Kurse sind veraltet — vom %1$s · %2$s"
 },
 "el": {
 "app_name": "FIXXE",
@@ -458,7 +476,9 @@ const I18N = {
 "switch_source_msg": "Το %1$s είναι διαθέσιμο μέσω %2$s, όχι μέσω της τρέχουσας πηγής. Αλλαγή και προσθήκη;",
 "switch_and_add": "Αλλαγή & προσθήκη",
 "already_added": "Ήδη στη λίστα",
-"reorder": "Αναδιάταξη"
+"reorder": "Αναδιάταξη",
+"rates_offline": "Εκτός σύνδεσης · τιμές από %1$s · %2$s",
+"rates_stale": "⚠ Οι τιμές είναι παλιές — από %1$s · %2$s"
 },
 "es": {
 "app_name": "FIXXE",
@@ -504,7 +524,9 @@ const I18N = {
 "switch_source_msg": "%1$s está disponible a través de %2$s, no de la fuente actual. ¿Cambiar y añadirlo?",
 "switch_and_add": "Cambiar y añadir",
 "already_added": "Ya está en la lista",
-"reorder": "Reordenar"
+"reorder": "Reordenar",
+"rates_offline": "Sin conexión · tasas del %1$s · %2$s",
+"rates_stale": "⚠ Las tasas están desactualizadas — del %1$s · %2$s"
 },
 "et": {
 "app_name": "FIXXE",
@@ -550,7 +572,9 @@ const I18N = {
 "switch_source_msg": "%1$s on saadaval %2$s kaudu, mitte praeguse allika kaudu. Vahetada ja lisada?",
 "switch_and_add": "Vaheta ja lisa",
 "already_added": "Juba loendis",
-"reorder": "Muuda järjekorda"
+"reorder": "Muuda järjekorda",
+"rates_offline": "Võrguühenduseta · kursid seisuga %1$s · %2$s",
+"rates_stale": "⚠ Kursid on aegunud — seisuga %1$s · %2$s"
 },
 "fa": {
 "app_name": "FIXXE",
@@ -596,7 +620,9 @@ const I18N = {
 "switch_source_msg": "%1$s از طریق %2$s در دسترس است، نه منبع فعلی. تغییر داده و اضافه شود؟",
 "switch_and_add": "تغییر و افزودن",
 "already_added": "از قبل در فهرست است",
-"reorder": "تغییر ترتیب"
+"reorder": "تغییر ترتیب",
+"rates_offline": "آفلاین · نرخ‌ها از %1$s · %2$s",
+"rates_stale": "⚠ نرخ‌ها قدیمی‌اند — از %1$s · %2$s"
 },
 "fi": {
 "app_name": "FIXXE",
@@ -642,7 +668,9 @@ const I18N = {
 "switch_source_msg": "%1$s on saatavilla lähteen %2$s kautta, ei nykyisen lähteen. Vaihda ja lisää?",
 "switch_and_add": "Vaihda ja lisää",
 "already_added": "Jo listassa",
-"reorder": "Järjestä uudelleen"
+"reorder": "Järjestä uudelleen",
+"rates_offline": "Offline · kurssit %1$s · %2$s",
+"rates_stale": "⚠ Kurssit ovat vanhentuneet — %1$s · %2$s"
 },
 "fr": {
 "app_name": "FIXXE",
@@ -688,7 +716,9 @@ const I18N = {
 "switch_source_msg": "%1$s est disponible via %2$s, pas via la source actuelle. Changer et l'ajouter ?",
 "switch_and_add": "Changer et ajouter",
 "already_added": "Déjà dans la liste",
-"reorder": "Réorganiser"
+"reorder": "Réorganiser",
+"rates_offline": "Hors ligne · taux du %1$s · %2$s",
+"rates_stale": "⚠ Taux périmés — du %1$s · %2$s"
 },
 "hi": {
 "app_name": "FIXXE",
@@ -734,7 +764,9 @@ const I18N = {
 "switch_source_msg": "%1$s %2$s के ज़रिए उपलब्ध है, मौजूदा स्रोत से नहीं। बदलें और जोड़ें?",
 "switch_and_add": "बदलें और जोड़ें",
 "already_added": "पहले से सूची में है",
-"reorder": "क्रम बदलें"
+"reorder": "क्रम बदलें",
+"rates_offline": "ऑफ़लाइन · %1$s की दरें · %2$s",
+"rates_stale": "⚠ दरें पुरानी हैं — %1$s की · %2$s"
 },
 "hr": {
 "app_name": "FIXXE",
@@ -780,7 +812,9 @@ const I18N = {
 "switch_source_msg": "%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promijeniti i dodati?",
 "switch_and_add": "Promijeni i dodaj",
 "already_added": "Već na popisu",
-"reorder": "Promijeni redoslijed"
+"reorder": "Promijeni redoslijed",
+"rates_offline": "Offline · tečajevi od %1$s · %2$s",
+"rates_stale": "⚠ Tečajevi su zastarjeli — od %1$s · %2$s"
 },
 "hu": {
 "app_name": "FIXXE",
@@ -826,7 +860,9 @@ const I18N = {
 "switch_source_msg": "A(z) %1$s a(z) %2$s forráson keresztül érhető el, nem a jelenlegin. Váltasz és hozzáadod?",
 "switch_and_add": "Váltás és hozzáadás",
 "already_added": "Már a listán",
-"reorder": "Átrendezés"
+"reorder": "Átrendezés",
+"rates_offline": "Offline · árfolyamok: %1$s · %2$s",
+"rates_stale": "⚠ Az árfolyamok elavultak — %1$s · %2$s"
 },
 "it": {
 "app_name": "FIXXE",
@@ -872,7 +908,9 @@ const I18N = {
 "switch_source_msg": "%1$s è disponibile tramite %2$s, non dalla fonte attuale. Cambiare e aggiungerlo?",
 "switch_and_add": "Cambia e aggiungi",
 "already_added": "Già nell'elenco",
-"reorder": "Riordina"
+"reorder": "Riordina",
+"rates_offline": "Offline · tassi del %1$s · %2$s",
+"rates_stale": "⚠ Tassi non aggiornati — del %1$s · %2$s"
 },
 "ja": {
 "app_name": "FIXXE",
@@ -918,7 +956,9 @@ const I18N = {
 "switch_source_msg": "%1$s は現在のソースではなく %2$s から利用できます。切り替えて追加しますか？",
 "switch_and_add": "切り替えて追加",
 "already_added": "追加済み",
-"reorder": "並べ替え"
+"reorder": "並べ替え",
+"rates_offline": "オフライン · %1$s のレート · %2$s",
+"rates_stale": "⚠ レートが古いです — %1$s · %2$s"
 },
 "ka": {
 "app_name": "FIXXE",
@@ -964,7 +1004,9 @@ const I18N = {
 "switch_source_msg": "%1$s ხელმისაწვდომია %2$s-ის მეშვეობით და არა მიმდინარე წყაროდან. გადავრთოთ და დავამატოთ?",
 "switch_and_add": "გადართვა და დამატება",
 "already_added": "უკვე სიაშია",
-"reorder": "თანმიმდევრობის შეცვლა"
+"reorder": "თანმიმდევრობის შეცვლა",
+"rates_offline": "ოფლაინ · კურსები %1$s · %2$s",
+"rates_stale": "⚠ კურსები მოძველებულია — %1$s · %2$s"
 },
 "ko": {
 "app_name": "FIXXE",
@@ -1010,7 +1052,9 @@ const I18N = {
 "switch_source_msg": "%1$s은(는) 현재 소스가 아닌 %2$s을(를) 통해 사용할 수 있습니다. 전환하고 추가할까요?",
 "switch_and_add": "전환 후 추가",
 "already_added": "이미 목록에 있음",
-"reorder": "순서 변경"
+"reorder": "순서 변경",
+"rates_offline": "오프라인 · %1$s 환율 · %2$s",
+"rates_stale": "⚠ 환율이 오래되었습니다 — %1$s · %2$s"
 },
 "lt": {
 "app_name": "FIXXE",
@@ -1056,7 +1100,9 @@ const I18N = {
 "switch_source_msg": "%1$s pasiekiamas per %2$s, o ne per dabartinį šaltinį. Perjungti ir pridėti?",
 "switch_and_add": "Perjungti ir pridėti",
 "already_added": "Jau sąraše",
-"reorder": "Pertvarkyti"
+"reorder": "Pertvarkyti",
+"rates_offline": "Neprisijungus · kursai nuo %1$s · %2$s",
+"rates_stale": "⚠ Kursai pasenę — nuo %1$s · %2$s"
 },
 "lv": {
 "app_name": "FIXXE",
@@ -1102,7 +1148,9 @@ const I18N = {
 "switch_source_msg": "%1$s ir pieejams caur %2$s, nevis pašreizējo avotu. Pārslēgt un pievienot?",
 "switch_and_add": "Pārslēgt un pievienot",
 "already_added": "Jau sarakstā",
-"reorder": "Mainīt secību"
+"reorder": "Mainīt secību",
+"rates_offline": "Bezsaistē · kursi no %1$s · %2$s",
+"rates_stale": "⚠ Kursi ir novecojuši — no %1$s · %2$s"
 },
 "mk": {
 "app_name": "FIXXE",
@@ -1148,7 +1196,9 @@ const I18N = {
 "switch_source_msg": "%1$s е достапен преку %2$s, не преку тековниот извор. Да се промени и додаде?",
 "switch_and_add": "Промени и додај",
 "already_added": "Веќе на листата",
-"reorder": "Пренареди"
+"reorder": "Пренареди",
+"rates_offline": "Офлајн · курсеви од %1$s · %2$s",
+"rates_stale": "⚠ Курсевите се застарени — од %1$s · %2$s"
 },
 "nb": {
 "app_name": "FIXXE",
@@ -1194,7 +1244,9 @@ const I18N = {
 "switch_source_msg": "%1$s er tilgjengelig via %2$s, ikke den gjeldende kilden. Bytte og legge til?",
 "switch_and_add": "Bytt og legg til",
 "already_added": "Allerede i listen",
-"reorder": "Endre rekkefølge"
+"reorder": "Endre rekkefølge",
+"rates_offline": "Frakoblet · kurser fra %1$s · %2$s",
+"rates_stale": "⚠ Kursene er utdaterte — fra %1$s · %2$s"
 },
 "nl": {
 "app_name": "FIXXE",
@@ -1240,7 +1292,9 @@ const I18N = {
 "switch_source_msg": "%1$s is beschikbaar via %2$s, niet via de huidige bron. Wisselen en toevoegen?",
 "switch_and_add": "Wisselen en toevoegen",
 "already_added": "Al in de lijst",
-"reorder": "Volgorde wijzigen"
+"reorder": "Volgorde wijzigen",
+"rates_offline": "Offline · koersen van %1$s · %2$s",
+"rates_stale": "⚠ Koersen zijn verouderd — van %1$s · %2$s"
 },
 "pl": {
 "app_name": "FIXXE",
@@ -1286,7 +1340,9 @@ const I18N = {
 "switch_source_msg": "%1$s jest dostępny przez %2$s, a nie z bieżącego źródła. Zmienić i dodać?",
 "switch_and_add": "Zmień i dodaj",
 "already_added": "Już na liście",
-"reorder": "Zmień kolejność"
+"reorder": "Zmień kolejność",
+"rates_offline": "Offline · kursy z %1$s · %2$s",
+"rates_stale": "⚠ Kursy są nieaktualne — z %1$s · %2$s"
 },
 "pt": {
 "app_name": "FIXXE",
@@ -1332,7 +1388,9 @@ const I18N = {
 "switch_source_msg": "%1$s está disponível via %2$s, não pela fonte atual. Trocar e adicionar?",
 "switch_and_add": "Trocar e adicionar",
 "already_added": "Já está na lista",
-"reorder": "Reordenar"
+"reorder": "Reordenar",
+"rates_offline": "Offline · taxas de %1$s · %2$s",
+"rates_stale": "⚠ Taxas desatualizadas — de %1$s · %2$s"
 },
 "ro": {
 "app_name": "FIXXE",
@@ -1378,7 +1436,9 @@ const I18N = {
 "switch_source_msg": "%1$s este disponibil prin %2$s, nu prin sursa curentă. Schimbi și îl adaugi?",
 "switch_and_add": "Schimbă și adaugă",
 "already_added": "Deja în listă",
-"reorder": "Reordonare"
+"reorder": "Reordonare",
+"rates_offline": "Offline · cursuri din %1$s · %2$s",
+"rates_stale": "⚠ Cursurile sunt învechite — din %1$s · %2$s"
 },
 "ru": {
 "app_name": "FIXXE",
@@ -1424,7 +1484,9 @@ const I18N = {
 "switch_source_msg": "%1$s доступен через %2$s, а не текущий источник. Переключить и добавить?",
 "switch_and_add": "Переключить и добавить",
 "already_added": "Уже в списке",
-"reorder": "Изменить порядок"
+"reorder": "Изменить порядок",
+"rates_offline": "Офлайн · курсы от %1$s · %2$s",
+"rates_stale": "⚠ Курсы устарели — от %1$s · %2$s"
 },
 "sk": {
 "app_name": "FIXXE",
@@ -1470,7 +1532,9 @@ const I18N = {
 "switch_source_msg": "%1$s je dostupné cez %2$s, nie cez aktuálny zdroj. Prepnúť a pridať?",
 "switch_and_add": "Prepnúť a pridať",
 "already_added": "Už v zozname",
-"reorder": "Zmeniť poradie"
+"reorder": "Zmeniť poradie",
+"rates_offline": "Offline · kurzy z %1$s · %2$s",
+"rates_stale": "⚠ Kurzy sú zastarané — z %1$s · %2$s"
 },
 "sl": {
 "app_name": "FIXXE",
@@ -1516,7 +1580,9 @@ const I18N = {
 "switch_source_msg": "%1$s je na voljo prek %2$s, ne prek trenutnega vira. Ga zamenjati in dodati?",
 "switch_and_add": "Zamenjaj in dodaj",
 "already_added": "Že na seznamu",
-"reorder": "Spremeni vrstni red"
+"reorder": "Spremeni vrstni red",
+"rates_offline": "Brez povezave · tečaji z %1$s · %2$s",
+"rates_stale": "⚠ Tečaji so zastareli — z %1$s · %2$s"
 },
 "sq": {
 "app_name": "FIXXE",
@@ -1562,7 +1628,9 @@ const I18N = {
 "switch_source_msg": "%1$s është i disponueshëm përmes %2$s, jo përmes burimit aktual. Ta ndërroni dhe ta shtoni?",
 "switch_and_add": "Ndërro & shto",
 "already_added": "Tashmë në listë",
-"reorder": "Ndrysho renditjen"
+"reorder": "Ndrysho renditjen",
+"rates_offline": "Offline · kurse nga %1$s · %2$s",
+"rates_stale": "⚠ Kurset janë të vjetruara — nga %1$s · %2$s"
 },
 "sr": {
 "app_name": "FIXXE",
@@ -1608,7 +1676,9 @@ const I18N = {
 "switch_source_msg": "%1$s je dostupan preko %2$s, ne preko trenutnog izvora. Promeniti i dodati?",
 "switch_and_add": "Promeni i dodaj",
 "already_added": "Već na listi",
-"reorder": "Промени редослед"
+"reorder": "Промени редослед",
+"rates_offline": "Офлајн · курсеви од %1$s · %2$s",
+"rates_stale": "⚠ Курсеви су застарели — од %1$s · %2$s"
 },
 "sv": {
 "app_name": "FIXXE",
@@ -1654,7 +1724,9 @@ const I18N = {
 "switch_source_msg": "%1$s är tillgänglig via %2$s, inte den nuvarande källan. Byta och lägga till?",
 "switch_and_add": "Byt och lägg till",
 "already_added": "Redan i listan",
-"reorder": "Ändra ordning"
+"reorder": "Ändra ordning",
+"rates_offline": "Offline · kurser från %1$s · %2$s",
+"rates_stale": "⚠ Kurserna är inaktuella — från %1$s · %2$s"
 },
 "th": {
 "app_name": "FIXXE",
@@ -1700,7 +1772,9 @@ const I18N = {
 "switch_source_msg": "%1$s ใช้งานได้ผ่าน %2$s ไม่ใช่แหล่งข้อมูลปัจจุบัน สลับและเพิ่มไหม",
 "switch_and_add": "สลับและเพิ่ม",
 "already_added": "อยู่ในรายการแล้ว",
-"reorder": "จัดเรียงใหม่"
+"reorder": "จัดเรียงใหม่",
+"rates_offline": "ออฟไลน์ · อัตราจาก %1$s · %2$s",
+"rates_stale": "⚠ อัตราล้าสมัย — จาก %1$s · %2$s"
 },
 "tr": {
 "app_name": "FIXXE",
@@ -1746,7 +1820,9 @@ const I18N = {
 "switch_source_msg": "%1$s %2$s üzerinden mevcut, geçerli kaynakta değil. Değiştirip eklensin mi?",
 "switch_and_add": "Değiştir ve ekle",
 "already_added": "Zaten listede",
-"reorder": "Yeniden sırala"
+"reorder": "Yeniden sırala",
+"rates_offline": "Çevrimdışı · %1$s kurları · %2$s",
+"rates_stale": "⚠ Kurlar güncel değil — %1$s · %2$s"
 },
 "vi": {
 "app_name": "FIXXE",
@@ -1792,7 +1868,9 @@ const I18N = {
 "switch_source_msg": "%1$s có sẵn qua %2$s, không phải nguồn hiện tại. Đổi và thêm?",
 "switch_and_add": "Đổi & thêm",
 "already_added": "Đã có trong danh sách",
-"reorder": "Sắp xếp lại"
+"reorder": "Sắp xếp lại",
+"rates_offline": "Ngoại tuyến · tỷ giá từ %1$s · %2$s",
+"rates_stale": "⚠ Tỷ giá đã cũ — từ %1$s · %2$s"
 },
 "zh": {
 "app_name": "FIXXE",
@@ -1838,6 +1916,8 @@ const I18N = {
 "switch_source_msg": "%1$s 可通过 %2$s 获取，而非当前来源。切换并添加吗？",
 "switch_and_add": "切换并添加",
 "already_added": "已在列表中",
-"reorder": "重新排序"
+"reorder": "重新排序",
+"rates_offline": "离线 · %1$s 的汇率 · %2$s",
+"rates_stale": "⚠ 汇率已过时 — %1$s · %2$s"
 }
 };

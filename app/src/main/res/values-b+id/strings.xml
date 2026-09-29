@@ -44,4 +44,6 @@
     <string name="switch_and_add">Ganti &amp; tambah</string>
     <string name="already_added">Sudah ada di daftar</string>
     <string name="reorder">Ubah urutan</string>
+    <string name="rates_offline">Offline · kurs per %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Kurs sudah usang — per %1$s · %2$s</string>
 </resources>

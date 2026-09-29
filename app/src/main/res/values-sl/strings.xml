@@ -44,4 +44,6 @@
     <string name="switch_and_add">Zamenjaj in dodaj</string>
     <string name="already_added">Že na seznamu</string>
     <string name="reorder">Spremeni vrstni red</string>
+    <string name="rates_offline">Brez povezave · tečaji z %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Tečaji so zastareli — z %1$s · %2$s</string>
 </resources>

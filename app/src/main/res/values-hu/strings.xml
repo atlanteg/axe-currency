@@ -44,4 +44,6 @@
     <string name="switch_and_add">Váltás és hozzáadás</string>
     <string name="already_added">Már a listán</string>
     <string name="reorder">Átrendezés</string>
+    <string name="rates_offline">Offline · árfolyamok: %1$s · %2$s</string>
+    <string name="rates_stale">⚠ Az árfolyamok elavultak — %1$s · %2$s</string>
 </resources>
