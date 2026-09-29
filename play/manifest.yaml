@@ -59,7 +59,9 @@ locales:
     full_description: |
       FIXXE is a fast, clean currency converter with live mid-market exchange rates — the neutral midpoint between global buy and sell prices, not bank spreads.
 
-      • 300+ currencies including crypto and precious metals, with country flags
+      • 300+ currencies with country flags — majors, regional currencies that
+        converters often skip (Russian ruble, Serbian dinar, Georgian lari,
+        Tajikistani somoni, Kyrgyz som), plus crypto and precious metals
       • Real-time conversion — type in any field, all others update instantly
       • Dynamic base — rates are shown relative to the currency you are editing
       • Multi-source rates with automatic fallback (ExchangeRate-API, F.A., Frankfurter / ECB); pick a source manually if you prefer
