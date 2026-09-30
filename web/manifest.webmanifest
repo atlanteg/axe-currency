@@ -1,7 +1,7 @@
 {
   "name": "FIXXE — Currency Converter",
   "short_name": "FIXXE",
-  "description": "Live mid-market currency converter with 166 currencies and 40 languages.",
+  "description": "Live mid-market currency converter with 300+ currencies and 40 languages.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
